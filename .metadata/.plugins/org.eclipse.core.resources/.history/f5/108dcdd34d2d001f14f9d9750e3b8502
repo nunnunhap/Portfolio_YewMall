@@ -1,0 +1,11 @@
+package com.yewmall.basic.mail;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class EmailController {
+	
+	
+	
+	
+}

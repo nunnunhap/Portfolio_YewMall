@@ -81,6 +81,13 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail -->
+        <!-- 메일 인증 라이브러리 : 스프링부트와 세트로 제공해주는 라이브러리는 버젼을 직접 정해서 사용하지 않음. -->
+        <!-- JavaMailSender 인터페이스 / JavaMailSenderImpl 클래스 사용을 위하여 아래 라이브러리가 필요함 -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
 	      
 	</dependencies>
 

@@ -1,0 +1,29 @@
+package com.yewmall.basic.mail;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@Controller
+@Slf4j
+@RequiredArgsConstructor
+@RequestMapping("/email/*")
+public class EmailController {
+	
+	// DI
+	private final EmailService emailService;
+	
+	// 메일 인증 발송
+	
+	
+	
+	
+	// 메일 인증 확인
+	
+	
+	
+	
+	
+}

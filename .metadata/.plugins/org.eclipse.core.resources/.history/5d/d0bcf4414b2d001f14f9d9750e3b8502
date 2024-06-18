@@ -1,0 +1,5 @@
+package com.yewmall.basic.common.config;
+
+public class SecurityConfig {
+
+}

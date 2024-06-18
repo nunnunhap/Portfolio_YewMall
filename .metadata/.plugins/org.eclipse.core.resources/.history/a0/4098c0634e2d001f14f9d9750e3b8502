@@ -1,0 +1,17 @@
+package com.yewmall.basic.mail;
+
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Service;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class EmailService {
+	
+	// DI
+	private final JavaMailSender mailSender;
+	
+	
+	
+}
