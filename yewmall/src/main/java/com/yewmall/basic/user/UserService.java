@@ -21,6 +21,10 @@ public class UserService {
 		userMapper.join(vo);
 	}
 	
+	// 로그인
+	public UserVo login(String mbsp_id) {
+		return userMapper.login(mbsp_id);
+	}
 	
 	
 	

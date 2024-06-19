@@ -8,4 +8,8 @@ public interface UserMapper {
 	// 회원가입 저장
 	void join(UserVo vo);
 	
+	// 로그인
+	UserVo login(String mbsp_id);
+		
+	
 }
