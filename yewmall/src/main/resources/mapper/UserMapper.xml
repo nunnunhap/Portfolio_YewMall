@@ -62,6 +62,41 @@
 			mbsp_id = #{mbsp_id}
 	</select>
 
+	<!-- ID 찾기 -->
+	<select id="idfind" resultType="String">
+		SELECT
+		    mbsp_id
+		FROM
+		    mbsp_tbl
+		WHERE
+			mbsp_name = #{mbsp_name}
+		AND
+			mbsp_email = #{mbsp_email}
+	</select>
+	
+	<!-- PW 찾기 -->
+
+
+
+
+
+	<!-- 회원정보 수정 -->
+	<update id="modify" parameterType="UserVo">
+		UPDATE
+		    mbsp_tbl
+		SET
+			mbsp_nick = #{mbsp_nick},
+			mbsp_email = #{mbsp_email},
+			mbsp_zipcode = #{mbsp_zipcode},
+		    mbsp_addr = #{mbsp_addr},
+		    mbsp_deaddr = #{mbsp_deaddr},
+		    mbsp_phone = #{mbsp_phone},
+		    mbsp_receive = #{mbsp_receive}
+		WHERE
+		    mbsp_id = #{mbsp_id}
+	</update>
+
+
 
 
 </mapper>

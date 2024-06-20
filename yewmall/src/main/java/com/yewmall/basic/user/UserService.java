@@ -27,5 +27,20 @@ public class UserService {
 	}
 	
 	
+	// ID 찾기
+	public String idfind(String mbsp_name, String mbsp_email) {
+		return userMapper.idfind(mbsp_name, mbsp_email);
+	}
+	
+	// PW 찾기
+	
+	
+	
+	
+	// 회원정보 수정
+	public void modify(UserVo vo) {
+		userMapper.modify(vo);
+	}
+	
 	
 }

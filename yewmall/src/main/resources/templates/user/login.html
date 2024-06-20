@@ -6,48 +6,55 @@
 <body>
 
 <th:block layout:fragment = "content">
-  <main role="main" class="flex-shrink-0">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <div class="card card-info">
-            <div class="card-header">
-              <h3 class="card-title">Login Form</h3>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-7 col-lg-5">
+        <div class="wrap">
+          <div class="login-wrap p-4 p-md-5">
+            <div class="d-flex">
+              <div class="w-100">
+                <h3 class="mb-4">Log In</h3>
+              </div>
+              <!-- 소셜 미디어
+              <div class="w-100">
+                <p class="social-media d-flex justify-content-end">
+                <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
+                <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
+                </p>
+              </div>
+              -->
             </div>
-            
-            <form class="form-horizontal" id="loinForm" th:action="@{/user/login}" method="post">
-              <div class="card-body">
-                <div class="form-group row">
-                  <label for="mbsp_id" class="col-sm-4 col-form-label">ID</label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" id="mbsp_id" name="mbsp_id" value="user01">
-                  </div>
+            <form th:action="@{/user/login}" class="signin-form" method="post">
+              <div class="form-group mt-3">
+                <label class="form-control-placeholder" for="mbsp_id">ID</label>
+                <input type="text" class="form-control" id="mbsp_id" name="mbsp_id" value="user01">
+              </div>
+              <div class="form-group">
+                <label class="form-control-placeholder" for="mbsp_password">Password</label>
+                <input type="password" class="form-control" id="mbsp_password" name="mbsp_password" value="1234">
+                <span toggle="#mbsp_password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="form-control btn btn-primary rounded submit px-3">Log In</button>
+              </div>
+              <div class="form-group d-md-flex">
+                <div class="w-50 text-left">
+                  <a th:href="@{/user/idfind}">Forgot ID</a>
+                  </label>
                 </div>
-                <div class="form-group row">
-                  <label for="mbsp_password" class="col-sm-4 col-form-label">Password</label>
-                  <div class="col-sm-8">
-                    <input type="password" class="form-control" id="mbsp_password" name="mbsp_password" value="1234">
-                  </div>
+                <div class="w-50 text-md-right">
+                  <a th:href="@{/user/pwfind}">Forgot Password</a>
                 </div>
               </div>
-              
-              <div class="card-footer text-center">
-                <button type="submit" class="btn btn-info btn-block" id="btnLogin">Login</button>
-              </div>
-  
             </form>
-  
-            <div class="card-footer text-center">
-              <button type="button" class="btn btn-outline-primary float-left" id="idfind">아이디 찾기</button>
-              <button type="button" class="btn btn-outline-primary float-left" id="pwfind">비밀번호 찾기</button>
-              <button type="button" class="btn btn-outline-primary float-right" id="join">회원가입</button>
+            <div class="text-center">
+            	<a th:href="@{/user/join}">Sign Up</a>
             </div>
-  
           </div>
         </div>
       </div>
     </div>
-  </main>
+  </div>
 
 </th:block>
 
@@ -55,7 +62,6 @@
   <script>
     $(document).ready(function() {
 
-      
 
       $("#idfind").on("click", function() {
         location.href="/user/idfind"
@@ -68,13 +74,6 @@
       $("#join").on("click", function() {
         location.href="/user/join";
       });
-
-
-
-
-
-
-
     }); // ready event end
   </script>
 </th:block>

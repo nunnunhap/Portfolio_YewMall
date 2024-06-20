@@ -22,7 +22,7 @@
         </th:block>
         <th:block th:if="${session.login_status != null}">
           <a class="btn btn-sm btn-outline-secondary" th:href="@{/user/logout}">Logout</a>
-          <a class="btn btn-sm btn-outline-secondary" href="#">MyPage</a>
+          <a class="btn btn-sm btn-outline-secondary" th:href="@{/user/mypage}">MyPage</a>
         </th:block>
         <a class="btn btn-sm btn-outline-secondary" href="#">Cart</a>
       </div>
