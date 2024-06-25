@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+				xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+				layout:decorate="~{layout/baselayout}">
+
+<body>
+
+<th:block layout:fragment = "content">
+  <main role="main" class="flex-shrink-0">
+    <div class="container">
+      <div class="row">
+        <div class="col-2">
+          <section th:replace="~{user/comm/mypage_menu}"></section>
+        </div>
+        
+        <div class="col-10">
+          <div class="card-header">
+            <h3 class="card-title">회원 탈퇴</h3>
+          </div>
+          <form class="form-horizontal" id="deleteForm" th:action="@{/user/delete}" method="post">
+            <div class="card-body">
+              <div class="form-group row">
+                <label for="mbsp_password" class="col-sm-4 col-form-label">현재 비밀번호</label>
+                <div class="col-sm-8">
+                  <input type="password" class="form-control" id="mbsp_password" name="mbsp_password" placeholder="현재 비밀번호를 입력하세요.">
+                </div>
+              </div>
+            </div>
+            
+            <div class="card-footer">
+              <button type="button" class="btn btn-info btn-block" id="btnDelete">계정삭제</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+</th:block>
+<th:block layout:fragment = "script">
+  <script th:inline="javascript">
+    let msg = [[${msg}]];
+
+    if(msg == "failPW") {
+      alert("비밀번호가 일치하지 않습니다.");
+      document.getElementById("#mbsp_password").focus();
+    } else if(msg == "success") {
+      alert("비밀번호가 변경되었습니다.");
+    }
+
+
+    $(document).ready(function() {
+      $("#btnDelete").on("click", function() {
+        if($("#mbsp_password").val() == "") {
+          alert("현재 비밀번호를 입력하세요.");
+          $("#mbsp_password").focus();
+
+          return;
+        }
+        
+        console.log("click event");
+        $("#deleteForm").submit();
+      });
+    }); // ready event end
+  </script>
+</th:block>
+</body>
+</html>

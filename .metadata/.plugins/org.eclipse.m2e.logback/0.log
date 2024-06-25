@@ -19288,3 +19288,1018 @@ org.apache.maven.settings.building.SettingsBuildingException: 1 problem was enco
 2024-06-20 20:55:12,630 [Worker-109: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
 2024-06-20 20:55:12,639 [Worker-109: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 28 resources from src\main\resources to target\classes
 2024-06-20 20:55:12,651 [Worker-109: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-21 09:10:02,548 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2024-06-21 09:10:04,065 [Worker-8: Repository registry initialization] ERROR o.e.m.c.internal.embedder.MavenImpl - Could not read settingsCacheMap.xml, assuming default values
+org.apache.maven.settings.building.SettingsBuildingException: 1 problem was encountered while building the effective settings
+[FATAL] Non-parseable settings C:\Users\yyewk\.m2\repository\com\oracle\database\jdbc\ojdbc11\21.9.0.0\ojdbc11-21.9.0.0.jar: only whitespace content allowed before start tag and not P (position: START_DOCUMENT seen P... @1:2)  @ C:\Users\yyewk\.m2\repository\com\oracle\database\jdbc\ojdbc11\21.9.0.0\ojdbc11-21.9.0.0.jar, line 1, column 2
+
+	at org.apache.maven.settings.building.DefaultSettingsBuilder.build(DefaultSettingsBuilder.java:115)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl$MavenSettings.getSettings(MavenImpl.java:1117)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.getSettings(MavenImpl.java:279)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.getSettings(MavenImpl.java:273)
+	at org.eclipse.m2e.core.internal.repository.RepositoryRegistry.updateRegistry(RepositoryRegistry.java:229)
+	at org.eclipse.m2e.core.internal.repository.RepositoryRegistryUpdateJob.run(RepositoryRegistryUpdateJob.java:50)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-06-21 09:10:06,326 [Worker-0: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.yewmall:shop:1.0.0 @ C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\pom.xml.
+2024-06-21 09:10:07,802 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-21 09:10:07,845 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 28 resources from src\main\resources to target\classes
+2024-06-21 09:10:07,908 [Worker-0: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-21 09:10:08,338 [Worker-1: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.yewmall:shop:1.0.0 @ C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\pom.xml.
+2024-06-22 14:57:16,401 [Worker-5: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2024-06-22 14:57:17,712 [Worker-8: Repository registry initialization] ERROR o.e.m.c.internal.embedder.MavenImpl - Could not read settingsCacheMap.xml, assuming default values
+org.apache.maven.settings.building.SettingsBuildingException: 1 problem was encountered while building the effective settings
+[FATAL] Non-parseable settings C:\Users\yyewk\.m2\repository\com\oracle\database\jdbc\ojdbc11\21.9.0.0\ojdbc11-21.9.0.0.jar: only whitespace content allowed before start tag and not P (position: START_DOCUMENT seen P... @1:2)  @ C:\Users\yyewk\.m2\repository\com\oracle\database\jdbc\ojdbc11\21.9.0.0\ojdbc11-21.9.0.0.jar, line 1, column 2
+
+	at org.apache.maven.settings.building.DefaultSettingsBuilder.build(DefaultSettingsBuilder.java:115)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl$MavenSettings.getSettings(MavenImpl.java:1117)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.getSettings(MavenImpl.java:279)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.getSettings(MavenImpl.java:273)
+	at org.eclipse.m2e.core.internal.repository.RepositoryRegistry.updateRegistry(RepositoryRegistry.java:229)
+	at org.eclipse.m2e.core.internal.repository.RepositoryRegistryUpdateJob.run(RepositoryRegistryUpdateJob.java:50)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-06-22 14:57:20,070 [Worker-7: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.yewmall:shop:1.0.0 @ C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\pom.xml.
+2024-06-22 17:27:51,944 [Worker-3: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2024-06-22 17:27:53,323 [Worker-7: Repository registry initialization] ERROR o.e.m.c.internal.embedder.MavenImpl - Could not read settingsCacheMap.xml, assuming default values
+org.apache.maven.settings.building.SettingsBuildingException: 1 problem was encountered while building the effective settings
+[FATAL] Non-parseable settings C:\Users\yyewk\.m2\repository\com\oracle\database\jdbc\ojdbc11\21.9.0.0\ojdbc11-21.9.0.0.jar: only whitespace content allowed before start tag and not P (position: START_DOCUMENT seen P... @1:2)  @ C:\Users\yyewk\.m2\repository\com\oracle\database\jdbc\ojdbc11\21.9.0.0\ojdbc11-21.9.0.0.jar, line 1, column 2
+
+	at org.apache.maven.settings.building.DefaultSettingsBuilder.build(DefaultSettingsBuilder.java:115)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl$MavenSettings.getSettings(MavenImpl.java:1117)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.getSettings(MavenImpl.java:279)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.getSettings(MavenImpl.java:273)
+	at org.eclipse.m2e.core.internal.repository.RepositoryRegistry.updateRegistry(RepositoryRegistry.java:229)
+	at org.eclipse.m2e.core.internal.repository.RepositoryRegistryUpdateJob.run(RepositoryRegistryUpdateJob.java:50)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-06-22 17:27:54,871 [Worker-1: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.yewmall:shop:1.0.0 @ C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\pom.xml.
+2024-06-23 11:42:24,729 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2024-06-23 11:42:27,198 [Worker-7: Repository registry initialization] ERROR o.e.m.c.internal.embedder.MavenImpl - Could not read settingsCacheMap.xml, assuming default values
+org.apache.maven.settings.building.SettingsBuildingException: 1 problem was encountered while building the effective settings
+[FATAL] Non-parseable settings C:\Users\yyewk\.m2\repository\com\oracle\database\jdbc\ojdbc11\21.9.0.0\ojdbc11-21.9.0.0.jar: only whitespace content allowed before start tag and not P (position: START_DOCUMENT seen P... @1:2)  @ C:\Users\yyewk\.m2\repository\com\oracle\database\jdbc\ojdbc11\21.9.0.0\ojdbc11-21.9.0.0.jar, line 1, column 2
+
+	at org.apache.maven.settings.building.DefaultSettingsBuilder.build(DefaultSettingsBuilder.java:115)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl$MavenSettings.getSettings(MavenImpl.java:1117)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.getSettings(MavenImpl.java:279)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.getSettings(MavenImpl.java:273)
+	at org.eclipse.m2e.core.internal.repository.RepositoryRegistry.updateRegistry(RepositoryRegistry.java:229)
+	at org.eclipse.m2e.core.internal.repository.RepositoryRegistryUpdateJob.run(RepositoryRegistryUpdateJob.java:50)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-06-23 11:42:31,890 [Worker-6: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.yewmall:shop:1.0.0 @ C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\pom.xml.
+2024-06-23 13:14:25,891 [Worker-43: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 13:14:26,191 [Worker-43: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 28 resources from src\main\resources to target\classes
+2024-06-23 13:14:26,226 [Worker-43: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 13:15:57,800 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 13:15:57,810 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 13:15:57,816 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 13:16:40,470 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 13:16:40,476 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 13:16:40,485 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 13:16:43,290 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 13:16:43,295 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 13:16:43,299 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 13:17:15,923 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 13:17:15,928 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 13:17:15,938 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 13:17:16,957 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 13:17:16,963 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 13:17:16,967 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 13:17:22,101 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 13:17:22,107 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 13:17:22,113 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 13:17:34,280 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 13:17:34,285 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 13:17:34,293 [Worker-34: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 13:18:57,796 [Worker-43: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 13:18:57,802 [Worker-43: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 13:18:57,807 [Worker-43: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 14:08:16,845 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 14:08:16,872 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 14:08:16,882 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 14:08:38,032 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 14:08:38,053 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 14:08:38,062 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 14:11:52,123 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 14:11:52,167 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 14:11:52,182 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 14:12:05,335 [Worker-59: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 14:12:05,354 [Worker-59: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 14:12:05,373 [Worker-59: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 14:12:30,727 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 14:12:30,747 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 14:12:30,753 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 14:12:33,804 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 14:12:33,905 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 28 resources from src\main\resources to target\classes
+2024-06-23 14:12:33,927 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 14:16:15,640 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 14:16:15,663 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 14:16:15,679 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 14:17:21,415 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 14:17:21,431 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 14:17:21,442 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 14:17:24,412 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 14:17:24,577 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 28 resources from src\main\resources to target\classes
+2024-06-23 14:17:24,614 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 14:17:49,661 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 14:17:49,679 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 14:17:49,691 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 14:18:27,818 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 14:18:27,836 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 14:18:27,846 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 14:18:30,910 [Worker-59: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 14:18:30,951 [Worker-59: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 28 resources from src\main\resources to target\classes
+2024-06-23 14:18:30,992 [Worker-59: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 14:18:33,983 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 14:18:34,007 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 28 resources from src\main\resources to target\classes
+2024-06-23 14:18:34,042 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 14:19:11,455 [Worker-59: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 14:19:11,476 [Worker-59: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 14:19:11,486 [Worker-59: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 14:19:14,430 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 14:19:14,468 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 28 resources from src\main\resources to target\classes
+2024-06-23 14:19:14,507 [Worker-61: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 14:28:39,035 [Worker-64: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 14:28:39,053 [Worker-64: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 14:28:39,066 [Worker-64: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 14:33:41,234 [Worker-65: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 14:33:41,254 [Worker-65: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 14:33:41,266 [Worker-65: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 14:33:44,297 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 14:33:44,365 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 28 resources from src\main\resources to target\classes
+2024-06-23 14:33:44,427 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 14:33:47,345 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 14:33:47,390 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 28 resources from src\main\resources to target\classes
+2024-06-23 14:33:47,436 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 14:33:50,411 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 14:33:50,431 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 28 resources from src\main\resources to target\classes
+2024-06-23 14:33:50,475 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 14:34:03,674 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 14:34:03,689 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 14:34:03,703 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 14:34:06,697 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 14:34:06,715 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 28 resources from src\main\resources to target\classes
+2024-06-23 14:34:06,754 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 14:35:00,237 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 14:35:00,258 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 14:35:00,270 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 14:35:03,368 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 14:35:03,389 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 28 resources from src\main\resources to target\classes
+2024-06-23 14:35:03,433 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 14:35:36,614 [Worker-65: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 14:35:36,636 [Worker-65: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 14:35:36,648 [Worker-65: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 14:35:45,820 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 14:35:45,837 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 14:35:45,851 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 14:38:04,033 [Worker-65: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 14:38:04,051 [Worker-65: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 14:38:04,063 [Worker-65: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 15:19:03,095 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 15:19:03,105 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 15:19:03,114 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 15:19:04,181 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 15:19:04,187 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 15:19:04,190 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 15:20:24,691 [Worker-72: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 15:20:24,697 [Worker-72: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 15:20:24,702 [Worker-72: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 15:21:02,082 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 15:21:02,087 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 15:21:02,091 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 15:35:33,346 [Worker-75: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 15:35:33,360 [Worker-75: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 15:35:33,369 [Worker-75: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 15:36:18,725 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 15:36:18,736 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 15:36:18,748 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 15:36:25,060 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 15:36:25,082 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 15:36:25,104 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 15:37:54,961 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 15:37:54,969 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 15:37:54,980 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 15:37:56,024 [Worker-75: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 15:37:56,039 [Worker-75: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 15:37:56,046 [Worker-75: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 15:39:32,395 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 15:39:32,400 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 15:39:32,404 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 15:39:45,679 [Worker-75: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 15:39:45,697 [Worker-75: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 15:39:45,705 [Worker-75: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 15:39:58,841 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 15:39:58,852 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 15:39:58,863 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 16:35:23,162 [Worker-101: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 16:35:23,172 [Worker-101: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 16:35:23,180 [Worker-101: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 16:36:16,319 [Worker-102: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-23 16:36:16,326 [Worker-102: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 16:36:16,332 [Worker-102: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-23 16:38:09,630 [Worker-103: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-23 16:38:09,703 [Worker-103: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-23 16:38:09,725 [Worker-103: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 09:07:05,033 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2024-06-24 09:07:07,977 [Worker-4: Repository registry initialization] ERROR o.e.m.c.internal.embedder.MavenImpl - Could not read settingsCacheMap.xml, assuming default values
+org.apache.maven.settings.building.SettingsBuildingException: 1 problem was encountered while building the effective settings
+[FATAL] Non-parseable settings C:\Users\yyewk\.m2\repository\com\oracle\database\jdbc\ojdbc11\21.9.0.0\ojdbc11-21.9.0.0.jar: only whitespace content allowed before start tag and not P (position: START_DOCUMENT seen P... @1:2)  @ C:\Users\yyewk\.m2\repository\com\oracle\database\jdbc\ojdbc11\21.9.0.0\ojdbc11-21.9.0.0.jar, line 1, column 2
+
+	at org.apache.maven.settings.building.DefaultSettingsBuilder.build(DefaultSettingsBuilder.java:115)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl$MavenSettings.getSettings(MavenImpl.java:1117)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.getSettings(MavenImpl.java:279)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.getSettings(MavenImpl.java:273)
+	at org.eclipse.m2e.core.internal.repository.RepositoryRegistry.updateRegistry(RepositoryRegistry.java:229)
+	at org.eclipse.m2e.core.internal.repository.RepositoryRegistryUpdateJob.run(RepositoryRegistryUpdateJob.java:50)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-06-24 09:07:11,947 [Worker-7: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.yewmall:shop:1.0.0 @ C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\pom.xml.
+2024-06-24 16:22:01,968 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 16:22:01,996 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 16:22:02,034 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 16:50:27,853 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 16:50:27,916 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 16:50:27,938 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 16:51:06,908 [Worker-26: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 16:51:06,919 [Worker-26: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 16:51:06,938 [Worker-26: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 16:51:23,825 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 16:51:23,841 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 16:51:23,868 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 16:51:26,954 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 16:51:26,963 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 16:51:26,978 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 16:51:30,407 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 16:51:30,419 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 16:51:30,441 [Worker-30: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 16:51:47,460 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 16:51:47,473 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 16:51:47,491 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 16:52:15,628 [Worker-26: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 16:52:15,636 [Worker-26: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 16:52:15,654 [Worker-26: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 16:52:22,955 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 16:52:22,965 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 16:52:22,979 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 16:52:36,239 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 16:52:36,249 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 16:52:36,264 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 16:52:59,692 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 16:52:59,698 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 16:52:59,712 [Worker-29: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:28:06,926 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:28:06,967 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 17:28:06,991 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:29:36,671 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:29:36,677 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 17:29:36,694 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:29:57,989 [Worker-39: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:29:57,995 [Worker-39: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 17:29:58,006 [Worker-39: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:32:07,227 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:32:07,232 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 17:32:07,247 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:33:51,767 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-24 17:33:51,800 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:33:51,804 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:33:52,825 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-24 17:33:52,831 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:33:52,834 [Worker-38: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:33:58,647 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-24 17:33:58,655 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:33:58,661 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:34:00,286 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-24 17:34:00,293 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:34:00,298 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:34:20,895 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-24 17:34:20,901 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:34:20,906 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:34:26,834 [Worker-43: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-24 17:34:26,840 [Worker-43: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:34:26,844 [Worker-43: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:34:28,987 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-24 17:34:28,992 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:34:28,997 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:34:31,105 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-24 17:34:31,110 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:34:31,115 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:34:53,075 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-24 17:34:53,081 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:34:53,085 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:35:00,033 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-24 17:35:00,040 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:35:00,045 [Worker-44: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:35:22,334 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-24 17:35:22,338 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:35:22,343 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:35:31,086 [Worker-43: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-24 17:35:31,092 [Worker-43: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:35:31,097 [Worker-43: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:35:34,736 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-24 17:35:34,741 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:35:34,745 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:36:05,750 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-24 17:36:05,758 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:36:05,762 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:36:14,414 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-24 17:36:14,419 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:36:14,423 [Worker-40: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:38:15,362 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:38:15,373 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 17:38:15,392 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:38:17,071 [Worker-45: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:38:17,078 [Worker-45: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 17:38:17,089 [Worker-45: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:38:27,366 [Worker-48: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:38:27,375 [Worker-48: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 17:38:27,388 [Worker-48: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:38:30,762 [Worker-45: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:38:30,798 [Worker-45: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 17:38:30,823 [Worker-45: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:38:50,180 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:38:50,186 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 17:38:50,196 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:39:13,644 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:39:13,649 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 17:39:13,660 [Worker-42: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:40:45,038 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:40:45,051 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 17:40:45,064 [Worker-41: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:40:46,112 [Worker-48: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:40:46,119 [Worker-48: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 17:40:46,134 [Worker-48: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:40:47,207 [Worker-45: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:40:47,213 [Worker-45: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 17:40:47,224 [Worker-45: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:43:36,338 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:43:36,344 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 17:43:36,354 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:43:54,761 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:43:54,769 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 17:43:54,782 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:44:07,547 [Worker-49: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:44:07,555 [Worker-49: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 17:44:07,566 [Worker-49: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:44:48,854 [Worker-47: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:44:48,867 [Worker-47: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 17:44:48,882 [Worker-47: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:45:46,841 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-24 17:45:46,847 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:45:46,851 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:45:48,967 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-24 17:45:48,975 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:45:48,979 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:47:20,164 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-24 17:47:20,170 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:47:20,176 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:47:36,824 [Worker-47: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-24 17:47:36,829 [Worker-47: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:47:36,834 [Worker-47: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 17:47:49,418 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-24 17:47:49,423 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 17:47:49,427 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 18:45:11,643 [Worker-60: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 18:45:11,691 [Worker-60: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 18:45:11,706 [Worker-60: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 18:45:20,917 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 18:45:20,954 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 18:45:20,969 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 18:45:32,264 [Worker-56: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 18:45:32,270 [Worker-56: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 18:45:32,299 [Worker-56: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 18:45:37,643 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 18:45:37,653 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 18:45:37,664 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 18:47:31,896 [Worker-60: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 18:47:31,911 [Worker-60: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 18:47:31,923 [Worker-60: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 18:49:02,575 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 18:49:02,585 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 18:49:02,598 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 19:12:29,781 [Worker-56: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 19:12:29,789 [Worker-56: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 19:12:29,799 [Worker-56: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 19:13:18,017 [Worker-69: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 19:13:18,022 [Worker-69: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 19:13:18,035 [Worker-69: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 19:14:55,411 [Worker-56: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 19:14:55,419 [Worker-56: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 19:14:55,430 [Worker-56: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 19:18:12,830 [Worker-73: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 19:18:12,843 [Worker-73: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 19:18:12,856 [Worker-73: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 19:20:03,731 [Worker-69: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 19:20:03,737 [Worker-69: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 19:20:03,747 [Worker-69: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 19:22:04,005 [Worker-71: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 19:22:04,015 [Worker-71: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 19:22:04,044 [Worker-71: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 19:26:53,161 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 19:26:53,170 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 19:26:53,189 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 19:33:44,439 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 19:33:44,461 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 19:33:44,475 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 19:37:38,642 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 19:37:38,658 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-24 19:37:38,721 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-24 22:23:37,069 [Worker-97: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-24 22:23:37,114 [Worker-97: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-24 22:23:37,135 [Worker-97: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:02:46,181 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2024-06-25 09:02:48,351 [Worker-10: Repository registry initialization] ERROR o.e.m.c.internal.embedder.MavenImpl - Could not read settingsCacheMap.xml, assuming default values
+org.apache.maven.settings.building.SettingsBuildingException: 1 problem was encountered while building the effective settings
+[FATAL] Non-parseable settings C:\Users\yyewk\.m2\repository\com\oracle\database\jdbc\ojdbc11\21.9.0.0\ojdbc11-21.9.0.0.jar: only whitespace content allowed before start tag and not P (position: START_DOCUMENT seen P... @1:2)  @ C:\Users\yyewk\.m2\repository\com\oracle\database\jdbc\ojdbc11\21.9.0.0\ojdbc11-21.9.0.0.jar, line 1, column 2
+
+	at org.apache.maven.settings.building.DefaultSettingsBuilder.build(DefaultSettingsBuilder.java:115)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl$MavenSettings.getSettings(MavenImpl.java:1117)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.getSettings(MavenImpl.java:279)
+	at org.eclipse.m2e.core.internal.embedder.MavenImpl.getSettings(MavenImpl.java:273)
+	at org.eclipse.m2e.core.internal.repository.RepositoryRegistry.updateRegistry(RepositoryRegistry.java:229)
+	at org.eclipse.m2e.core.internal.repository.RepositoryRegistryUpdateJob.run(RepositoryRegistryUpdateJob.java:50)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+2024-06-25 09:02:52,219 [Worker-9: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.yewmall:shop:1.0.0 @ C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\pom.xml.
+2024-06-25 09:07:47,464 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:07:47,499 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-25 09:07:47,530 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:09:00,167 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:09:00,197 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-25 09:09:00,232 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:09:03,618 [Worker-6: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:09:03,627 [Worker-6: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-25 09:09:03,649 [Worker-6: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:12:16,589 [Worker-3: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:12:16,597 [Worker-3: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 29 resources from src\main\resources to target\classes
+2024-06-25 09:12:16,612 [Worker-3: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:13:22,886 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:13:22,895 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:13:22,902 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:14:01,156 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:14:01,156 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:14:01,172 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:14:13,681 [Worker-3: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:14:13,681 [Worker-3: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:14:13,697 [Worker-3: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:14:51,068 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:14:51,084 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:14:51,084 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:14:57,141 [Worker-3: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:14:57,157 [Worker-3: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:14:57,157 [Worker-3: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:15:03,201 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:15:03,217 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:15:03,218 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:16:04,717 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:16:04,724 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:16:04,728 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:16:10,823 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:16:10,830 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:16:10,836 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:17:12,340 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:17:12,351 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:17:12,360 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:18:33,997 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:18:34,002 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:18:34,006 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:18:39,955 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:18:39,961 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:18:39,967 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:18:49,328 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:18:49,334 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:18:49,341 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:18:52,371 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:18:52,388 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 09:18:52,400 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:19:02,183 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:19:02,193 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:19:02,200 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:19:08,266 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:19:08,271 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:19:08,275 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:19:21,357 [Worker-3: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:19:21,362 [Worker-3: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:19:21,367 [Worker-3: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:19:34,575 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:19:34,581 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:19:34,585 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:20:32,217 [Worker-3: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:20:32,223 [Worker-3: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:20:32,230 [Worker-3: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:20:53,443 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:20:53,449 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:20:53,453 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:21:38,867 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:21:38,872 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:21:38,876 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:21:47,918 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:21:47,951 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:21:47,957 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:21:51,087 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:21:51,096 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 09:21:51,111 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:21:54,050 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:21:54,057 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 09:21:54,074 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:22:00,106 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:22:00,115 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:22:00,122 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:22:33,379 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:22:33,385 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:22:33,389 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:22:42,481 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:22:42,493 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:22:42,497 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:23:24,798 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:23:24,808 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:23:24,818 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:23:33,967 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:23:33,980 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:23:33,984 [Worker-14: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:23:39,945 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:23:39,951 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:23:39,955 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:23:45,971 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:23:45,977 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:23:45,981 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:24:03,210 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:24:03,215 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:24:03,223 [Worker-12: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:24:12,348 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:24:12,355 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:24:12,360 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:24:18,389 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:24:18,414 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:24:18,423 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:24:27,569 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:24:27,576 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:24:27,584 [Worker-8: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 09:24:36,733 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 09:24:36,741 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 09:24:36,747 [Worker-17: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 15:47:03,857 [Worker-49: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 15:47:03,890 [Worker-49: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 15:47:03,924 [Worker-49: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 15:47:25,223 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 15:47:25,231 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 15:47:25,245 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 15:48:17,181 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 15:48:17,192 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 15:48:17,211 [Worker-51: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 15:48:37,814 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 15:48:37,827 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 15:48:37,848 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 15:49:16,181 [Worker-47: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 15:49:16,192 [Worker-47: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 15:49:16,205 [Worker-47: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 15:49:21,013 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 15:49:21,020 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 15:49:21,033 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 15:50:26,543 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 15:50:26,557 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 15:50:26,583 [Worker-52: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 15:51:22,880 [Worker-53: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 15:51:22,885 [Worker-53: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 15:51:22,899 [Worker-53: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 15:55:29,854 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 15:55:29,868 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 15:55:29,889 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 15:57:01,251 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 15:57:01,264 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 15:57:01,284 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 15:57:20,837 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 15:57:20,844 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 15:57:20,857 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 15:57:41,669 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 15:57:41,675 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 15:57:41,687 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 15:58:10,538 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 15:58:10,551 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 15:58:10,575 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 15:58:57,469 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 15:58:57,480 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 15:58:57,500 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 15:59:41,279 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 15:59:41,285 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 15:59:41,297 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 15:59:46,522 [Worker-56: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 15:59:46,528 [Worker-56: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 15:59:46,539 [Worker-56: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:00:36,789 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:00:36,795 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:00:36,806 [Worker-54: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:01:08,532 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:01:08,538 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 2 resources from src\main\resources to target\classes
+2024-06-25 16:01:08,543 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:01:09,564 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:01:09,572 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:01:09,578 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:01:11,740 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:01:11,745 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:01:11,749 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:04:14,931 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:04:14,937 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:04:14,941 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:04:19,209 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:04:19,215 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:04:19,220 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:04:31,589 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:04:31,595 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:04:31,603 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:04:36,655 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:04:36,660 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:04:36,666 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:04:47,646 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:04:47,652 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:04:47,657 [Worker-58: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:04:56,399 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:04:56,404 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:04:56,411 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:05:13,645 [Worker-60: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:05:13,651 [Worker-60: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:05:13,654 [Worker-60: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:05:15,370 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:05:15,378 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:05:15,385 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:05:16,404 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:05:16,409 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:05:16,414 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:05:57,032 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:05:57,037 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:05:57,041 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:06:45,667 [Worker-60: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:06:45,672 [Worker-60: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:06:45,677 [Worker-60: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:07:00,305 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:07:00,310 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:07:00,315 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:07:03,985 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:07:03,991 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:07:03,995 [Worker-55: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:07:10,347 [Worker-60: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:07:10,353 [Worker-60: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:07:10,357 [Worker-60: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:07:17,224 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:07:17,234 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:07:17,240 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:13:25,860 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:13:25,871 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:13:25,885 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:13:30,831 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:13:30,837 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:13:30,849 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:13:32,647 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:13:32,661 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:13:32,688 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:14:19,184 [Worker-59: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:14:19,190 [Worker-59: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:14:19,201 [Worker-59: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:14:26,993 [Worker-64: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:14:27,000 [Worker-64: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:14:27,015 [Worker-64: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:14:49,413 [Worker-65: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:14:49,419 [Worker-65: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:14:49,432 [Worker-65: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:14:55,351 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:14:55,358 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:14:55,373 [Worker-50: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:15:09,605 [Worker-64: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:15:09,613 [Worker-64: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:15:09,625 [Worker-64: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:15:49,170 [Worker-59: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:15:49,176 [Worker-59: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:15:49,189 [Worker-59: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:16:12,846 [Worker-64: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:16:12,852 [Worker-64: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:16:12,866 [Worker-64: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:16:18,668 [Worker-59: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:16:18,674 [Worker-59: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:16:18,686 [Worker-59: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:16:22,295 [Worker-67: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:16:22,302 [Worker-67: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:16:22,320 [Worker-67: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:16:24,952 [Worker-65: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:16:24,959 [Worker-65: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:16:24,973 [Worker-65: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:16:31,277 [Worker-67: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:16:31,287 [Worker-67: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:16:31,306 [Worker-67: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:16:33,742 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:16:33,748 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:16:33,761 [Worker-63: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:16:53,680 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:16:53,685 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:16:53,696 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:18:58,392 [Worker-69: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:18:58,397 [Worker-69: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:18:58,409 [Worker-69: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:19:18,023 [Worker-70: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:19:18,036 [Worker-70: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:19:18,059 [Worker-70: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:19:26,077 [Worker-64: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:19:26,089 [Worker-64: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:19:26,105 [Worker-64: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:19:27,191 [Worker-64: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:19:27,197 [Worker-64: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:19:27,209 [Worker-64: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:19:33,908 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:19:33,925 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:19:33,936 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:19:47,424 [Worker-70: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:19:47,429 [Worker-70: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:19:47,440 [Worker-70: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:27:59,325 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:27:59,332 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:27:59,344 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:33:34,265 [Worker-74: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:33:34,278 [Worker-74: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:33:34,302 [Worker-74: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:33:47,629 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:33:47,642 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:33:47,663 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:33:58,036 [Worker-75: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:33:58,041 [Worker-75: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:33:58,052 [Worker-75: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:40:02,400 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:40:02,431 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:40:02,462 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:40:08,545 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:40:08,545 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:40:08,561 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:40:25,595 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:40:25,612 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:40:25,612 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:40:34,673 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:40:34,689 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:40:34,704 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:40:43,828 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:40:43,835 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:40:43,839 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:40:49,958 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:40:49,974 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:40:49,974 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:41:19,288 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:41:19,306 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:41:19,314 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:41:40,404 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:41:40,419 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:41:40,419 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:41:46,459 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:41:46,475 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:41:46,475 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:42:19,646 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:42:19,665 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:42:19,665 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:42:28,784 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:42:28,784 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:42:28,800 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:42:37,898 [Worker-80: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:42:37,913 [Worker-80: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:42:37,913 [Worker-80: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:42:38,950 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:42:38,965 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:42:38,981 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:43:03,067 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:43:03,083 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:43:03,083 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:43:06,048 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:43:06,100 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:43:06,123 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:43:55,756 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:43:55,769 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:43:55,775 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:44:04,868 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:44:04,877 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:44:04,881 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:44:18,040 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:44:18,045 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:44:18,049 [Worker-66: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:46:27,892 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:46:27,908 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:46:27,908 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:46:33,997 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:46:34,005 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:46:34,011 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:52:05,434 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:52:05,449 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:52:05,449 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:52:22,543 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:52:22,570 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:52:22,574 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:52:25,639 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:52:25,656 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:52:25,687 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:53:11,799 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:53:11,808 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 30 resources from src\main\resources to target\classes
+2024-06-25 16:53:11,819 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:53:38,713 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:53:38,722 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:53:38,727 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:54:19,440 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:54:19,446 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:54:19,450 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:55:06,136 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:55:06,143 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 31 resources from src\main\resources to target\classes
+2024-06-25 16:55:06,156 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:55:59,622 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:55:59,638 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:55:59,658 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:56:21,563 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:56:21,570 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 31 resources from src\main\resources to target\classes
+2024-06-25 16:56:21,581 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:56:54,435 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:56:54,451 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:56:54,451 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:56:57,366 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:56:57,398 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 31 resources from src\main\resources to target\classes
+2024-06-25 16:56:57,415 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:57:03,452 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:57:03,474 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:57:03,486 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:57:24,644 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:57:24,654 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:57:24,654 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:57:41,794 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:57:41,810 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:57:41,810 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:57:44,872 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:57:44,891 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 31 resources from src\main\resources to target\classes
+2024-06-25 16:57:44,908 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:57:53,871 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:57:53,871 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:57:53,871 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:58:07,081 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:58:07,097 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:58:07,112 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:58:16,202 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:58:16,213 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:58:16,219 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:58:22,351 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:58:22,351 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:58:22,351 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:58:31,416 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:58:31,427 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:58:31,431 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:58:32,466 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:58:32,474 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:58:32,474 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:58:41,166 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:58:41,173 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:58:41,180 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:58:47,202 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:58:47,210 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:58:47,214 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:58:56,591 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:58:56,598 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:58:56,604 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:58:57,634 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:58:57,634 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:58:57,650 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:58:59,627 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:58:59,646 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 31 resources from src\main\resources to target\classes
+2024-06-25 16:58:59,669 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:59:02,652 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:59:02,668 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:59:02,683 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:59:23,847 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:59:23,853 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:59:23,858 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:59:24,966 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:59:24,976 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:59:24,982 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:59:33,019 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:59:33,034 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:59:33,034 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:59:39,041 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:59:39,060 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:59:39,068 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:59:45,153 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:59:45,162 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:59:45,169 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 16:59:58,289 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 16:59:58,295 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 16:59:58,300 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:00:04,355 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 17:00:04,355 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:00:04,355 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:01:08,770 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:01:08,786 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 31 resources from src\main\resources to target\classes
+2024-06-25 17:01:08,802 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:01:31,792 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:01:31,827 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 31 resources from src\main\resources to target\classes
+2024-06-25 17:01:31,840 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:02:02,932 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:02:02,939 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 31 resources from src\main\resources to target\classes
+2024-06-25 17:02:02,950 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:02:12,583 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 17:02:12,590 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:02:12,594 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:02:36,884 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:02:36,893 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 31 resources from src\main\resources to target\classes
+2024-06-25 17:02:36,912 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:03:10,100 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:03:10,108 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 31 resources from src\main\resources to target\classes
+2024-06-25 17:03:10,119 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:03:12,335 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:03:12,342 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 31 resources from src\main\resources to target\classes
+2024-06-25 17:03:12,354 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:03:16,179 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:03:16,184 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 31 resources from src\main\resources to target\classes
+2024-06-25 17:03:16,197 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:04:34,312 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:04:34,322 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 31 resources from src\main\resources to target\classes
+2024-06-25 17:04:34,339 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:05:20,553 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:05:20,558 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 31 resources from src\main\resources to target\classes
+2024-06-25 17:05:20,569 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:05:53,936 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:05:53,942 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 31 resources from src\main\resources to target\classes
+2024-06-25 17:05:53,953 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:06:51,051 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:06:51,065 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 31 resources from src\main\resources to target\classes
+2024-06-25 17:06:51,088 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:07:37,127 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:07:37,134 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 31 resources from src\main\resources to target\classes
+2024-06-25 17:07:37,145 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:07:38,216 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:07:38,224 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 31 resources from src\main\resources to target\classes
+2024-06-25 17:07:38,240 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:07:44,413 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:07:44,420 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 31 resources from src\main\resources to target\classes
+2024-06-25 17:07:44,437 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:07:47,959 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:07:47,967 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 31 resources from src\main\resources to target\classes
+2024-06-25 17:07:47,978 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:08:05,477 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:08:05,485 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 31 resources from src\main\resources to target\classes
+2024-06-25 17:08:05,498 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:08:06,739 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:08:06,745 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 31 resources from src\main\resources to target\classes
+2024-06-25 17:08:06,755 [Worker-83: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:08:39,991 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:08:39,997 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 31 resources from src\main\resources to target\classes
+2024-06-25 17:08:40,008 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:08:46,229 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 17:08:46,235 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:08:46,239 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:09:10,895 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:09:10,906 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 31 resources from src\main\resources to target\classes
+2024-06-25 17:09:10,922 [Worker-76: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:09:42,580 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 17:09:42,585 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:09:42,589 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:10:00,089 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 17:10:00,094 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:10:00,098 [Worker-84: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:10:01,128 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 17:10:01,137 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:10:01,143 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:21:12,081 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 17:21:12,096 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:21:12,101 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:21:15,112 [Worker-85: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:21:15,144 [Worker-85: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 31 resources from src\main\resources to target\classes
+2024-06-25 17:21:15,161 [Worker-85: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:21:28,207 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 17:21:28,227 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:21:28,232 [Worker-82: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:21:34,295 [Worker-86: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 17:21:34,307 [Worker-86: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:21:34,312 [Worker-86: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:21:47,407 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 17:21:47,422 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:21:47,431 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:29:43,606 [Worker-86: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 17:29:43,612 [Worker-86: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:29:43,617 [Worker-86: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:29:52,789 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 17:29:52,795 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:29:52,798 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:29:58,939 [Worker-85: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 17:29:58,945 [Worker-85: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:29:58,950 [Worker-85: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:30:08,166 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 17:30:08,178 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:30:08,183 [Worker-79: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:30:22,258 [Worker-85: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 17:30:22,263 [Worker-85: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:30:22,266 [Worker-85: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:30:23,298 [Worker-87: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 17:30:23,308 [Worker-87: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:30:23,313 [Worker-87: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:34:12,846 [Worker-87: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 17:34:12,862 [Worker-87: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:34:12,877 [Worker-87: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:34:15,876 [Worker-87: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:34:15,902 [Worker-87: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 31 resources from src\main\resources to target\classes
+2024-06-25 17:34:15,935 [Worker-87: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:34:49,140 [Worker-87: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 17:34:49,140 [Worker-87: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:34:49,155 [Worker-87: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:35:38,531 [Worker-87: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 17:35:38,540 [Worker-87: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:35:38,545 [Worker-87: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:40:13,227 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 17:40:13,234 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:40:13,238 [Worker-81: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:40:14,323 [Worker-90: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-06-25 17:40:14,328 [Worker-90: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:40:14,334 [Worker-90: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources
+2024-06-25 17:40:16,313 [Worker-88: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-06-25 17:40:16,324 [Worker-88: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 31 resources from src\main\resources to target\classes
+2024-06-25 17:40:16,339 [Worker-88: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Coding\Study\SpringStudy\SpringBoot_work\yewmall\src\test\resources

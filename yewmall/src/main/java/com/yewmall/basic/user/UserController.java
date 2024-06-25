@@ -157,9 +157,44 @@ public class UserController {
 	
 	// 비밀번호 찾기 버튼 클릭 시
 	@PostMapping("pwfind")
-	public String pwfind() throws Exception {
+	public String pwfind(String mbsp_id, String mbsp_name, String mbsp_email, String authcode, HttpSession session, RedirectAttributes rttr) throws Exception {
+		String url = "";
+		String msg = "";
 		
-		return "";
+		// 인증코드 확인
+		if(authcode.equals(session.getAttribute("authcode"))) { // 인증코드가 일치하는 경우
+			
+			// 사용자가 입력한 3개 정보(아이디, 이름, 이메일)을 조건으로 사용하여, 메일을 DB에서 가져옴.
+			String d_email = userService.pwfind(mbsp_id, mbsp_name, mbsp_email);
+			if(d_email != null) { // db에 해당하는 이메일이 있을 경우
+				// 임시 비밀번호 생성(UUID 이용)
+				String tempPw = userService.getTempPw();
+				
+				// 암호화된 비밀번호
+				String temp_enc_pw = passwordEncoder.encode(tempPw);
+				
+				// 암호화된 임시 비밀번호를 해당 아이디에 업데이트
+				userService.tempPwUpdate(mbsp_id, temp_enc_pw);
+				
+				EmailDTO dto = new EmailDTO("YewMall", "YewMall Manager", d_email, "YewMall 임시비밀번호", tempPw);
+				
+				emailService.sendMail("emailPwResult", dto, tempPw);
+				
+				session.removeAttribute("authcode");
+				msg = "success";
+				url = "/user/pwfind";
+			}else { // db에 해당하는 이메일이 없을 경우
+				msg = "failInput";
+				url = "/user/pwfind";
+			}
+		}else { // 인증코드가 불일치하는 경우
+			msg = "failAuth";
+			url = "/user/pwfind";
+		}
+		
+		rttr.addFlashAttribute("msg", msg);
+		
+		return "redirect:" + url;
 	}
 	
 	// 마이페이지
@@ -200,12 +235,73 @@ public class UserController {
 		return "redirect:/user/modify";
 	}
 	
+	// 비밀번호 변경 폼
+	@GetMapping("changepw")
+	public void changepwForm() {
+		
+	}
 	
+	// 비밀번호 변경 버튼 클릭
+	@PostMapping("changepw")
+	public String changepwOk(String cur_mbsp_password, String new_mbsp_password, HttpSession session, RedirectAttributes rttr) throws Exception {
+		String mbsp_id = ((UserVo) session.getAttribute("login_status")).getMbsp_id();
+		UserVo vo = userService.login(mbsp_id);
+		String msg = "";
+		
+		if(vo != null) { // 아이디가 존재하는 경우
+			// 비밀번호 비교
+			if(passwordEncoder.matches(cur_mbsp_password, vo.getMbsp_password())) {
+				// 사용자가 입력한 비밀번호가 암호화된 형태에 해당하는 것이라면
+				String enc_new_mbsp_password = passwordEncoder.encode(new_mbsp_password); // 암호화
+				userService.changePw(mbsp_id, enc_new_mbsp_password);
+				msg = "success";
+			}else { // 사용자가 입력한 비밀번호가 암호화된 형태에 해당하지 않는 것이라면
+				msg = "failPW";
+			}
+		}
+		
+		rttr.addFlashAttribute("msg", msg);
+		
+		return "redirect:/user/changepw";
+	}
+
+	// 회원탈퇴
+	@GetMapping("delete")
+	public void deleteForm() {
+		
+	}
 	
-	
-	
-	
-	
+	// 회원탈퇴-계정삭제 버튼 클릭
+	@PostMapping("delete")
+	public String deleteOk(String mbsp_password, HttpSession session, RedirectAttributes rttr) {
+		
+		String mbsp_id = ((UserVo) session.getAttribute("login_status")).getMbsp_id();
+		
+		// 비밀번호 컬럼 한 개만 필요하나 로그인 정보를 사용해도 기능 상 무리 없어 재사용.
+		UserVo vo = userService.login(mbsp_id);
+		
+		String msg = "";
+		String url = "/";
+		
+		if(vo != null) { // 아이디가 존재하는 경우
+			if(passwordEncoder.matches(mbsp_password, vo.getMbsp_password())) {
+				// 사용자가 입력한 비밀번호가 암호화된 비밀번호에 해당하는 경우
+				userService.delete(mbsp_id);
+				session.invalidate();
+				
+				msg = "success";
+				url = "/";
+				
+			}else { // 비밀번호 불일치하는 경우
+				msg = "failPW";
+				url = "/user/delete";
+			}
+		}
+		
+		rttr.addFlashAttribute("msg", msg);
+		
+		return "redirect:" + url;
+	}
 	
 	
 }

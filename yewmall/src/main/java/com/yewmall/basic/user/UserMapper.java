@@ -20,12 +20,16 @@ public interface UserMapper {
 	String pwfind(@Param("mbsp_id") String mbsp_id, @Param("mbsp_name") String mbsp_name, @Param("mbsp_email") String mbsp_email);
 	
 	// PW 업데이트 작업(PW 찾기)
+	void tempPwUpdate(@Param("mbsp_id") String mbsp_id, @Param("temp_enc_pw") String temp_enc_pw);
 	
 	// 회원정보 수정
 	void modify(UserVo vo);
 	
 	// PW 변경
+	void changePw(@Param("mbsp_id") String mbsp_id, @Param("new_mbsp_password") String new_mbsp_password);
 	
+	// 회원정보 삭제
+	void delete(String mbsp_id);
 	
 	
 }
