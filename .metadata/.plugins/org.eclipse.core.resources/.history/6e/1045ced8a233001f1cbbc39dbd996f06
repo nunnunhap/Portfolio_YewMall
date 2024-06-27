@@ -1,0 +1,5 @@
+package com.yewmall.basic.kakaologin;
+
+public class KakaoUserInfo {
+
+}

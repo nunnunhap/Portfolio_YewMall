@@ -1,0 +1,50 @@
+package com.yewmall.basic.kakaologin;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@Controller
+@Slf4j
+@RequiredArgsConstructor
+@RequestMapping("/oauth2/*")
+public class KakaoLoginController {
+
+	// DI
+	private final KakaoLoginService kakaoLoginService;
+	
+	
+	@Value("${kakao.client.id}")
+	private String clientid;
+	
+	@Value("${kakao.redirect.uri}")
+	private String redirect;
+	
+	@Value("${kakao.client.secret}")
+	private String clientSecret;
+	
+	
+	// Step1 카카오로그인 API Server에게 인가코드 요청작업
+	@GetMapping("kakaologin")
+	public String connect() {
+		StringBuffer url = new StringBuffer();
+		url.append("https://kauth.kakao.com/oauth/authorize?");
+		url.append("response_type=code");
+		url.append("&client_id=" + clientid");
+		url.append("&redirect_uri=${REDIRECT_URI}");
+		url.append("");
+		url.append("");
+		
+		log.info("인가코드(x) : " + url);
+		log.info("인가코드(o) : " + url.toString());
+		
+		return "redirect:" + url.toString();
+	}
+	
+	
+	
+}

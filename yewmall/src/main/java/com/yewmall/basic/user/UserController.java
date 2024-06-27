@@ -273,7 +273,7 @@ public class UserController {
 	
 	// 회원탈퇴-계정삭제 버튼 클릭
 	@PostMapping("delete")
-	public String deleteOk(String mbsp_password, HttpSession session, RedirectAttributes rttr) {
+	public String deleteOk(String mbsp_password, HttpSession session, RedirectAttributes rttr) throws Exception {
 		
 		String mbsp_id = ((UserVo) session.getAttribute("login_status")).getMbsp_id();
 		
