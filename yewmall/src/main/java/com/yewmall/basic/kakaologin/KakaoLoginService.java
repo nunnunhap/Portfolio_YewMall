@@ -42,6 +42,9 @@ public class KakaoLoginService {
 	@Value("${kakao.oauth.userinfouri}")
 	private String userinfoUri;
 	
+	@Value("${kakao.user.logout}")
+	private String kakaologout;
+	
 	// 엑세스 토큰을 받기 위한 정보
 	/* https://kauth.kakao.com/oauth/token 주소 호출
 	 * 요청방식 post
@@ -117,6 +120,33 @@ public class KakaoLoginService {
 		
 	}
 	
+	// 카카오 로그아웃
+	// 헤더 Authorization: Bearer ${ACCESS_TOKEN}
+	public void kakaologout(String accessToken) throws JsonMappingException, JsonProcessingException {
+		
+		// Http Header 생성
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Authorization", "Bearer " + accessToken);
+		headers.add("Content-Type", "application/x-www-form-urlencoded");
+		
+		// Http 요청작업
+		HttpEntity<MultiValueMap<String, String>> kakaoLogoutRequest = new HttpEntity<>(headers);
+		
+		// Http 요청하기
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<String> response = restTemplate.exchange(kakaologout, HttpMethod.POST, kakaoLogoutRequest, String.class);
+		
+		// 리턴된 정보 : Json 포맷의 문자열
+		String responseBody = response.getBody();
+		
+		// 직렬화 : Object -> Json
+		ObjectMapper objectMapper = new ObjectMapper();
+		JsonNode jsonNode = objectMapper.readTree(responseBody);
+		
+		Long id = jsonNode.get("id").asLong();
+		
+		log.info("id : " + id);
+	}
 	
 	
 	

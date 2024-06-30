@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.yewmall.basic.user.SNSUserDto;
+import com.yewmall.basic.user.UserService;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +22,7 @@ public class KakaoLoginController {
 
 	// DI
 	private final KakaoLoginService kakaoLoginService;
+	private final UserService userService;
 	
 	
 	@Value("${kakao.client.id}")
@@ -40,9 +43,8 @@ public class KakaoLoginController {
 		url.append("response_type=code");
 		url.append("&client_id=" + clientid);
 		url.append("&redirect_uri=" + redirectUri);
-//		url.append("&prompt=login");
+//		url.append("&prompt=login"); // 추가옵션 : 재 로그인 시 절차를 다시 밟도록해주는 기능
 		
-		log.info("인가코드 : " + url);
 		log.info("인가코드 : " + url.toString());
 		
 		return "redirect:" + url.toString();
@@ -59,9 +61,7 @@ public class KakaoLoginController {
 		
 		try {
 			accessToken = kakaoLoginService.getAccessToken(code);
-		} catch (JsonMappingException e) {
-			e.printStackTrace();
-		} catch (JsonProcessingException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
@@ -73,24 +73,44 @@ public class KakaoLoginController {
 		
 		if(kakaoUserInfo != null) {
 			log.info("사용자 정보 : " + kakaoUserInfo);
-			// db작업
 			
 			// 세션작업
 			session.setAttribute("kakao_status", kakaoUserInfo);
 			session.setAttribute("accessToken", accessToken);
+			
+			String sns_email = kakaoUserInfo.getEmail();
+			String sns_login_type = userService.existsUserInfo(sns_email);
+			
+			if(userService.existsUserInfo(sns_email) == null && userService.sns_user_check(sns_email) == null) {
+				SNSUserDto dto = new SNSUserDto();
+				dto.setId(kakaoUserInfo.getId().toString());
+				dto.setEmail(kakaoUserInfo.getEmail());
+				dto.setName(kakaoUserInfo.getNickname());
+				dto.setSns_type("kakao");
+				
+				userService.sns_user_insert(dto);
+			}
 		}
-		
 		return "redirect:/";
 	}
 	
 	// Kakao 계정 로그아웃
 	@GetMapping("kakaologout")
-	public String kakaologout() {
+	public String kakaologout(HttpSession session) {
+		String accessToken = (String) session.getAttribute("accessToken");
 		
-		
+		if(accessToken != null && !"".equals(accessToken)) {
+			try {
+				kakaoLoginService.kakaologout(accessToken);
+			} catch (JsonProcessingException e) {
+				throw new RuntimeException(e);
+			}
+			session.removeAttribute("kakao_status");
+			session.removeAttribute("accessToken");
+		}
 		
 		return "redirect:/";
-	}	
+	}
 	
 	
 }

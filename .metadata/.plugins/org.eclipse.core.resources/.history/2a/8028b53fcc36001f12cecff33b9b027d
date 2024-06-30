@@ -1,0 +1,37 @@
+package com.yewmall.basic.naverlogin;
+
+import java.io.UnsupportedEncodingException;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@Controller
+@Slf4j
+@RequiredArgsConstructor
+@RequestMapping("/oauth2/*")
+public class NaverLoginController {
+	
+	// DI
+	private final NaverLoginService naverLoginService;
+	
+	
+	@GetMapping("naverlogin")
+	public String connect() throws UnsupportedEncodingException {
+		String url = naverLoginService.getNaverAuthorizationUrl();
+		
+		return "redirect:" + url;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

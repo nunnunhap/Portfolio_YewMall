@@ -85,11 +85,11 @@
               <div class="form-group row">
                 <label for="mbsp_receive" class="col-sm-2 col-form-label">광고성메일수신동의</label>
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" id="mbsp_receive1" name="mbsp_receive" th:field="${user.mbsp_receive}" value="Y" th:checked="mbsp_receive == 'Y'">
+                  <input class="form-check-input" type="radio" id="mbsp_receive1" name="mbsp_receive" value="Y" th:checked="${user.mbsp_receive == 'Y'}">
                   <label class="form-check-label" for="inlineCheckbox1">동의</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" id="mbsp_receive2" name="mbsp_receive" th:field="${user.mbsp_receive}" value="N" th:checked="mbsp_receive == 'N'">
+                  <input class="form-check-input" type="radio" id="mbsp_receive2" name="mbsp_receive" value="N" th:checked="${user.mbsp_receive == 'N'}">
                   <label class="form-check-label" for="inlineCheckbox2">비동의</label>
                 </div>
               </div>

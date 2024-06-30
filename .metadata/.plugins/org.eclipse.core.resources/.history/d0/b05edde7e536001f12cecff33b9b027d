@@ -1,0 +1,17 @@
+package com.yewmall.basic.user;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
+public class SNSUserDto {
+	
+	private String sns_type;
+	private  id;
+	private String nickname;
+	private String email;	
+	
+}

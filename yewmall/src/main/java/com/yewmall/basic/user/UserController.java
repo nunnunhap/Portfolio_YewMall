@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.yewmall.basic.kakaologin.KakaoUserInfo;
 import com.yewmall.basic.mail.EmailDTO;
 import com.yewmall.basic.mail.EmailService;
 
@@ -199,11 +200,26 @@ public class UserController {
 	
 	// 마이페이지
 	@GetMapping("mypage")
-	public void mypage(HttpSession session, Model model) throws Exception {
-		String mbsp_id = ((UserVo) session.getAttribute("login_status")).getMbsp_id();
-		UserVo vo = userService.login(mbsp_id);
+	public void mypage(HttpSession session, RedirectAttributes rttr, Model model) throws Exception {
 		
-		model.addAttribute("user", vo);
+		if(session.getAttribute("login_status") != null) {
+			String mbsp_id = ((UserVo) session.getAttribute("login_status")).getMbsp_id();
+			UserVo vo = userService.login(mbsp_id);
+			log.info("수정할 아이디 정보 : " + vo);
+			
+			model.addAttribute("user", vo);
+		}else if(session.getAttribute("kakao_status") != null) {
+			KakaoUserInfo kakaoUserInfo = (KakaoUserInfo) session.getAttribute("kakao_status");
+			
+			UserVo vo = new UserVo();
+			vo.setMbsp_name(kakaoUserInfo.getNickname());
+			vo.setMbsp_email(kakaoUserInfo.getEmail());
+			
+			model.addAttribute("user", vo);
+			rttr.addAttribute("msg", "kakao_login");
+		}
+		
+		
 	}
 	
 	// 회원정보 변경

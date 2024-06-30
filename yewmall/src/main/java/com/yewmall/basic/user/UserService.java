@@ -35,7 +35,7 @@ public class UserService {
 	}
 	
 	// PW 찾기
-	String pwfind(String mbsp_id, String mbsp_name, String mbsp_email) {
+	public String pwfind(String mbsp_id, String mbsp_name, String mbsp_email) {
 		return userMapper.pwfind(mbsp_id, mbsp_name, mbsp_email);
 	}
 	
@@ -62,6 +62,21 @@ public class UserService {
 	// 회원정보 삭제
 	public void delete(String mbsp_id) {
 		userMapper.delete(mbsp_id);
+	}
+	
+	// SNS 계정 존재유무
+	public String existsUserInfo(String sns_email) {
+		return userMapper.existsUserInfo(sns_email);
+	}
+	
+	// SNS USER 중복체크
+	public String sns_user_check(String sns_email) {
+		return userMapper.sns_user_check(sns_email);
+	}
+	
+	// SNS USER 정보 등록
+	public void sns_user_insert(SNSUserDto dto) {
+		userMapper.sns_user_insert(dto);
 	}
 	
 	

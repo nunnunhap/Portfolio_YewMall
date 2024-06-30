@@ -31,5 +31,13 @@ public interface UserMapper {
 	// 회원정보 삭제
 	void delete(String mbsp_id);
 	
+	// SNS 계정 존재유무
+	String existsUserInfo(String sns_email);
+	
+	// SNS USER 중복체크
+	String sns_user_check(String sns_email);
+	
+	// SNS USER 정보 등록
+	void sns_user_insert(SNSUserDto dto);
 	
 }
