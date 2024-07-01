@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:insert="~{admin/layout/comm/plugin_1}"></head>
+<body class="animsition">
+    <div class="page-wrapper">
+        <header th:replace="~{admin/layout/comm/header_1}"></header>
+        <aside th:replace="~{admin/layout/comm/aside}"></aside>
+
+        <div class="page-container">
+            <header th:replace="~{admin/layout/comm/nav}"></header>
+            
+            <div class="main-content">
+                <th:block layout:fragment="content">
+                    <!-- 각각의 페이지에서 구현하고자 하는 컨텐츠를 작성 -->
+                </th:block>
+                <footer th:replace="~{admin/layout/comm/footer}"></footer>
+            </div>
+        </div>
+    </div>
+    <th:block th:replace="~{admin/layout/comm/plugin_2}"></th:block>
+    
+    <th:block layout:fragment="script">
+        <!-- 각각의 페이지에서 필요한 자바스크립트 작성 -->
+    </th:block>
+</body>
+</html>

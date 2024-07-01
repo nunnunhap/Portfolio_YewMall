@@ -1,0 +1,21 @@
+package com.yewmall.basic.admin;
+
+import org.springframework.stereotype.Service;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class AdminService {
+
+	// DI
+	private final AdminMapper adminMapper;
+	
+	
+	// Admin 로그인
+	public AdminVo loginOk(String admin_id) {
+		return adminMapper.loginOk(admin_id);
+	}
+	
+	
+}
