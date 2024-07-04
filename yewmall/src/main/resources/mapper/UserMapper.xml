@@ -155,10 +155,10 @@
 	<!-- SNS USER 정보 등록 -->
 	<insert id="sns_user_insert" parameterType="SNSUserDto">
 		INSERT INTO
-			sns_user_tbl( sns_type,
-						  id,
-						  name,
-						  email)
+			sns_user_tbl(sns_type,
+						 id,
+						 name,
+						 email)
 		VALUES
 		    (#{sns_type}, #{id}, #{name}, #{email})
 	</insert>

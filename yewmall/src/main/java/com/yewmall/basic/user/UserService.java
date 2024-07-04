@@ -2,10 +2,10 @@ package com.yewmall.basic.user;
 
 import java.util.UUID;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor

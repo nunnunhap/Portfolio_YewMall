@@ -64,6 +64,8 @@ public class NaverLoginController {
 			session.setAttribute("naver_status", naverResponse);
 			session.setAttribute("accessToken", naverToken.getAccess_token());
 			
+			// Error발생 : org.apache.ibatis.exceptions.TooManyResultsException: Expected one result (or null) to be returned by selectOne(), but found: 2
+			// 회원테이블에 동일한 이메일이 두 개이상 존재하여 발생한 에러
 			if(userService.existsUserInfo(sns_email) == null && userService.sns_user_check(sns_email) == null) {
 				SNSUserDto dto = new SNSUserDto();
 				dto.setId(naverResponse.getResponse().getId());
@@ -71,7 +73,6 @@ public class NaverLoginController {
 				dto.setName(naverResponse.getResponse().getName());
 				dto.setSns_type("naver");
 				
-				log.info("Insert내용 : " + dto);
 				userService.sns_user_insert(dto);
 			}
 		}

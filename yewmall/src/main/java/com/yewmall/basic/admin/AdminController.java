@@ -22,7 +22,7 @@ public class AdminController {
 	
 	
 	// 관리자 로그인 폼
-	@GetMapping("")
+	@GetMapping("/")
 	public String loginForm() {
 		
 		return "/admin/adminLogin";
@@ -53,6 +53,14 @@ public class AdminController {
 	public void admin_menu() {
 		
 	}
-
-
+	
+	// 로그아웃
+	@GetMapping("admin_logout")
+	public String admin_logout(HttpSession session) {
+		session.removeAttribute("admin_state");
+		
+		return "redirect:/admin/";
+	}
+	
+	
 }
