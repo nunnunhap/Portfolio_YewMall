@@ -27,6 +27,15 @@
 	</select>
 
 	<!-- 2차 카테고리 정보를 이용한 1차 카테고리 정보 -->
-
+	<select id="getFirstCategoryBySecondCategory" resultType="AdminCategoryVo" parameterType="Integer">
+		SELECT
+		    cate_code,
+		    cate_precode,
+		    cate_name
+		FROM
+		    category_tbl
+		WHERE
+			cate_code = #{cate_code}
+	</select>
 
 </mapper>

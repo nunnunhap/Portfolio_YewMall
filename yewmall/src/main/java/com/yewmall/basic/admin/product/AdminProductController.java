@@ -6,13 +6,16 @@ import java.io.PrintWriter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.yewmall.basic.admin.category.AdminCategoryService;
@@ -138,6 +141,9 @@ public class AdminProductController {
 	// 상품리스트
 	@GetMapping("pro_list")
 	public void pro_list(Criteria cri, Model model) throws Exception {
+		
+//		cri.setAmount(2);
+		
 		List<ProductVo> pro_list = adminProductService.pro_list(cri);
 		
 		// 1) 기본코드
@@ -162,12 +168,75 @@ public class AdminProductController {
 		return FileManagerUtils.getFile(uploadPath + dateFolderName, fileName);
 	}
 	
+	// 상품수정 폼
+	@GetMapping("pro_edit")
+	public void pro_edit(@ModelAttribute("cri") Criteria cri, Integer pro_num, Model model) throws Exception {
+		
+		// 1차 카테고리 목록
+		List<AdminCategoryVo> cate_list = adminCategoryService.getFirstCategoryList();
+		model.addAttribute("cate_list", cate_list);
+		
+		// 2차 카테고리 : 상품정보
+		// model이름 : productVo
+		ProductVo vo = adminProductService.pro_edit(pro_num);
+		// RFC 기술문서 : The valid characters are defined in RFC 7230 and RFC 3986
+		// 클라이언트에 \를 /로 변환하여, model작업전에 처리함.  2024\07\07 -> 2024/07/07
+		vo.setPro_up_folder(vo.getPro_up_folder().replace("\\", "/"));
+		model.addAttribute(vo);
+		
+		// 1차 카테고리
+		int cate_code = vo.getCate_code();
+		int cate_precode = adminCategoryService.getFirstCategoryBySecondCategory(cate_code).getCate_precode();
+		model.addAttribute("cate_precode", cate_precode);
+		
+		// 2차 카테고리
+		model.addAttribute("sub_cate_list", adminCategoryService.getSecondCategoryList(cate_precode));
+	}
 	
+	// 상품수정 저장
+	@PostMapping("pro_edit")
+	public String pro_edit(ProductVo vo, MultipartFile uploadFile, Criteria cri) throws Exception{
+		log.info("상품수정정보 : " + vo);
+		
+		// 상품이미지 변경 유무
+		if(!uploadFile.isEmpty()) {
+			// 기존상품 이미지 삭제(날짜폴더명, 파일명)
+			FileManagerUtils.delete(uploadPath, vo.getPro_up_folder(), vo.getPro_img(), "image");
+			// 변경 이미지 업로드
+			String dateFolder = FileManagerUtils.getDateFolder();
+			String saveFileName = FileManagerUtils.uploadFile(uploadPath, dateFolder, uploadFile);
+			
+			// 새로운 이미지 파일명 날짜 폴더명
+			vo.setPro_img(saveFileName);
+			vo.setPro_up_folder(dateFolder);
+		}
+		adminProductService.pro_edit_ok(vo);
+		
+		return "redirect:/admin/product/pro_list" + cri.getListLink();
+	}
 	
+	// 상품 개별 삭제
+	@PostMapping("pro_delete")
+	public String pro_delete(Integer pro_num, Criteria cri) throws Exception {
+		
+		adminProductService.pro_delete(pro_num);
+		
+		return "redirect:/admin/product/pro_list" + cri.getListLink();
+	}
 	
-	
-	
-	
+	// 상품 일괄 삭제
+	@PostMapping("pro_delete_all")
+	public ResponseEntity<String> pro_delete_all(
+			@RequestParam("pro_num_arr") List<Integer> pro_num_arr) throws Exception {
+		log.info("상품코드 : " + pro_num_arr);
+		
+		adminProductService.pro_delete_all(pro_num_arr);
+		
+		ResponseEntity<String> entity = null;
+		entity = new ResponseEntity<> ("success", HttpStatus.OK);
+		
+		return entity;
+	}
 	
 	
 	

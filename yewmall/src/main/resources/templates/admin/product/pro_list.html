@@ -4,150 +4,251 @@
                 layout:decorate="~{admin/layout/adminlayout}">
 
   <th:block layout:fragment="content">
-    <script src="/vendor/ckeditor/ckeditor.js"></script>
     <div class="section__content section__content--p30">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <strong>상품등록</strong> Form
+          <div class="col-md-12">
+            <h3 class="title-5 m-b-35">판매상품 리스트</h3>
+            
+            <div class="table-data__tool">
+              <div class="table-data__tool-left">
+                <div class="rs-select2--light rs-select2--md">
+                  <form th:action="@{/admin/product/pro_list}" method="get"> <!-- 이거 왜 옵션 안 보임? -->
+                    <select class="js-select2 select2-hidden-accessible" name="type" tabindex="-1" aria-hidden="true">
+                      <option class="au-btn-filter" selected><i class="zmdi zmdi-filter-list"></i>필터선택</option>
+                      <option value="N">상품명</option>
+                      <option value="C">상품코드</option>
+                      <option value="P">제조사</option>
+                      <option value="NP">상품명 or 제조사</option>
+                    </select>
+                      <input type="text" name="keyword" th:value="${pageMaker.cri.keyword}">
+                      <input type="hidden" name="pageNum" th:value="${pageMaker.cri.pageNum}">
+                      <input type="hidden" name="amount" th:value="${pageMaker.cri.amount}">
+                      <button type="submit" class="btn btn-primary">검색</button>
+                  </form>
+                </div>
               </div>
-              <div class="card-body card-block">
-                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-                  <div class="form-group row">
-                    <label for="category_01" class="col-md-2 form-control-label">1차 카테고리</label>
-                    <div class="col-md-4">
-                      <select class="form-control" id="btn_firstCategory" size="4">
-                        <option>1차 카테고리 선택</option>
-                        <option th:each="category : ${cate_list}" th:value="${category.cate_code}" th:text="${category.cate_name}"></option>
-                      </select>
-                    </div>
-                    <label for="category_02" class="col-md-2 form-control-label">2차 카테고리</label>
-                    <div class="col-md-4">
-                      <select class="form-control" id="btn_secondCategory" size="4" name="cate_code">
-                        <option>2차 카테고리 선택</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="pro_name" class="col-md-2 form-control-label">상품명</label>
-                    <div class="col-md-4">
-                      <input type="text" id="pro_name" name="pro_name" class="form-control">
-                    </div>
-                    <label for="pro_price" class="col-md-2 form-control-label">상품가격</label>
-                    <div class="col-md-4">
-                      <input type="text" id="pro_price" name="pro_price" class="form-control">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="pro_discount" class="col-md-2 form-control-label">할인율</label>
-                    <div class="col-md-4">
-                      <input type="text" id="pro_discount" name="pro_discount" class="form-control">
-                    </div>
-                    <label for="pro_publisher" class="col-md-2 form-control-label">제조사</label>
-                    <div class="col-md-4">
-                      <input type="text" id="pro_publisher" name="pro_publisher" class="form-control">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="uploadFile" class="col-md-2 form-control-label">썸네일이미지</label>
-                    <div class="col-md-4">
-                      <input type="file" id="uploadFile" name="uploadFile" class="form-control">
-                    </div>
-                    <label for="img_preview" class="col-md-2 form-control-label">썸네일 미리보기</label>
-                    <div class="col-md-4">
-                      <img id="img_preview" style="width: 200px; height: 200px;">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="pro_content" class="col-md-2 form-control-label">상품설명</label>
-                    <div class="col-md-10">
-                      <textarea id="pro_content" name="pro_content" rows="20" class="form-control"></textarea>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="pro_amount" class="col-md-2 form-control-label">수량</label>
-                    <div class="col-md-4">
-                      <input type="text" id="pro_amount" name="pro_amount" class="form-control">
-                    </div>
-                    <label for="pro_buy" class="col-md-2 form-control-label">판매여부</label>
-                    <div class="col-md-4">
-                      <select class="form-control" id="pro_buy" name="pro_buy">
-                        <option value="Y">판매가능</option>
-                        <option value="N">판매불가능</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="card-footer">
-                    <button type="reset" class="btn btn-danger btn-sm">초기화</button>
-                    <button type="submit" class="btn btn-primary btn-sm">상품저장</button>
-                  </div>
-                </form>
+              <div class="table-data__tool-right">
+                <a class="au-btn au-btn-icon au-btn--green au-btn--small" th:href="@{/admin/product/pro_insert}">
+                  <i class="zmdi zmdi-plus"></i>상품등록
+                </a>
+                <a class="au-btn au-btn-icon btn btn-danger au-btn--small" id="btn_pro_del_all">
+                  <i class="fa fa-minus"></i>일괄삭제
+                </a>
+                <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
+                  <select class="js-select2 select2-hidden-accessible" name="type" tabindex="-1" aria-hidden="true">
+                    <option selected="selected">Export</option>
+                    <option value="">Option 1</option>
+                  </select>
+                </div>
               </div>
             </div>
+          
+            <div class="table-responsive table-responsive-data2">
+              <table class="table table-data2">
+                <thead>
+                  <tr>
+                    <th th:style="${'width: 2%'}">
+                      <label class="au-checkbox">
+                        <input type="checkbox" id="checkAll">
+                        <span class="au-checkmark"></span>
+                      </label>
+                    </th><!-- width css 적용 안됨 -->
+                    <th th:style="${'width: 8%'}">상품코드</th>
+                    <th th:style="${'width: 10%'}">상품사진</th>
+                    <th th:style="${'width: 15%'}">상품명</th>
+                    <th th:style="${'width: 10%'}">가격</th>
+                    <th th:style="${'width: 20%'}">등록일</th>
+                    <th th:style="${'width: 15%'}">판매여부</th>
+                    <th th:style="${'width: 10%'}">수정</th>
+                    <th th:style="${'width: 10%'}">삭제</th>
+                  </tr>
+                </thead>
+                <tbody th:each="product : ${pro_list}">
+                  <tr class="spacer"></tr>
+                  <tr class="tr-shadow">
+                    <td>
+                      <label class="au-checkbox">
+                        <input type="checkbox" name="check" th:value="${product.pro_num}">
+                        <span class="au-checkmark"></span>
+                      </label>
+                    </td>
+                    <!-- <td th:text="${product.pro_num}"></td> -->
+                    <td>[[${product.pro_num}]]</td>
+                    <td>
+                      <a class="move">
+                        <img th:src="${'/admin/product/image_display?dateFolderName=' + product.pro_up_folder + '&fileName=s_' + product.pro_img}">
+                      </a>
+                    </td>
+                    <td>
+                      <a th:text="${product.pro_name}"></a>
+                    </td>
+                    <td th:text="${product.pro_price}"></td>
+                    <td th:text="${#dates.format(product.pro_date, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                    <td>
+                      <select id="pro_buy" name="pro_buy">
+                        <option value="Y" th:selected="${product.pro_buy == 'Y'}">판매가능</option>
+                        <option value="N" th:selected="${product.pro_buy == 'N'}">판매불가능</option>
+                      </select>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-warning" name="btn_pro_edit" th:data-pro_num="${product.pro_num}">수정</button>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-danger" name="btn_pro_del" th:data-pro_num="${product.pro_num}">삭제</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          
+            <div class="box-footer clearfix">
+              <div class="row">
+                <div class="col-md-4">
+                  <form id="actionForm" action="" method="get">
+                    <input type="hidden" name="pageNum" id="pageNum" th:value="${pageMaker.cri.pageNum}">
+                    <input type="hidden" name="amount"  id="amount" th:value="${pageMaker.cri.amount}">
+                    <input type="hidden" name="type" id="type" th:value="${pageMaker.cri.type}">
+                    <input type="hidden" name="keyword" id="keyword" th:value="${pageMaker.cri.keyword}">
+                  </form>
+                </div>
+                <div class="col-md-6 text-center">
+                  <nav aria-label="...">
+                    <ul class="pagination">
+                      <!-- 이전 표시여부 -->
+                      <th:block th:if="${pageMaker.prev}">
+                        <li class="page-item">
+                          <a th:href="${pageMaker.startPage - 1}" class="page-link movepage">이전</a>
+                        </li>
+                      </th:block>
+                      
+                      <!-- 페이지 번호 -->
+                      <th:block th:with="pageMaker = ${pageMaker}">
+                        <th:block th:each="num : *{#numbers.sequence(pageMaker.startPage, pageMaker.endPage)}">
+                        <li class='page-item' th:classappend="${pageMaker.cri.pageNum ==  num ? 'active': '' }" aria-current="page">
+                          <a class="page-link movepage" th:href="${num}" th:text="${num}"></a>
+                        </li>
+                        </th:block>
+                      </th:block>
+    
+                      <!--  다음 표시여부 -->
+                      <th:block th:if="${pageMaker.next}">
+                        <li class="page-item">
+                          <a th:href="${pageMaker.endPage + 1}" class="page-link movepage">다음</a>
+                        </li>
+                      </th:block>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          
           </div>
         </div>
       </div>
     </div>
   </th:block>
-          
   <th:block layout:fragment="script">
-    <!-- 각각의 페이지에서 필요한 자바스크립트 작성 -->
     <script>
       $(document).ready(function() {
-        // 1차 카테고리 선택
-        $("#btn_firstCategory").on("change", function() {
-          console.log("1차 카테고리 선택");
-          let cate_code = $("#btn_firstCategory").val();
+        let actionForm = $("#actionForm");
 
-          console.log("cate_code", cate_code);
+        // 페이지 번호 클릭 시
+        $(".movepage").on("click", function(e) {
+          e.preventDefault(); // <a> 링크 기능 무력화
+          actionForm.attr("action", "/admin/product/pro_list");
+          // 클릭한 페이지 번호 작업
+          actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+          actionForm.submit();
+        });
 
-          // 2차 카테고리 주소
-          let url = "/admin/category/secondcategory/" + cate_code;
+        // 상품 수정 버튼 클릭 시
+        $("button[name='btn_pro_edit']").on("click", function() {
+          let pro_num = $(this).data("pro_num");
+//          console.log("상품코드", pro_num);
+          actionForm.find("input[name='pro_num']").remove(); // 뒤로버튼 관련 문제 방지
 
-          $.getJSON(url, function(secondcategory_result) {
-            let btn_secondCategory = $("#btn_secondCategory");
-            let optionStr = "";
+          let str = `<input type="hidden" name="pro_num" id="pro_num" value="${pro_num}">`; // JS String template : `(백틱)
+          console.log(str);
+          actionForm.append(str);
+          actionForm.attr("method", "get");
+          actionForm.attr("action", "/admin/product/pro_edit");
+          actionForm.submit();
+        });
 
-            for(let i = 0; i < secondcategory_result.length; i++) { //Template literals : `(백틱)
-              optionStr += `<option value="${secondcategory_result[i].cate_code}">${secondcategory_result[i].cate_name}</option>`;
+        // checkbox 선택하기
+        let isCheck = true;
+        $("#checkAll").on("click", function() {
+          $("input[name='check']").prop("checked", this.checked);
+          isCheck = this.checked;
+        });
+
+        // 상품목록에서 데이터행 선택하기
+        $("input[name='check']").on("click", function() {
+          $("#checkAll").prop("checked", this.checked);
+          $("input[name='check']").each(function() {
+            if(!$(this).is(":checked")) {
+              $("#checkAll").prop("checked", false);
             }
-
-            btn_secondCategory.find("option").remove();
-            btn_secondCategory.append(`<option>2차 카테고리 선택</option>`);
-            btn_secondCategory.append(optionStr);
           });
         });
 
-        // 썸네일 파일 첨부 시 썸네일 미리보기
-        $("#uploadFile").on("change", function(e) {
-          console.log("파일 첨부");
-          let file = e.target.files[0]; // 선택한 썸네일의 첫번째
-          let reader = new FileReader(); // Reader 객체 생성
-
-          reader.readAsDataURL(file); // file객체 생성, readAsDataURL : 메서드는 컨텐츠를 특정 Blob 이나 File에서 읽어 오는 역할
-          reader.onload = function(e) {
-            $("#img_preview").attr("src", e.target.result);
+        // 개별 삭제 버튼 클릭 시
+        $("button[name='btn_pro_del']").on("click", function() {
+          if(!confirm("상품을 삭제하시겠습니까?")) {
+            return;
           }
+          let pro_num = $(this).data("pro_num");
+          actionForm.find("input[name='pro_num']").remove();
+
+          console.log("상품코드", pro_num);
+
+          let str = `<input type="hidden" name="pro_num" id="pro_num" value="${pro_num}">`;
+          console.log(str);
+
+          actionForm.append(str);
+          actionForm.attr("method", "post");
+          actionForm.attr("action", "/admin/product/pro_delete");
+
+          actionForm.submit();
         });
 
-        // ckeditor 환경설정. 자바스크립트 Ojbect문법
-        var ckeditor_config = {
-                resize_enabled : true,
-                enterMode : CKEDITOR.ENTER_BR,
-                shiftEnterMode : CKEDITOR.ENTER_P,
-                toolbarCanCollapse : true,
-                removePlugins : "elementspath",
-                //업로드 탭기능추가 속성. CKEditor에서 파일업로드해서 서버로 전송클릭하면 , 이 주소가 동작된다.
-                filebrowserUploadUrl: '/admin/product/imageupload' // 경로 주의할 것
-        }
+        // 일괄 삭제 버튼 클릭 시
+        $("#btn_pro_del_all").on("click", function(e) {
+          console.log("일괄 삭제 버튼 클릭");
+          e.preventDefault();
+          if(!confirm("선택된 상품을 일괄삭제하시겠습니까?")) {
+            return;
+          }
 
-        CKEDITOR.replace("pro_content", ckeditor_config);
+          let pro_num_arr = []; // 선택된 상품코드들이 저장될 배열
 
-        console.log("ckediotr 버전: ", CKEDITOR.version);  // ckediotr 버전:  4.12.1 (Standard)
+          // 선택된 상태 접근
+          $("input[name='check']:checked").each(function() {
+            pro_num_arr.push($(this).val());
+          });
+          console.log("상품코드", pro_num_arr);
 
-      }); // ready event end
+          $.ajax({
+            url : '/admin/product/pro_delete_all',
+            type : 'post',
+            data : {pro_num_arr : pro_num_arr},
+            dataType : 'text',
+            success : function(result) {
+              if(result == 'success') {
+                alert("선택된 상품이 삭제되었습니다.");
+              }
+            },
+            complete : function() {
+              location.reload();
+            }
+          });
+        });
+
+
+
+
+      }); // ready end
     </script>
   </th:block>
 

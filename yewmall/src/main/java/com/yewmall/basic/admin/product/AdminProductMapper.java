@@ -15,8 +15,16 @@ public interface AdminProductMapper {
 	// 전체 데이터 개수(페이징)
 	int getTotalCount(Criteria cri);
 	
+	// 상품수정
+	ProductVo pro_edit(Integer pro_num);
 	
+	// 상품수정 저장
+	void pro_edit_ok(ProductVo vo);
 	
+	// 개별 상품 삭제
+	void pro_delete(Integer pro_num);
 	
+	// 일괄 상품 삭제
+	void pro_delete_all(List<ProductDTO> pro_delete_list);
 	
 }

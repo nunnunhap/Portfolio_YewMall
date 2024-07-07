@@ -131,6 +131,35 @@ CREATE TABLE PRODUCT_TBL(
         PRO_UPDATEDATE      DATE DEFAULT SYSDATE    NOT NULL
 );
 
+INSERT INTO PRODUCT_TBL (pro_num, CATE_CODE, PRO_NAME, PRO_PRICE, PRO_DISCOUNT, PRO_PUBLISHER, PRO_CONTENT, PRO_UP_FOLDER, PRO_IMG, PRO_AMOUNT, PRO_BUY)
+VALUES (seq_pro_num.nextval, 15, '미니언', 300, 30, '미니언기획', '<img alt="" src="/admin/product/display/minion.jpg" style="height:168px; width:300px" />', '2024\07\07', 'b56b1da8-4022-46bf-a60b-b972ed188cc5_minion.jpg', 1, 'N');
+commit;
+SELECT
+    cate_code,
+    cate_precode,
+    cate_name
+FROM
+    category_tbl;
+    
+SELECT
+    pro_num,
+    cate_code,
+    pro_name,
+    pro_price,
+    pro_discount,
+    pro_publisher,
+    pro_content,
+    pro_up_folder,
+    pro_img,
+    pro_amount,
+    pro_buy,
+    pro_date,
+    pro_updatedate
+FROM
+    product_tbl;
+
+
+
 -- 상품마다 이미지가 여러개인 경우 이미지테이블 별도 생성
 CREATE SEQUENCE SEQ_PRO_NUM;
 
