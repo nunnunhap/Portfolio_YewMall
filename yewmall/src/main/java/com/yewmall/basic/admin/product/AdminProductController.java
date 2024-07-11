@@ -157,7 +157,7 @@ public class AdminProductController {
 		});
 		
 		int totalCount = adminProductService.getTotalCount(cri);
-		
+
 		model.addAttribute("pro_list", pro_list);
 		model.addAttribute("pageMaker", new PageDTO(cri, totalCount));
 	}
@@ -213,6 +213,33 @@ public class AdminProductController {
 		adminProductService.pro_edit_ok(vo);
 		
 		return "redirect:/admin/product/pro_list" + cri.getListLink();
+	}
+	
+	// 상세조회
+	@GetMapping("pro_detail")
+	public void pro_detail(@ModelAttribute("cri") Criteria cri, Integer pro_num, Model model) throws Exception {
+		log.info("상품번호 : " + pro_num);
+		
+		// 1차 카테고리 목록
+		List<AdminCategoryVo> cate_list = adminCategoryService.getFirstCategoryList();
+		model.addAttribute("cate_list", cate_list);
+		
+		// 2차 카테고리 : 상품정보
+		// pro_edit()와 동일한 기능이 필요하여 재사용함.
+		ProductVo vo = adminProductService.pro_edit(pro_num);
+		// RFC 기술문서 : The valid characters are defined in RFC 7230 and RFC 3986
+		// 클라이언트에 \를 /로 변환하여, model작업전에 처리함.  2024\07\07 -> 2024/07/07
+		vo.setPro_up_folder(vo.getPro_up_folder().replace("\\", "/"));
+		model.addAttribute(vo);
+		
+		// 1차 카테고리
+		int cate_code = vo.getCate_code();
+		int cate_precode = adminCategoryService.getFirstCategoryBySecondCategory(cate_code).getCate_precode();
+		model.addAttribute("cate_precode", cate_precode);
+		
+		// 2차 카테고리
+		model.addAttribute("sub_cate_list", adminCategoryService.getSecondCategoryList(cate_precode));
+
 	}
 	
 	// 상품 개별 삭제

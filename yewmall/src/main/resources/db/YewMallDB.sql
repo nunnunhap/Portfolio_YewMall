@@ -51,11 +51,13 @@ COMMIT;
 --2.카테고리 테이블
 DROP TABLE CATEGORY_TBL;
 CREATE TABLE CATEGORY_TBL(
-        CATE_CODE            NUMBER    PRIMARY KEY,    -- 카테고리 코드
+        CATE_CODE            NUMBER,    -- 카테고리 코드
         CATE_PRECODE         NUMBER    NULL,           -- 상위카테고리 코드
         CATE_NAME            VARCHAR2(50)    NOT NULL
 );
 
+ALTER TABLE CATEGORY_TBL
+ADD CONSTRAINT PK_CATE_CODE PRIMARY KEY (CATE_CODE);
 
 ALTER TABLE CATEGORY_TBL
 ADD CONSTRAINTS FK_CATEGORY_PCODE
@@ -65,48 +67,62 @@ REFERENCES CATEGORY_TBL(CATE_CODE);
 
 -- 2.1. 1차 카테고리
 INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
-    VALUES (SEQ_CATE_NUM.NEXTVAL, NULL, 'Best');
+    VALUES (1, NULL, '원피스');
 INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
-    VALUES (SEQ_CATE_NUM.NEXTVAL, NULL, '전체상품');
+    VALUES (2, NULL, '아우터');
 INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
-    VALUES (SEQ_CATE_NUM.NEXTVAL, NULL, '자체제작');
+    VALUES (3, NULL, '탑');
 INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
-    VALUES (SEQ_CATE_NUM.NEXTVAL, NULL, '상의');
+    VALUES (4, NULL, '니트');
 INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
-    VALUES (SEQ_CATE_NUM.NEXTVAL, NULL, '하의');
+    VALUES (5, NULL, '셔츠');
 INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
-    VALUES (SEQ_CATE_NUM.NEXTVAL, NULL, '원피스');
+    VALUES (6, NULL, '하의');
 INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
-    VALUES (SEQ_CATE_NUM.NEXTVAL, NULL, '아우터');
-INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
-    VALUES (SEQ_CATE_NUM.NEXTVAL, NULL, '홈웨어' || '&' || '소품');
-INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
-    VALUES (SEQ_CATE_NUM.NEXTVAL, NULL, '고객센터');
+    VALUES (7, NULL, '스커트');
 -- 2.2. 2차 카테고리
 INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
-    VALUES (SEQ_CATE_NUM.NEXTVAL, 4, '니트');
+    VALUES (8, 1, '롱원피스');
 INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
-    VALUES (SEQ_CATE_NUM.NEXTVAL, 4, '가디건');
+    VALUES (9, 1, '미니원피스');
 INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
-    VALUES (SEQ_CATE_NUM.NEXTVAL, 4, '블라우스' || '&' || '셔츠');
+    VALUES (10, 1, '패턴원피스');
 INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
-    VALUES (SEQ_CATE_NUM.NEXTVAL, 4, '조끼(베스트)');
+    VALUES (11, 1, '뷔스티에');
 INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
-    VALUES (SEQ_CATE_NUM.NEXTVAL, 4, '티셔츠');
+    VALUES (12, 2, '점퍼');
 INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
-    VALUES (SEQ_CATE_NUM.NEXTVAL, 5, '스커트');
+    VALUES (13, 2, '코트');
 INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
-    VALUES (SEQ_CATE_NUM.NEXTVAL, 5, '바지');
+    VALUES (14, 2, '자켓');
 INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
-    VALUES (SEQ_CATE_NUM.NEXTVAL, 5, '레깅스');
+    VALUES (15, 2, '가디건');
 INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
-    VALUES (SEQ_CATE_NUM.NEXTVAL, 9, '공지사항');
+    VALUES (16, 3, '티셔츠');
 INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
-    VALUES (SEQ_CATE_NUM.NEXTVAL, 9, '자주하는 질문');
+    VALUES (17, 3, '맨투맨&#38;후드');
 INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
-    VALUES (SEQ_CATE_NUM.NEXTVAL, 9, '취소/교환/반품안내');
+    VALUES (18, 3, '반팔티');
 INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
-    VALUES (SEQ_CATE_NUM.NEXTVAL, 9, '1:1문의');
+    VALUES (19, 4, '니트티');
+INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
+    VALUES (20, 4, '니트가디건');
+INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
+    VALUES (21, 5, '블라우스');
+INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
+    VALUES (22, 5, '셔츠');
+INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
+    VALUES (23, 6, '데님');
+INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
+    VALUES (24, 6, '코튼');
+INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
+    VALUES (25, 6, '슬랙스');
+INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
+    VALUES (26, 6, '레깅스');
+INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
+    VALUES (27, 7, '롱스커트');
+INSERT INTO category_tbl (cate_code, cate_precode, cate_name) 
+    VALUES (28, 7, '미니스커트');
     
 CREATE SEQUENCE SEQ_CATE_NUM;
 DROP SEQUENCE SEQ_CATE_NUM;
@@ -140,6 +156,36 @@ SELECT
     cate_name
 FROM
     category_tbl;
+    
+INSERT INTO PRODUCT_TBL(pro_num, CATE_CODE, PRO_NAME, PRO_PRICE, PRO_DISCOUNT, PRO_PUBLISHER, PRO_CONTENT, PRO_UP_FOLDER, PRO_IMG, PRO_AMOUNT, PRO_BUY)
+VALUES (seq_pro_num.nextval, 8, '원피스2', 35123, 38, '영쓰상상', '<img alt="" src="/admin/product/display/d751788979b54148834c3882ee0ee6d5_20230919153227.jpg" style="height:700px; width:700px" /><br /><br />
+안녕? 이것은 원피스야~! 반가워!!!!', '2024\07\11', '1b613fca-7488-4553-a2e5-1eb9ec0f63f2_d751788979b54148834c3882ee0ee6d5_20230919153227.jpg', 30, 'N');
+
+INSERT INTO PRODUCT_TBL(pro_num, CATE_CODE, PRO_NAME, PRO_PRICE, PRO_DISCOUNT, PRO_PUBLISHER, PRO_CONTENT, PRO_UP_FOLDER, PRO_IMG, PRO_AMOUNT, PRO_BUY)
+VALUES (seq_pro_num.nextval, 8, '롱원피스1', 98765, 60, '영쓰상상', '<img alt="" src="/admin/product/display/d751788979b54148834c3882ee0ee6d5_20230919153227.jpg" style="height:700px; width:700px" /><br /><br />
+안녕? 이것은 원피스야~! 반가워!!!!', '2024\07\11', 'b56b1da8-4022-46bf-a60b-b972ed188cc5_minion.jpg', 50, 'Y');
+
+COMMIT;
+
+SELECT /*+ INDEX_DESC(product_tbl PK_PRO_NUM)  */ 
+    ROWNUM AS RN,
+    pro_num,
+    cate_code, 
+    pro_name, 
+    pro_price, 
+    pro_discount, 
+    pro_publisher, 
+    pro_content, 
+    pro_up_folder, 
+    pro_img, 
+    pro_amount, 
+    pro_buy
+FROM
+    product_tbl
+WHERE 
+    pro_buy = 'Y';
+
+
     
 SELECT
     pro_num,
@@ -189,6 +235,15 @@ CREATE SEQUENCE SEQ_CART_CODE;
 ALTER TABLE CART_TBL
 ADD CONSTRAINTS PK_CART_CODE
 PRIMARY KEY(CART_CODE);
+SELECT
+    cart_code,
+    pro_num,
+    mbsp_id,
+    cart_amount,
+    cart_date
+FROM
+    cart_tbl;
+COMMIT;
 
 ALTER TABLE CART_TBL
 ADD CONSTRAINTS FK_CART_PRO_NUM

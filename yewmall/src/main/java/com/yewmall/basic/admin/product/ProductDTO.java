@@ -11,4 +11,5 @@ import lombok.ToString;
 @AllArgsConstructor
 public class ProductDTO {
 	private Integer pro_num;
+	
 }

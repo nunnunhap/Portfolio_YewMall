@@ -57,7 +57,7 @@ public class AdminProductService {
 			ProductDTO productDto = new ProductDTO(pro_num_arr.get(i));
 			pro_delete_list.add(productDto);
 		}
-		
+		log.info("서비스일괄삭제리스트 : " + pro_delete_list);
 		adminProductMapper.pro_delete_all(pro_delete_list);
 	}
 	

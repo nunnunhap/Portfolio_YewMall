@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+                xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+                layout:decorate="~{admin/layout/adminlayout}">
+
+  <th:block layout:fragment="content">
+    <script src="/vendor/ckeditor/ckeditor.js"></script>
+    <div class="section__content section__content--p30">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <strong>상품조회</strong>
+              </div>
+              <div class="card-body card-block">
+                <form id="actionForm" action="" method="get">
+                  <input type="hidden" name="keyword" th:value="${cri.keyword}">
+                  <input type="hidden" name="type" th:value="${cri.type}">
+                  <input type="hidden" name="pageNum" th:value="${cri.pageNum}">
+                  <input type="hidden" name="amount" th:value="${cri.amount}">
+                </form>
+                  <div class="form-group row">
+                    <label for="category_01" class="col-md-2 form-control-label">1차 카테고리</label>
+                    <div class="col-md-4">
+                      <select class="form-control" id="btn_firstCategory" size="4">
+                        <option>1차 카테고리 선택</option>
+                        <option 
+                          th:each="category : ${cate_list}" th:value="${category.cate_code}" th:text="${category.cate_name}"
+                          th:selected="${category.cate_code == cate_precode}">
+                        </option>
+                      </select>
+                    </div>
+                    <label for="category_02" class="col-md-2 form-control-label">2차 카테고리</label>
+                    <div class="col-md-4">
+                      <select class="form-control" id="btn_secondCategory" size="4" name="cate_code">
+                        <option>2차 카테고리 선택</option>
+                        <option
+                          th:each="category : ${sub_cate_list}" th:value="${category.cate_code}" th:text="${category.cate_name}"
+                          th:selected="${category.cate_code == productVo.cate_code}">
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="pro_name" class="col-md-2 form-control-label">상품명</label>
+                    <div class="col-md-4">
+                      <input type="hidden" name="pro_num" th:value="${productVo.pro_num}">
+                      <input type="text" id="pro_name" name="pro_name" class="form-control" th:value="${productVo.pro_name}" readonly>
+                    </div>
+                    <label for="pro_price" class="col-md-2 form-control-label">상품가격</label>
+                    <div class="col-md-4">
+                      <input type="text" id="pro_price" name="pro_price" class="form-control" th:value="${productVo.pro_price}" readonly>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="pro_discount" class="col-md-2 form-control-label">할인율</label>
+                    <div class="col-md-4">
+                      <input type="text" id="pro_discount" name="pro_discount" class="form-control" th:value="${productVo.pro_discount}" readonly>
+                    </div>
+                    <label for="pro_publisher" class="col-md-2 form-control-label">제조사</label>
+                    <div class="col-md-4">
+                      <input type="text" id="pro_publisher" name="pro_publisher" class="form-control" th:value="${productVo.pro_publisher}" readonly>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="img_preview" class="col-md-2 form-control-label">썸네일 미리보기</label>
+                    <div class="col-md-4">
+                      <img id="img_preview" style="width: 200px; height: 200px;" th:src="${'/admin/product/image_display?dateFolderName=' + productVo.pro_up_folder + '&fileName=' + productVo.pro_img}">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="pro_content" class="col-md-2 form-control-label">상품설명</label>
+                    <div class="col-md-10">
+                      <textarea id="pro_content" name="pro_content" rows="20" class="form-control" th:text="${productVo.pro_content}" readonly></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="pro_amount" class="col-md-2 form-control-label">수량</label>
+                    <div class="col-md-4">
+                      <input type="text" id="pro_amount" name="pro_amount" class="form-control" th:value="${productVo.pro_amount}" readonly>
+                    </div>
+                    <label for="pro_buy" class="col-md-2 form-control-label">판매여부</label>
+                    <div class="col-md-4">
+                      <select class="form-control" id="pro_buy" name="pro_buy">
+                        <option value="Y" th:selected="${productVo.pro_buy == 'Y'}">판매가능</option>
+                        <option value="N" th:selected="${productVo.pro_buy == 'N'}">판매불가능</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <button type="button" class="btn btn-primary btn-sm" name="btn_pro_edit" th:data-pro_num="${productVo.pro_num}">상품수정</button>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </th:block>
+
+  <th:block layout:fragment="script">
+    <!-- 각각의 페이지에서 필요한 자바스크립트 작성 -->
+    <script>
+      $(document).ready(function() {
+        let actionForm = $("#actionForm");
+
+        // 1차 카테고리 선택
+        $("#btn_firstCategory").on("change", function() {
+          console.log("1차 카테고리 선택");
+          let cate_code = $("#btn_firstCategory").val();
+
+          console.log("cate_code", cate_code);
+
+          // 2차 카테고리 주소
+          let url = "/admin/category/secondcategory/" + cate_code;
+
+          $.getJSON(url, function(secondcategory_result) {
+            let btn_secondCategory = $("#btn_secondCategory");
+            let optionStr = "";
+
+            for(let i = 0; i < secondcategory_result.length; i++) { //Template literals : `(백틱)
+              optionStr += `<option value="${secondcategory_result[i].cate_code}">${secondcategory_result[i].cate_name}</option>`;
+            }
+
+            btn_secondCategory.find("option").remove();
+            btn_secondCategory.append(`<option>2차 카테고리 선택</option>`);
+            btn_secondCategory.append(optionStr);
+          });
+        });
+
+        // 상품 수정 버튼 클릭 시
+        $("button[name='btn_pro_edit']").on("click", function() {
+          let pro_num = $(this).data("pro_num");
+          console.log("상품코드", pro_num);
+          actionForm.find("input[name='pro_num']").remove(); // 뒤로버튼 관련 문제 방지
+
+          let str = `<input type="hidden" name="pro_num" id="pro_num" value="${pro_num}">`; // JS String template : `(백틱)
+          console.log(str);
+//          return;
+          actionForm.append(str);
+          actionForm.attr("method", "get");
+          actionForm.attr("action", "/admin/product/pro_edit");
+          actionForm.submit();
+        });
+
+        /*
+        // ckeditor 환경설정. 자바스크립트 Ojbect문법
+        var ckeditor_config = {
+                resize_enabled : true,
+                enterMode : CKEDITOR.ENTER_BR,
+                shiftEnterMode : CKEDITOR.ENTER_P,
+                toolbarCanCollapse : true,
+                removePlugins : "elementspath",
+                //업로드 탭기능추가 속성. CKEditor에서 파일업로드해서 서버로 전송클릭하면 , 이 주소가 동작된다.
+                filebrowserUploadUrl: '/admin/product/imageupload' // 경로 주의할 것
+        }
+
+        CKEDITOR.replace("pro_content", ckeditor_config);
+
+        console.log("ckediotr 버전: ", CKEDITOR.version);  // ckediotr 버전:  4.12.1 (Standard)
+*/
+      }); // ready event end
+    </script>
+  </th:block>
+
+</html>

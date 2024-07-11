@@ -14,5 +14,54 @@
     <!-- 각각의 페이지에서 구현하고자 하는 script를 작성 -->
   </th:block>
 
+  <script>
+    $(document).ready(function() {
+
+      //1차카테고리 선택
+      $("div#category_menu nav").on("mouseover", "div a.first_category", function(e) {
+        // 처음 이벤트 설정을 "click"으로 했는데, 부트스트랩 dropdown도 click으로 이벤트가 발생하는 것으로
+        // click으로 두 가지 이벤트가 설정되어 있었음. 그로 인하여 지속적으로 동작오류가 발생하였음.
+        e.preventDefault();
+        // console.log("클릭");
+        
+        let cur_first_category = $(this);
+        let cate_code = $(this).data("cate_code");
+        // console.log("cate_code", cate_code);
+
+        // 2차카테고리 주소
+        let url = "/admin/category/secondcategory/" + cate_code;
+
+        $.getJSON(url, function(secondcategory_result) {
+          // console.log("결과값", secondcategory_result);
+
+          let str = `<div class="dropdown-menu">`;
+            for(let i = 0; i < secondcategory_result.length; i++) {
+              str += `<a class="dropdown-item second_category" href="#" data-cate_code="${secondcategory_result[i].cate_code}">${secondcategory_result[i].cate_name}</a>`;
+            }
+          str += `</div>`;
+          // console.log("2차 카테고리", str);
+          cur_first_category.parents("div#category_menu").find("a.first_category").after(str);
+        });
+      });
+
+      // 2차 카테고리 선택 : 정적 코드를 기준으로 동적 코드 접근
+      $("div#category_menu nav").on("click", "div a.second_category", function(e) {
+        console.log("2차 카테고리 클릭");
+        e.preventDefault();
+
+        let cate_code = $(this).data("cate_code");
+        // 인코딩 작업 %EB%8B%88%ED%8A%B8%ED%8B%B0 URL에 포함될 수 없는 문자나 특별한 문자가 있는 경우를 처리하기 위함.
+        let cate_name = encodeURIComponent($(this).html());
+      
+        console.log("2차 카테고리 코드", cate_code);
+        console.log("2차 카테고리 이름", cate_name);
+        
+        location.href = `/product/pro_list?cate_code=${cate_code}&cate_name=${cate_name}`;
+      });
+
+
+    }); // ready end
+
+  </script>
 </body>
 </html>

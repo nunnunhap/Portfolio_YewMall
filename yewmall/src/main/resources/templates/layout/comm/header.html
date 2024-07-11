@@ -38,20 +38,24 @@
   </header>
   
   
-  <div class="nav-scroller py-1 mb-2">
-    <nav class="nav d-flex justify-content-between">
-      <a class="p-2 text-muted" href="#">Best</a>
-      <a class="p-2 text-muted" href="#">전체상품</a>
-      <a class="p-2 text-muted" href="#">자체제작</a>
-      <a class="p-2 text-muted" href="#">상의</a>
-      <a class="p-2 text-muted" href="#">하의</a>
-      <a class="p-2 text-muted" href="#">원피스</a>
-      <a class="p-2 text-muted" href="#">아우터</a>
-      <a class="p-2 text-muted" href="#">홈웨어&소품</a>
-      <a class="p-2 text-muted" href="#">고객센터</a>
+  <div id="category_menu">
+    <nav class="nav d-flex justify-content-between" style="padding: 15px;">
+      <div><strong><a class="p-2 text-muted" th:text="Best"></a></strong></div>
+      <div><a class="p-2 text-muted">전체상품</a></div>
+      <div class="dropdown" th:each="category : ${user_cate_list}">
+        <a class="dropdown p-2 text-muted first_category" data-toggle="dropdown" th:data-cate_code="${category.cate_code}" th:text="${category.cate_name}" aria-expanded="false"></a>
+      </div>
+      <div class="dropdown">
+        <a class="p-2 text-muted" data-toggle="dropdown">고객센터</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">공지사항</a>
+          <a class="dropdown-item" href="#">자주하는 질문</a>
+          <a class="dropdown-item" href="#">취소/교환/반품 안내</a>
+          <a class="dropdown-item" href="#">1:1문의</a>
+        </div>
+      </div>
     </nav>
   </div>
-
 </div>
 </div>
 

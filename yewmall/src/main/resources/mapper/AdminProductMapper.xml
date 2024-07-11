@@ -47,7 +47,7 @@
 							pro_publisher like '%' || #{keyword} || '%'
 						</when>
 						<when test="type == 'C'.toString()">
-							pro_content like '%' || #{keyword} || '%'
+							pro_num like '%' || #{keyword} || '%'
 						</when>
 					</choose>
 				</trim>
