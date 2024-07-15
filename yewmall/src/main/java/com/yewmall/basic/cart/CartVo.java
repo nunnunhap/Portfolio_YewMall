@@ -15,6 +15,6 @@ public class CartVo {
     private int pro_num;
     private String mbsp_id;
     private int cart_amount;
-    private Date cart_date;
+    private Date cart_date; // Date, LocalDate, Calendar
 	
 }

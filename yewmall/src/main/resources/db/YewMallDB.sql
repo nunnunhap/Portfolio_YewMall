@@ -147,6 +147,24 @@ CREATE TABLE PRODUCT_TBL(
         PRO_UPDATEDATE      DATE DEFAULT SYSDATE    NOT NULL
 );
 
+SELECT
+    pro_num,
+    cate_code,
+    pro_name,
+    pro_price,
+    pro_discount,
+    pro_publisher,
+    pro_content,
+    pro_up_folder,
+    pro_img,
+    pro_amount,
+    pro_buy,
+    pro_date,
+    pro_updatedate
+FROM
+    product_tbl;
+
+
 INSERT INTO PRODUCT_TBL (pro_num, CATE_CODE, PRO_NAME, PRO_PRICE, PRO_DISCOUNT, PRO_PUBLISHER, PRO_CONTENT, PRO_UP_FOLDER, PRO_IMG, PRO_AMOUNT, PRO_BUY)
 VALUES (seq_pro_num.nextval, 15, '미니언', 300, 30, '미니언기획', '<img alt="" src="/admin/product/display/minion.jpg" style="height:168px; width:300px" />', '2024\07\07', 'b56b1da8-4022-46bf-a60b-b972ed188cc5_minion.jpg', 1, 'N');
 commit;
@@ -235,6 +253,9 @@ CREATE SEQUENCE SEQ_CART_CODE;
 ALTER TABLE CART_TBL
 ADD CONSTRAINTS PK_CART_CODE
 PRIMARY KEY(CART_CODE);
+pk_cart_code
+seq_cart_code
+
 SELECT
     cart_code,
     pro_num,
@@ -254,6 +275,54 @@ ALTER TABLE CART_TBL
 ADD CONSTRAINTS FK_CART_MBSP_ID
 FOREIGN KEY(MBSP_ID)
 REFERENCES MBSP_TBL(MBSP_ID);
+
+
+SELECT
+    cart_code,
+    pro_num,
+    mbsp_id,
+    cart_amount,
+    cart_date
+FROM
+    cart_tbl;
+
+SELECT
+    pro_num,
+    cate_code,
+    pro_name,
+    pro_price,
+    pro_discount,
+    pro_publisher,
+    pro_content,
+    pro_up_folder,
+    pro_img,
+    pro_amount,
+    pro_buy,
+    pro_date,
+    pro_updatedate
+FROM
+    product_tbl;
+    
+
+SELECT
+    c.cart_code,
+    c.pro_num,
+    c.mbsp_id,
+    c.cart_amount,
+    p.pro_up_folder,
+    p.pro_img,
+    p.pro_price,
+    p.pro_name
+FROM
+    cart_tbl c
+INNER JOIN
+    product_tbl p
+ON
+    c.pro_num = p.pro_num
+WHERE
+    c.mbsp_id = #{mbsp_id}
+
+
 
 --5.주문테이블 : 주문자에 대한 내용
 CREATE TABLE ORDER_TBL(

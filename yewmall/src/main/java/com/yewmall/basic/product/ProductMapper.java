@@ -15,5 +15,7 @@ public interface ProductMapper {
 	// 총 데이터 갯수(페이징)
 	int getCountProductByCategory(int cate_code);
 	
+	// 상품 팝업 및 상세설명 (모달상자)
+	ProductVo pro_info(int pro_num);
 	
 }

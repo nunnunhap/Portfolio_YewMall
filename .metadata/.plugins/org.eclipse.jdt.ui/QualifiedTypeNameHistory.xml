@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.springframework.http.HttpMethod"/>
-    <fullyQualifiedTypeName name="com.yewmall.basic.user.UserVo"/>
-    <fullyQualifiedTypeName name="org.springframework.web.servlet.mvc.support.RedirectAttributes"/>
     <fullyQualifiedTypeName name="com.yewmall.basic.kakaologin.KakaoUserInfo"/>
     <fullyQualifiedTypeName name="org.springframework.boot.autoconfigure.info.ProjectInfoProperties.Build"/>
     <fullyQualifiedTypeName name="java.net.URLEncoder"/>
@@ -23,7 +20,6 @@
     <fullyQualifiedTypeName name="com.yewmall.basic.admin.AdminVo"/>
     <fullyQualifiedTypeName name="org.springframework.security.crypto.password.PasswordEncoder"/>
     <fullyQualifiedTypeName name="com.yewmall.basic.admin.AdminService"/>
-    <fullyQualifiedTypeName name="jakarta.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="java.io.PrintWriter"/>
     <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
@@ -31,8 +27,6 @@
     <fullyQualifiedTypeName name="org.springframework.web.multipart.MultipartFile"/>
     <fullyQualifiedTypeName name="com.yewmall.basic.common.util.FileManagerUtils"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
-    <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
-    <fullyQualifiedTypeName name="org.springframework.http.HttpStatus"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
     <fullyQualifiedTypeName name="com.yewmall.basic.admin.AdminMapper"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
@@ -42,7 +36,6 @@
     <fullyQualifiedTypeName name="com.yewmall.basic.admin.category.AdminCategoryService"/>
     <fullyQualifiedTypeName name="com.yewmall.basic.admin.category.AdminCategoryVo"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Value"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
@@ -56,8 +49,15 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ModelAttribute"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.annotations.Param"/>
     <fullyQualifiedTypeName name="com.yewmall.basic.common.dto.Criteria"/>
-    <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="com.yewmall.basic.admin.product.ProductVo"/>
     <fullyQualifiedTypeName name="com.yewmall.basic.common.dto.PageDTO"/>
+    <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="com.yewmall.basic.cart.CartVo"/>
+    <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
+    <fullyQualifiedTypeName name="org.springframework.http.HttpStatus"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="com.yewmall.basic.admin.product.ProductVo"/>
+    <fullyQualifiedTypeName name="com.yewmall.basic.user.UserVo"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.yewmall.basic.cart.CartProductVo"/>
 </qualifiedTypeNameHistroy>

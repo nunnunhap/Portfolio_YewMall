@@ -23,8 +23,8 @@
           </p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary" name="btn_direct_order" th:data-pro_num="${product.pro_num}">BUY IT NOW</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary" name="btn_cart_add" th:data-pro_num="${product.pro_num}">ADD TO CART</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary" name="btn_direct_order" th:data-pro_num="${product.pro_num}">즉시구매</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary" name="btn_cart_add" th:data-pro_num="${product.pro_num}">장바구니</button>
             </div>
             <small class="text-muted">(review : 0)</small>
           </div>
@@ -76,6 +76,25 @@
     </div>
   </div>
 </div>
+
+<!-- 모달상자 -->
+<div class="modal fade" id="order_process_popup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">상품상세</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- load()메서드를 이용하여, pro_info_2.html파일이 실행된 내용이 삽입된다. -->
+      <div class="modal-body" id="popup_info">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
 </th:block>
 <th:block layout:fragment = "script">
   <script>
@@ -90,6 +109,41 @@
 
         actionForm.submit();
       });
+
+      // 장바구니 모달
+      $("button[name='btn_cart_add']").on("click", function() {
+        $("#order_process_popup").modal('show'); // bootstrap 명령어
+
+        let pro_num = $(this).data("pro_num");
+        console.log("상품코드", pro_num);
+
+			  $("#popup_info").load("/product/pro_info?pro_num=" + pro_num);
+      });
+
+      // 모달 내 장바구니 추가버튼 클릭
+      $("#order_process_popup").on("click", "button#btn_cart_add", function() {
+        console.log("장바구니 추가");
+
+        let pro_num = $(this).data("pro_num");
+        let cart_amount = $("#btn_cart_amount").val();
+
+        $.ajax({
+          url : '/cart/cart_add',
+          type: 'get',
+          data: {pro_num : pro_num, cart_amount : cart_amount},
+          dataType : "text",
+          success : function(result) {
+            if(result == 'success') {
+              alert("상품이 장바구니에 담겼습니다.");
+              if(confirm("장바구니로 이동하시겠습니까?")) {
+                location.href = "/cart/cart_list";
+              }
+              $("#order_process_popup").modal('hide');
+            }
+          }
+        });
+      });
+
 
 
     }); // ready event end

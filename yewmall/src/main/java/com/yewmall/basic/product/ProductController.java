@@ -3,6 +3,7 @@ package com.yewmall.basic.product;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -62,6 +63,35 @@ public class ProductController {
 	public ResponseEntity<byte[]> image_display(String dateFolderName, String fileName) throws Exception {
 		return FileManagerUtils.getFile(uploadPath + dateFolderName, fileName);
 	}
+	
+	// 상품 팝업 및 상세설명 (모달상자)
+	@GetMapping("pro_info")
+	public void pro_info(int pro_num, Model model) throws Exception {
+		log.info("상품코드 : " + pro_num);
+		
+		// DB 연동
+		ProductVo vo = productService.pro_info(pro_num);
+		vo.setPro_up_folder(vo.getPro_up_folder().replace("\\", "/"));
+		
+		model.addAttribute("product", vo);
+	}
+	
+	// 상품 상세설명
+	@GetMapping("pro_detail")
+	public void pro_detail(int pro_num, Model model) throws Exception {
+		ProductVo vo = productService.pro_info(pro_num);
+		vo.setPro_up_folder(vo.getPro_up_folder().replace("\\", "/"));
+		
+		// 상품 상세정보 model
+		model.addAttribute("product", vo);
+		
+		// 상품 리뷰 model
+		
+		// Q&A model
+		
+	}
+	
+	
 	
 	
 	

@@ -27,6 +27,10 @@ public class ProductService {
 		return productMapper.getCountProductByCategory(cate_code);
 	}
 	
+	// 상품 팝업 및 상세설명 (모달상자)
+	ProductVo pro_info(int pro_num) {
+		return productMapper.pro_info(pro_num);
+	}
 	
 	
 }
