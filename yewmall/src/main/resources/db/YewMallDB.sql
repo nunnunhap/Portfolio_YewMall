@@ -371,22 +371,55 @@ FOREIGN KEY(PRO_NUM)
 REFERENCES PRODUCT_TBL(PRO_NUM));
 
 --7.리뷰 테이블
+DROP TABLE REVIEW_TBL;
 CREATE TABLE REVIEW_TBL(
-        RE_CODE        NUMBER,
+        REV_CODE        NUMBER,
         MBSP_ID        VARCHAR2(15)               NOT NULL,
         PRO_NUM        NUMBER                     NOT NULL,
-        RE_TITLE       VARCHAR2(50)               NOT NULL,
-        RE_CONTENT     VARCHAR2(200)              NOT NULL,
-        RE_RATE        NUMBER                     NOT NULL,
-        RE_REGDATE     DATE DEFAULT SYSDATE
+        REV_TITLE       VARCHAR2(50)               NOT NULL,
+        REV_CONTENT     VARCHAR2(200)              NOT NULL,
+        REV_RATE        NUMBER                     NOT NULL,
+        REV_REGDATE     DATE DEFAULT SYSDATE
 );
 
 -- 시퀀스 생성
-CREATE SEQUENCE SEQ_RE_CODE;
+DROP SEQUENCE seq_rev_code;
+CREATE SEQUENCE seq_rev_code;
 
 ALTER TABLE REVIEW_TBL
 ADD CONSTRAINTS PK_REVIEW_CODE
-PRIMARY KEY(RE_CODE);
+PRIMARY KEY(REV_CODE);
+
+INSERT INTO REVIEW_TBL(
+    rev_code,
+    mbsp_id,
+    pro_num,
+    rev_title,
+    rev_content,
+    rev_rate
+)
+VALUES(
+    SEQ_REV_CODE.NEXTVAL,
+    'user01',
+    266,
+    '상품후기1',
+    '이것은 후기다! 후기내용1',
+    3
+);
+
+COMMIT;
+
+SELECT
+    rev_code,
+    mbsp_id,
+    pro_num,
+    rev_title,
+    rev_content,
+    rev_rate,
+    rev_regdate
+FROM
+    review_tbl;
+
 
 ALTER TABLE REVIEW_TBL
 ADD CONSTRAINTS FK_RE_CODE
@@ -447,19 +480,42 @@ ALTER TABLE NOTICE ADD CONSTRAINT FK_NOTICE_WRITER
 FOREIGN KEY (MBSP_ID) REFERENCES ADMIN_TBL(ADMIN_ID);
 
 -- 11. Q&A 테이블
+DROP TABLE QNA_TBL;
 CREATE TABLE QNA_TBL (
     QNO         NUMBER,
-    MBSP_ID     VARCHAR2(15),
+    MBSP_ID     VARCHAR2(15)    NOT NULL,
     PRO_NUM     NUMBER          NOT NULL,
     QCONTENT    VARCHAR2(1000),
-    REGDATE     DATE            DEFAULT SYSDATE
+    QREGDATE     DATE            DEFAULT SYSDATE,
+    ADMIN_ID    VARCHAR2(15),
+    REPLY_CONTENT VARCHAR2(1000)
 );
 
-CREATE SEQUENCE SEQ_QNO;
+INSERT INTO QNA_TBL
+    ( qno,
+    mbsp_id,
+    pro_num,
+    qcontent)
+VALUES
+    (3803, 'yyewko', 266, '이것은 내용입니다. 문의에요');
+COMMIT;
+CREATE SEQUENCE seq_qno;
 
 ALTER TABLE QNA_TBL
-ADD CONSTRAINTS PK_QNA_QNO
+ADD CONSTRAINTS pk_qna_qno
 PRIMARY KEY (QNO);
+
+SELECT
+    qno,
+    mbsp_id,
+    pro_num,
+    qcontent,
+    qregdate,
+    admin_id,
+    reply_content
+FROM
+    qna_tbl;
+
 
 ALTER TABLE QNA_TBL
 ADD CONSTRAINTS FK_QNA_ID

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yewmall.basic.qna.QnaMapper">
+
+	<!-- 리뷰(상품구매후기) 목록 -->
+	<select id="qna_list" resultType="QnaVo" parameterType="map">
+		SELECT
+		    qno,
+		    mbsp_id,
+		    pro_num,
+		    qcontent,
+		    qregdate
+		FROM(
+			SELECT/*+ INDEX_DESC(qna_tbl pk_qna_qno) */
+				ROWNUM AS rn,
+			    qno,
+			    mbsp_id,
+			    pro_num,
+			    qcontent,
+			    qregdate
+			FROM
+			    qna_tbl
+			WHERE
+		        pro_num = #{pro_num}
+		    AND
+		    <![CDATA[
+		        ROWNUM <= (#{cri.pageNum} * #{cri.amount})
+		    )
+		    ]]>
+		    WHERE
+		        rn > (#{cri.pageNum} - 1 ) * #{cri.amount}
+	</select>
+	
+	<!-- 총 데이터 갯수(페이징) -->
+	<select id="getCountQnaByPro_num" resultType="int" parameterType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			qna_tbl
+	</select>
+
+	<!-- Q&A 작성 후 저장 -->
+	<insert id="qna_save" parameterType="QnaVo">
+		INSERT INTO qna_tbl(
+			qno,
+		    mbsp_id,
+		    pro_num,
+		    qcontent
+		    )
+		VALUES(
+			seq_qno.NEXTVAL,
+			#{mbsp_id},
+			#{pro_num},
+			#{qcontent}
+			)
+	</insert>
+	
+	<!-- Q&A 삭제 -->
+	<delete id="qna_delete" parameterType="Long">
+		DELETE FROM
+			qna_tbl
+		WHERE
+			qno = #{qno}
+	</delete>
+	
+	<!-- Q&A 수정 폼 -->
+	<select id="qna_modify" parameterType="Long" resultType="QnaVo">
+		SELECT
+		    qno,
+		    pro_num,
+		    qcontent
+		FROM
+		    qna_tbl
+		WHERE
+			qno = #{qno}
+	</select>
+	
+	<!-- Q&A 수정 저장 -->
+	<update id="qna_update" parameterType="QnaVo">
+		UPDATE
+			qna_tbl
+		SET
+		    qcontent = #{qcontent},
+		    qregdate = SYSDATE
+		WHERE
+			qno = #{qno}
+	</update>
+
+
+
+
+</mapper>

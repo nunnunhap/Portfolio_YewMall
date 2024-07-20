@@ -7,7 +7,7 @@
 
 <th:block layout:fragment = "content">
 <div class="container">
-  <div class="row">
+  <div class="row" style="padding-top: 50px;">
     <div class="col-md-12 text-center">
       <h3 class="pb-4 mb-4" th:utext="${cate_name}"></h3>
     </div>
@@ -47,7 +47,7 @@
       </form>
     </div>
     <div class="col-md-6 text-center">
-      <nav aria-label="...">
+      <nav aria-label="Page navigation">
         <ul class="pagination">
           <!-- 이전 표시여부 -->
           <th:block th:if="${pageMaker.prev}">
@@ -112,12 +112,18 @@
 
       // 장바구니 모달
       $("button[name='btn_cart_add']").on("click", function() {
-        $("#order_process_popup").modal('show'); // bootstrap 명령어
 
         let pro_num = $(this).data("pro_num");
         console.log("상품코드", pro_num);
 
-			  $("#popup_info").load("/product/pro_info?pro_num=" + pro_num);
+			  $("#popup_info").load("/product/pro_info?pro_num=" + pro_num, function() {
+          $("#btn_cart_add").show();
+          $("#btn_direct_order").hide();
+        });
+        
+
+        $("#order_process_popup").modal('show'); // bootstrap 명령어
+
       });
 
       // 모달 내 장바구니 추가버튼 클릭
@@ -143,6 +149,26 @@
           }
         });
       });
+
+      // 즉시구매 모달
+      $("button[name='btn_direct_order']").on("click", function() {
+        $("#order_process_popup").modal('show'); // bootstrap 명령어
+
+        let pro_num = $(this).data("pro_num");
+        console.log("상품코드", pro_num);
+
+        $("#popup_info").load("/product/pro_info?pro_num=" + pro_num, function() {
+          $("#btn_cart_add").hide();
+          $("#btn_direct_order").show();
+        });
+
+      });
+
+      // 모달 내 즉시구매 버튼 클릭
+      $("#btn_direct_order").on("click", function() {
+
+      });
+
 
 
 

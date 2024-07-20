@@ -78,7 +78,11 @@ public class ProductController {
 	
 	// 상품 상세설명
 	@GetMapping("pro_detail")
-	public void pro_detail(int pro_num, Model model) throws Exception {
+	public void pro_detail(int pro_num, @ModelAttribute("cate_name") String cate_name, Model model) throws Exception {
+		log.info("상품코드 : " + pro_num);
+		log.info("카테고리 번호 : " + cate_name);
+		
+		// DB연동
 		ProductVo vo = productService.pro_info(pro_num);
 		vo.setPro_up_folder(vo.getPro_up_folder().replace("\\", "/"));
 		
