@@ -26,7 +26,7 @@
               <button type="button" class="btn btn-sm btn-outline-secondary" name="btn_direct_order" th:data-pro_num="${product.pro_num}">즉시구매</button>
               <button type="button" class="btn btn-sm btn-outline-secondary" name="btn_cart_add" th:data-pro_num="${product.pro_num}">장바구니</button>
             </div>
-            <small class="text-muted">(review : 0)</small>
+            <small class="text-muted">(review : [[${revcount}]]) </small>
           </div>
         </div>
       </div>
@@ -87,7 +87,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <!-- load()메서드를 이용하여, pro_info_2.html파일이 실행된 내용이 삽입된다. -->
+      <!-- load()메서드를 이용하여, pro_info.html파일이 실행된 내용이 삽입된다. -->
       <div class="modal-body" id="popup_info">
         
       </div>
@@ -133,6 +133,12 @@
         let pro_num = $(this).data("pro_num");
         let cart_amount = $("#btn_cart_amount").val();
 
+        if(cart_amount == 0) {
+              alert("최소주문수량은 1개입니다.");
+
+              return;
+          }
+
         $.ajax({
           url : '/cart/cart_add',
           type: 'get',
@@ -155,7 +161,7 @@
         $("#order_process_popup").modal('show'); // bootstrap 명령어
 
         let pro_num = $(this).data("pro_num");
-        console.log("상품코드", pro_num);
+        // console.log("상품코드", pro_num);
 
         $("#popup_info").load("/product/pro_info?pro_num=" + pro_num, function() {
           $("#btn_cart_add").hide();
@@ -165,8 +171,35 @@
       });
 
       // 모달 내 즉시구매 버튼 클릭
-      $("#btn_direct_order").on("click", function() {
+      $("#order_process_popup").on("click", "button#btn_direct_order", function() {
+        console.log("모달 내 즉시구매 버튼 클릭");
 
+        let pro_num = $(this).data("pro_num");
+        let cart_amount = $("#btn_cart_amount").val();
+        let pro_name = $("#info_pro_name").html();
+        let pro_up_folder = $(this).data("pro_up_folder");
+        let pro_img = $(this).data("pro_img");
+        // let pro_price = $(this).data("pro_price"); data- 는 기본적으로 String으로 처리됨. typemismatch 에러 발생
+        let pro_price = $("#pro_price").val();
+
+        if(cart_amount == 0) {
+              alert("최소주문수량은 1개입니다.");
+
+              return;
+          }
+
+        let queryParams = $.param({ // $.param : 자바스크립트 객체나 배열을 URL 쿼리 문자열로 직렬화하는 데 사용
+          pro_num : pro_num,
+          cart_amount : cart_amount,
+          pro_name : pro_name,
+          pro_up_folder : pro_up_folder,
+          pro_img : pro_img,
+          pro_price : pro_price
+        });
+        // console.log("즉시구매버튼", queryParams);
+        // return;
+
+        location.href = "/order/orderinfo?" + queryParams;
       });
 
 

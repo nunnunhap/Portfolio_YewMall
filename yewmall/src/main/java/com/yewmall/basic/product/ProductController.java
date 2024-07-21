@@ -15,6 +15,7 @@ import com.yewmall.basic.admin.product.ProductVo;
 import com.yewmall.basic.common.dto.Criteria;
 import com.yewmall.basic.common.dto.PageDTO;
 import com.yewmall.basic.common.util.FileManagerUtils;
+import com.yewmall.basic.review.ReviewService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +28,7 @@ public class ProductController {
 	
 	// DI
 	private final ProductService productService;
+	private final ReviewService reviewService;
 	
 	
 	// 경로
@@ -56,6 +58,7 @@ public class ProductController {
 		
 		model.addAttribute("pro_list", pro_list);
 		model.addAttribute("pageMaker", new PageDTO(cri, totalCount));
+
 	}
 	
 	// 상품목록에서 사용할 이미지
@@ -86,12 +89,11 @@ public class ProductController {
 		ProductVo vo = productService.pro_info(pro_num);
 		vo.setPro_up_folder(vo.getPro_up_folder().replace("\\", "/"));
 		
+		int revcount = reviewService.getCountReviewByPro_num(pro_num);
+		
 		// 상품 상세정보 model
 		model.addAttribute("product", vo);
-		
-		// 상품 리뷰 model
-		
-		// Q&A model
+		model.addAttribute("revcount", revcount);
 		
 	}
 	

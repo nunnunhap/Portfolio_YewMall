@@ -7,7 +7,7 @@
 
 <th:block layout:fragment = "content">
   <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h3 class="display-6">CART</h3>
+    <h3 class="display-6">주문상품</h3>
   </div>
   <div class="container" id="cart_info">
     <div class="row mb-4">
@@ -27,11 +27,8 @@
         가격
       </div>
       <div class=col-md-1>
-        삭제
+        비고
       </div>
-    </div>
-    <div class="row mb-3 justify-content-center" th:if="${#lists.isEmpty(cart_list)}">
-      <p>장바구니가 비워져있습니다. 상품을 담아주세요.</p>
     </div>
     <div class="row mb-3" th:if="${!#lists.isEmpty(cart_list)}" th:each="cartproduct : ${cart_list}">
       <div class="col-md-4">
@@ -41,8 +38,7 @@
         <span th:text="${cartproduct.pro_name}"></span>
       </div>
       <div class=col-md-2>
-        <input type="number" name="cart_amount" th:value="${cartproduct.cart_amount}" class="w-50">
-        <button type="button" class="btn btn-secondary" name="btn_cart_amount_change" th:data-cart_code="${cartproduct.cart_code}">수량변경</button>
+        <span th:text="${cartproduct.cart_amount}"></span>
       </div>
       <div class=col-md-1>
         0
@@ -54,36 +50,181 @@
         <span class="subtotal" th:text="${#numbers.formatInteger(cartproduct.pro_price * cartproduct.cart_amount, 3, 'COMMA') + '원'}"></span>
       </div>
       <div class=col-md-1>
-        <button type="button" class="btn btn-secondary" th:data-cart_code="${cartproduct.cart_code}" name="btn_cart_del">삭제</button>
+        <span></span>
       </div>
     </div>
     <div class="row mb-5 jumbotron">
       <div class="col text-center">
-        <h3>총액 : <span id="totalPrice"></span></h3>
+        <h3>총액 : <span th:text="${#numbers.formatInteger(total_price, 3, 'COMMA') + '원'}"></span></h3>
       </div>
     </div>
 
+    <div class="pricing-header text-center">
+      <h3 class="display-6">주문정보 입력</h3>
+    </div>
+    <form class="form-horizontal" id="orderForm" action="/order/nobank_ordersave" method="post">
+      <div class="card-body">
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="ordersame">
+          <label class="form-check-label" for="ordersame">주문자와 동일</label>
+        </div>               
+        <div class="form-group row">
+          <label for="ord_name" class="col-sm-2 col-form-label">이름</label>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" id="ord_name" name="ord_name" placeholder="이름을 입력하세요">
+          </div>
+          <label for="ord_tel" class="col-sm-2 col-form-label">연락처</label>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" id="ord_tel" name="ord_tel" placeholder="연락처를 입력하세요">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="sample2_postcode" class="col-sm-2 col-form-label">우편번호</label>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" id="sample2_postcode" name="ord_addr_zipcode" placeholder="우편번호 입력하세요.">
+          </div>
+          <div class="col-sm-4">
+            <button type="button" class="btn btn-outline-primary" onclick="sample2_execDaumPostcode()">우편번호</button>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="sample2_address" class="col-sm-2 col-form-label">기본주소</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="sample2_address" name="ord_addr_basic" placeholder="기본주소를 입력하세요.">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="sample2_detailAddress" class="col-sm-2 col-form-label">상세주소</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="sample2_detailAddress" name="ord_addr_detail" placeholder="상세주소를 입력하세요.">
+            <input type="hidden" id="sample2_extraAddress" placeholder="참고항목">
+            <input type="hidden" th:value="${total_price}" name="ord_price" id="ord_price">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="ord_desc">특이사항</label>
+          <textarea class="form-control" id="ord_desc" name="ord_desc" rows="3"></textarea>
+        </div>
+        <div class="form-group row">
+          <div class="col">
+            <fieldset class="form-group border p-3">
+              <legend class="w-auto px-2">결제방법 선택</legend>
+              <div class="form-group row">
+                <label for="howtopay" class="col-2">결제방법</label>
+                <div class="col-10">
+                  <input type="radio" name="paymethod" id="nobank" value="nobank">무통장 입금
+                  <input type="radio" name="paymethod" id="kakaopay" value="kakaopay"><img th:src="@{/img/sns/payment_icon_yellow_small.png}">
+                </div>
+              </div>
+              <div class="form-group row" id="nobank_info" style="display: none;">
+                <label for="howtopay" class="col-2">무통장 입금정보</label>
+                <div class="col-10">
+                  은행명
+                  <select name="pay_nobank" id="pay_nobank">
+                    <option value="">입금은행을 선택하세요.</option>
+                    <option value="KEB하나은행/123-123-1234">KEB하나은행/123-123-1234</option>
+                    <option value="국민은행/456-456-4567">국민은행/456-456-4567</option>
+                    <option value="신한은행/100-100-1000">신한은행/100-100-1000</option>
+                    <option value="SC제일은행/200-200-2000">SC제일은행/200-200-2000</option>
+                  </select><br>
+                  <!-- 계좌번호 <input type="text" name="pay_bankaccount" id="pay_bankaccount"><br>-->
+                  예금주 <input type="text" name="pay_nobank_user" id="pay_nobank_user"><br>
+                  메모<textarea cols="50" rows="3" name="pay_memo" id="pay_memo"></textarea>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <button type="button" class="btn btn-primary btn-lg btn-block" id="btn_order_payment">결제하기</button>
+      </div>
+    </form>
   </div>
 </th:block>
 
 <th:block layout:fragment = "script">
+  <!-- KaKao 주소 API -->
+  <th:block th:replace="~{api/kakao_postcode :: kakao_PostCode_Api}"></th:block>
   <script>
     $(document).ready(function() {
 
-      // 총액 구하기
-      calculateTotalAmount();
+      // 주문자와 동일
+      $("#ordersame").on("click", function() {
+        if($("#ordersame").is(":checked")) {
+          $.ajax({
+            url: '/order/ordersame',
+            type: 'get',
+            dataType: 'json',
+            success: function(result) {
+              $("#ord_name").val(result.mbsp_name);
+              $("#ord_tel").val(result.mbsp_phone);
+              $("#sample2_postcode").val(result.mbsp_zipcode);
+              $("#sample2_address").val(result.mbsp_addr);
+              $("#sample2_detailAddress").val(result.mbsp_deaddr);
+            }
+          });
+        } else {
+          $("#ord_name").val("");
+          $("#ord_tel").val("");
+          $("#sample2_postcode").val("");
+          $("#sample2_address").val("");
+          $("#sample2_detailAddress").val("");
+        }
+      });
 
-      function calculateTotalAmount() {
-        let totalAmount = 0;
-        $("#cart_info .subtotal").each(function() {
-          let subtotal = $(this).text().replace("원", "").replace(/,/g, "");
-          totalAmount += parseInt(subtotal);
-        });
-        $("#totalPrice").text(totalAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "원");
-      }
+      // 결제방법 선택
+      $("input[name='paymethod']").on("click", function() {
+        let paymethod = $("input[name='paymethod']:checked").val();
 
+        if(paymethod == "nobank") {
+          $("#nobank_info").show();
+        } else if(paymethod == "kakaopay") {
+          $("#nobank_info").hide();
+        }
+      });
 
+      // 무통장 입금 은행 선택 시 입금 계좌/예금주 출력
+      $("select[name='pay_nobank']").on("change", function() {
+        /*let pay_bankaccount = $(this).val();
+        $("#pay_bankaccount").val(pay_bankaccount);*/
+        $("#pay_nobank_user").val("YewMall대표");
+      });
 
+      // 결제하기
+      $("#btn_order_payment").on("click", function() {
+
+        let paymethod = $("input[name='paymethod']:checked").val();
+        // console.log("결제방법", paymethod);
+        // return;
+
+        if(paymethod == "nobank") {
+          let orderForm = $("#orderForm");
+          orderForm.submit();
+          
+        } else if(paymethod == "kakaopay") {
+            $.ajax({
+            url: '/kakao/kakaoPay',
+            type: 'get',
+            data : {
+              ord_name: $("#ord_name").val(),
+              ord_addr_zipcode: $("#sample2_postcode").val(),
+              ord_addr_basic:$("#sample2_address").val(),
+              ord_addr_detail:$("#sample2_detailAddress").val(),
+              ord_tel:$("#ord_tel").val(),
+              ord_price: $("#ord_price").val(),
+              ord_desc:$("#ord_desc").val()
+            },
+            dataType: 'json',
+            success : function(response) {
+              // console.log("응답", response);
+
+              // alert(response.next_redirect_pc_url);
+              location.href = response.next_redirect_pc_url; // 결제QR코드 주소이동
+            }
+          });
+        }
+      });
 
 
     }); // ready event end

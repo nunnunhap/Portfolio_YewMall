@@ -334,14 +334,41 @@ CREATE TABLE ORDER_TBL(
         ORD_ADDR_DETAIL     VARCHAR2(50)            NOT NULL,
         ORD_TEL             VARCHAR2(20)            NOT NULL,
         ORD_PRICE           NUMBER                  NOT NULL, -- 총주문금액. 선택
+        ORD_DESC            VARCHAR2(300)           NULL, -- 주문 시 요청사항
         ORD_REGDATE         DATE DEFAULT SYSDATE    NOT NULL
 );
 
-CREATE SEQUENCE SEQ_ORD_CODE;
+CREATE SEQUENCE seq_ord_code;
 
 ALTER TABLE ORDER_TBL
 ADD CONSTRAINTS PK_ORD_CODE
 PRIMARY KEY(ORD_CODE);
+INSERT INTO order_tbl (
+    ord_code,
+    mbsp_id,
+    ord_name,
+    ord_addr_zipcode,
+    ord_addr_basic,
+    ord_addr_detail,
+    ord_tel,
+    ord_price,
+    ord_desc,
+    ord_regdate
+) VALUES (
+    :v0,
+    :v1,
+    :v2,
+    :v3,
+    :v4,
+    :v5,
+    :v6,
+    :v7,
+    :v8,
+    :v9
+);
+ord_code, mbsp_id, ord_name, ord_addr_zipcode, ord_addr_basic, ord_addr_detail, ord_tel, ord_price, ord_desc, ord_regdate
+
+
 
 ALTER TABLE ORDER_TBL
 ADD CONSTRAINTS FK_ORDER_MBSP_ID
@@ -355,7 +382,17 @@ CREATE TABLE ORDETAIL_TBL(
         DT_AMOUNT       NUMBER      NOT NULL,
         DT_PRICE        NUMBER      NOT NULL  -- 단위별 가격
 );
-
+INSERT INTO ordetail_tbl (
+    ord_code,
+    pro_num,
+    dt_amount,
+    dt_price
+) VALUES (
+    :v0,
+    :v1,
+    :v2,
+    :v3
+);
 ALTER TABLE ORDETAIL_TBL
 ADD CONSTRAINTS PK_ORDETAIL_CODE_NUM
 PRIMARY KEY(ORD_CODE ,PRO_NUM);
@@ -528,6 +565,40 @@ FOREIGN KEY(PRO_NUM)
 REFERENCES PRODUCT_TBL(PRO_NUM);
 
 -- 예치금 테이블
+
+-- 12. 결제 테이블
+DROP TABLE PAYINFO;
+CREATE TABLE PAYINFO (
+    P_ID        NUMBER  NOT NULL,
+    ORD_CODE    NUMBER  NOT NULL,
+    MBSP_ID     VARCHAR2(15)    NOT NULL,
+    PAYMETHOD   VARCHAR2(50)    NOT NULL,
+    PAYINFO     VARCHAR2(100)   NULL, -- 은행/ 계좌번호/ 예금주
+    P_PRICE     NUMBER  NOT NULL,
+    P_STATUS    VARCHAR2(10)    NOT NULL, -- 완납/미납
+    P_DATE      DATE    DEFAULT SYSDATE
+);
+
+ALTER TABLE PAYINFO
+ADD CONSTRAINTS PK_PAYINFO_IDX
+PRIMARY KEY (P_ID);
+
+CREATE SEQUENCE seq_payinfo_id;
+
+ALTER TABLE PAYINFO ADD CONSTRAINT FK_PAYINFO_ORD_CODE
+FOREIGN KEY (ORD_CODE) REFERENCES ORDER_TBL(ORD_CODE);
+
+SELECT
+    p_id,
+    ord_code,
+    mbsp_id,
+    paymethod,
+    payinfo,
+    p_price,
+    p_status,
+    p_date
+FROM
+    payinfo;
 
 
 

@@ -30,7 +30,7 @@
         삭제
       </div>
     </div>
-    <div class="row mb-3 justify-content-center" th:if="${#lists.isEmpty(cart_list)}">
+    <div class="row mb-3 justify-content-center empty" th:if="${#lists.isEmpty(cart_list)}">
       <p>장바구니가 비워져있습니다. 상품을 담아주세요.</p>
     </div>
     <div class="row mb-3" th:if="${!#lists.isEmpty(cart_list)}" th:each="cartproduct : ${cart_list}">
@@ -115,7 +115,13 @@
 
       // 주문하기
       $("#btn_order").click(function() {
-        location.href = ``;
+        if($("div.justify-content-center.empty").is(":visible")) {
+          alert("장바구니가 비워져있습니다. 상품을 다시 담아주세요.");
+
+          return;
+        }
+
+        location.href = "/order/orderinfo";
       });
 
 

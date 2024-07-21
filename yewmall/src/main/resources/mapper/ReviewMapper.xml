@@ -35,12 +35,14 @@
 		        rn > (#{cri.pageNum} - 1 ) * #{cri.amount}
 	</select>
 	
-	<!-- 총 데이터 갯수(페이징) -->
+	<!-- 총 리뷰 갯수 -->
 	<select id="getCountReviewByPro_num" resultType="int" parameterType="int">
 		SELECT
 			COUNT(*)
 		FROM
 			review_tbl
+		WHERE
+			pro_num = #{pro_num}
 	</select>
 	
 	<!-- 리뷰 저장 -->
@@ -99,7 +101,6 @@
 		WHERE
 			rev_code = #{rev_code}
 	</update>
-	
 	
 
 </mapper>

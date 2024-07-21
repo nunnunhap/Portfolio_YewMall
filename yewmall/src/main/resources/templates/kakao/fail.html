@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>카카오페이 결제 실패</title>
+</head>
+<body>
+<div class="container">
+	<div style="padding-top: 180px; padding-bottom: 100px; text-align: center;">
+		<h3>카카오페이 결제중 시스템에러가 발생하였습니다. 관리자에게 문의주세요.</h3>
+	</div>
+	<div style="padding-bottom: 100px; text-align: center;">
+		<button type="button" name="btn_main" class="btn btn-secondary">메인 화면으로 돌아가기</button>
+	</div>
+</div>
+<script th:inline="javascript">
+	$(document).ready(function() {
+		$("button[name='btn_main']").on("click", function() {
+			location.href = "/";
+		});
+	});
+</script>
+</body>
+</html>

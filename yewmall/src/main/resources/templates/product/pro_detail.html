@@ -105,18 +105,19 @@
           <form>
             <div class="form-group">
               <span id="info_pro_name" th:text="${product.pro_name}">이름</span>
-              <small class="text-muted">(review : 0)</small>
+              <small class="text-muted">(review : [[${revcount}]]) </small>
             </div>
             <div class="form-group">
               <label for="">판매가격 : </label>
               <span th:text="${#numbers.formatInteger(product.pro_price, 3, 'COMMA') + '원'}"></span>
+              <input type="hidden" id="pro_price" th:value="${product.pro_price}">
             </div>
             <div class="form-group">
               <label for="">수량</label>
               <input type="number" class="form-control" value="1" id="btn_cart_amount">
             </div>
             <div class="form-group">
-              <button type="button" class="btn btn-secondary" style="width: 100%;" th:data-pro_num="${product.pro_num}" id="btn_direct_order">즉시구매</button>
+              <button type="button" class="btn btn-secondary" style="width: 100%;" th:data-pro_num="${product.pro_num}" id="btn_direct_order" th:data-pro_up_folder="${product.pro_up_folder}" th:data-pro_img="${product.pro_img}">즉시구매</button>
 					    <button type="button" class="btn btn-light" style="width: 100%;" th:data-pro_num="${product.pro_num}" id="btn_cart_add">장바구니 추가</button>
             </div>
           </form>
@@ -799,6 +800,32 @@
 
         // 즉시구매 버튼 클릭 시
         $("#btn_direct_order").on("click", function() {
+          let pro_num = $(this).data("pro_num");
+          let cart_amount = $("#btn_cart_amount").val();
+          let pro_name = $("#info_pro_name").html();
+          let pro_up_folder = $(this).data("pro_up_folder");
+          let pro_img = $(this).data("pro_img");
+          // let pro_price = $(this).data("pro_price"); data- 는 기본적으로 String으로 처리됨. typemismatch 에러 발생
+          let pro_price = $("#pro_price").val();
+
+          if(cart_amount == 0) {
+              alert("최소주문수량은 1개입니다.");
+
+              return;
+          }
+
+          let queryParams = $.param({ // $.param : 자바스크립트 객체나 배열을 URL 쿼리 문자열로 직렬화하는 데 사용
+            pro_num : pro_num,
+            cart_amount : cart_amount,
+            pro_name : pro_name,
+            pro_up_folder : pro_up_folder,
+            pro_img : pro_img,
+            pro_price : pro_price
+          });
+          // console.log("즉시구매버튼", queryParams);
+          // return;
+
+          location.href = "/order/orderinfo?" + queryParams;
 
         });
 
@@ -806,6 +833,12 @@
         $("#btn_cart_add").on("click", function() {
           let pro_num = $(this).data("pro_num");
           let cart_amount = $("#btn_cart_amount").val();
+
+          if(cart_amount == 0) {
+              alert("최소주문수량은 1개입니다.");
+
+              return;
+          }
 
           $.ajax({
             url : '/cart/cart_add',

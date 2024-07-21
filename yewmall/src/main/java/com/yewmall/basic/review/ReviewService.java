@@ -21,8 +21,8 @@ public class ReviewService {
 		return reviewMapper.rev_list(pro_num, cri);
 	}
 	
-	// 총 데이터 갯수(페이징)
-	int getCountReviewByPro_num(Integer pro_num) {
+	// 총 데이터 갯수
+	public int getCountReviewByPro_num(Integer pro_num) {
 		return reviewMapper.getCountReviewByPro_num(pro_num);
 	}
 	
