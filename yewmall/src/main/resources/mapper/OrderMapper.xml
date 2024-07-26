@@ -3,7 +3,7 @@
 <mapper namespace="com.yewmall.basic.order.OrderMapper">
 
 	<!-- 주문 테이블 저장 -->
-	<insert id="order_insert" parameterType="com.yewmall.basic.order.OrderVo">
+	<insert id="order_insert" parameterType="OrderVo">
 		<selectKey keyProperty="ord_code" resultType="Long" order="BEFORE">
 			SELECT
 				seq_ord_code.NEXTVAL
@@ -39,13 +39,17 @@
 		    pro_num,
 		    dt_amount,
 		    dt_price)
-		SELECT
-			#{ord_code},
-			pro_num,
-			cart_amount,
-			pro_num * cart_amount
-		FROM
-			cart_tbl
+			SELECT
+				#{ord_code},
+				p.pro_num,
+				c.cart_amount,
+				p.pro_price
+			FROM
+				cart_tbl c
+			INNER JOIN
+				product_tbl p
+			ON
+				c.pro_num = p.pro_num
 		WHERE
 			mbsp_id = #{mbsp_id}
 	</insert>

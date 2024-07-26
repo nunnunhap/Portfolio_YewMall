@@ -3,7 +3,7 @@
 <mapper namespace="com.yewmall.basic.cart.CartMapper">
 
 	<!-- 장바구니 상품 추가 -->
-	<insert id="cart_add" parameterType="com.yewmall.basic.cart.CartVo">
+	<insert id="cart_add" parameterType="CartVo">
 		MERGE INTO
 			cart_tbl
 		USING DUAL
@@ -23,7 +23,7 @@
 	</insert>
 
 	<!-- 장바구니 리스트 -->
-	<select id="cart_list" parameterType="String" resultType="com.yewmall.basic.cart.CartProductVo">
+	<select id="cart_list" parameterType="String" resultType="CartProductVo">
 		SELECT
 		    c.cart_code,
 		    c.pro_num,

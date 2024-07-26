@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yewmall.basic.cart.CartProductVo;
 import com.yewmall.basic.cart.CartService;
-import com.yewmall.basic.cart.CartVo;
 import com.yewmall.basic.common.util.FileManagerUtils;
 import com.yewmall.basic.user.UserService;
 import com.yewmall.basic.user.UserVo;

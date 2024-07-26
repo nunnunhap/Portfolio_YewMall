@@ -147,6 +147,14 @@ CREATE TABLE PRODUCT_TBL(
         PRO_UPDATEDATE      DATE DEFAULT SYSDATE    NOT NULL
 );
 
+ALTER TABLE product_tbl
+ADD revcount NUMBER DEFAULT 0;
+
+ALTER TABLE product_tbl DROP COLUMN revcount;
+
+COMMIT;
+
+
 SELECT
     pro_num,
     cate_code,
@@ -343,7 +351,13 @@ CREATE SEQUENCE seq_ord_code;
 ALTER TABLE ORDER_TBL
 ADD CONSTRAINTS PK_ORD_CODE
 PRIMARY KEY(ORD_CODE);
-INSERT INTO order_tbl (
+-- 컬럼 추가
+ALTER TABLE ORDER_TBL
+ADD ORD_ADMIN_MEMO VARCHAR2(100);
+
+COMMIT;
+
+SELECT
     ord_code,
     mbsp_id,
     ord_name,
@@ -353,21 +367,10 @@ INSERT INTO order_tbl (
     ord_tel,
     ord_price,
     ord_desc,
-    ord_regdate
-) VALUES (
-    :v0,
-    :v1,
-    :v2,
-    :v3,
-    :v4,
-    :v5,
-    :v6,
-    :v7,
-    :v8,
-    :v9
-);
-ord_code, mbsp_id, ord_name, ord_addr_zipcode, ord_addr_basic, ord_addr_detail, ord_tel, ord_price, ord_desc, ord_regdate
-
+    ord_regdate,
+    ord_admin_memo
+FROM
+    order_tbl;
 
 
 ALTER TABLE ORDER_TBL
@@ -382,6 +385,7 @@ CREATE TABLE ORDETAIL_TBL(
         DT_AMOUNT       NUMBER      NOT NULL,
         DT_PRICE        NUMBER      NOT NULL  -- 단위별 가격
 );
+
 INSERT INTO ordetail_tbl (
     ord_code,
     pro_num,
@@ -419,6 +423,7 @@ CREATE TABLE REVIEW_TBL(
         REV_REGDATE     DATE DEFAULT SYSDATE
 );
 
+
 -- 시퀀스 생성
 DROP SEQUENCE seq_rev_code;
 CREATE SEQUENCE seq_rev_code;
@@ -427,7 +432,7 @@ ALTER TABLE REVIEW_TBL
 ADD CONSTRAINTS PK_REVIEW_CODE
 PRIMARY KEY(REV_CODE);
 
-INSERT INTO REVIEW_TBL(
+INSERT INTO review_tbl(
     rev_code,
     mbsp_id,
     pro_num,
@@ -445,6 +450,8 @@ VALUES(
 );
 
 COMMIT;
+
+
 
 SELECT
     rev_code,

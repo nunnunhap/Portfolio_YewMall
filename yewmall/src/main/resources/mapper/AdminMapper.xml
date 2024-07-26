@@ -3,7 +3,7 @@
 <mapper namespace="com.yewmall.basic.admin.AdminMapper">
 	
 	<!-- Admin 로그인 -->
-	<select id="loginOk" parameterType="String" resultType="com.yewmall.basic.admin.AdminVo">
+	<select id="loginOk" parameterType="String" resultType="AdminVo">
 		SELECT
 			admin_id, admin_pw, admin_visit_date
 		FROM

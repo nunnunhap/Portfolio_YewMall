@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.yewmall.basic.admin.category.AdminCategoryService;
 import com.yewmall.basic.admin.category.AdminCategoryVo;
+import com.yewmall.basic.common.constants.Constants;
 import com.yewmall.basic.common.dto.Criteria;
 import com.yewmall.basic.common.dto.PageDTO;
 import com.yewmall.basic.common.util.FileManagerUtils;
@@ -142,7 +143,7 @@ public class AdminProductController {
 	@GetMapping("pro_list")
 	public void pro_list(Criteria cri, Model model) throws Exception {
 		
-//		cri.setAmount(2);
+		cri.setAmount(Constants.ADMIN_PROLIST_AMOUNT);
 		
 		List<ProductVo> pro_list = adminProductService.pro_list(cri);
 		

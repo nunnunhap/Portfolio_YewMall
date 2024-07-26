@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yewmall.basic.admin.product.ProductVo;
+import com.yewmall.basic.common.constants.Constants;
 import com.yewmall.basic.common.dto.Criteria;
 import com.yewmall.basic.common.dto.PageDTO;
 import com.yewmall.basic.common.util.FileManagerUtils;
@@ -45,7 +46,7 @@ public class ProductController {
 		log.info("2차 카테고리 코드 : " + cate_code);
 		log.info("2차 카테고리 이름 : " + cate_name);
 		
-		cri.setAmount(9);
+		cri.setAmount(Constants.CUSTOMER_PROLIST_AMOUNT);
 		
 		List<ProductVo> pro_list = productService.pro_list(cate_code, cri);
 		// Model작업 전, \를 /로 변환

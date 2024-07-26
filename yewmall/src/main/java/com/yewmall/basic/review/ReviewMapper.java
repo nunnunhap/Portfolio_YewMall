@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.yewmall.basic.admin.product.ProductVo;
 import com.yewmall.basic.common.dto.Criteria;
 
 public interface ReviewMapper {
@@ -25,5 +26,11 @@ public interface ReviewMapper {
 	
 	// 리뷰 수정 저장
 	void review_update(ReviewVo vo);
+	
+	// 리뷰 저장 시 리뷰갯수 증가
+	void plus_revcount(Integer pro_num);
+	
+	// 리뷰 삭제 시 리뷰갯수 감소
+	void minus_revcount(Long rev_code);
 	
 }

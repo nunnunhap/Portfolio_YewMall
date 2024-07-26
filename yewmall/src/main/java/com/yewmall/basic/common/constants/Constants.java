@@ -6,4 +6,20 @@ public final class Constants {
 	public static final String MAILFOLDERNAME = "mailtemplate";
 	
 	
+	// 사용자 측 상품리스트 출력 갯수
+	public static final int CUSTOMER_PROLIST_AMOUNT = 9;
+
+	// 사용자 측 주문리스트 출력 갯수
+	public static final int CUSTOMER_ORDERLIST_AMOUNT = 2;
+	
+	
+	// 관리자 측 상품리스트 출력 갯수
+	public static final int ADMIN_PROLIST_AMOUNT = 2;
+	
+	// 관리자 측 주문리스트 출력 갯수
+	public static final int ADMIN_ORDERLIST_AMOUNT = 2;
+
+	
+	
+	
 }

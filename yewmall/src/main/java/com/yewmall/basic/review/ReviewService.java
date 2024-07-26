@@ -27,12 +27,17 @@ public class ReviewService {
 	}
 	
 	// 리뷰 저장
-	void review_save(ReviewVo vo) {
+	void review_save(ReviewVo vo) {		
 		reviewMapper.review_save(vo);
+		// ProductVo의 revcount + 1
+		reviewMapper.plus_revcount(vo.getPro_num());
 	}
 	
 	// 리뷰 삭제
 	void review_delete(Long rev_code) {
+		// ProductVo의 revcount - 1
+		reviewMapper.minus_revcount(rev_code);
+
 		reviewMapper.review_delete(rev_code);
 	}
 	

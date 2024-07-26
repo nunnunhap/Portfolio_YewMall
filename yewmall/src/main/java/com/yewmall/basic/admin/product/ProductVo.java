@@ -23,5 +23,6 @@ public class ProductVo {
 	private String pro_buy;
 	private Date pro_date;
 	private Date pro_updatedate;
+	private int revcount;
 }
 

@@ -102,5 +102,35 @@
 			rev_code = #{rev_code}
 	</update>
 	
+	<!-- 리뷰 저장 시 리뷰갯수 증가 -->
+	<update id="plus_revcount" parameterType="Integer">
+		UPDATE
+			product_tbl
+		SET
+			revcount = revcount + 1
+		WHERE
+			pro_num = #{pro_num}
+	</update>
+	
+	<!-- 리뷰 삭제 시 리뷰갯수 감소 -->
+	<update id="minus_revcount" parameterType="Long">
+		UPDATE
+			product_tbl
+		SET
+			revcount = revcount - 1
+		WHERE
+			pro_num = (
+				SELECT
+					pro_num
+				FROM
+					review_tbl
+				WHERE
+					rev_code = #{rev_code}
+			)
+	</update>
+	
+	
+	
+	
 
 </mapper>

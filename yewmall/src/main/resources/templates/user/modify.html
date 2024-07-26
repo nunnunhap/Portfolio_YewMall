@@ -42,7 +42,7 @@
               <div class="form-group row">
                 <label for="mbsp_email" class="col-sm-2 col-form-label">E-Mail</label>
                 <div class="col-sm-3">
-                  <input type="email" class="form-control" id="mbsp_email" name="mbsp_email" placeholder="이메일">
+                  <input type="email" class="form-control" id="mbsp_email" name="mbsp_email" th:value="${user.mbsp_email}">
                 </div>
                 <div class="col-sm-2">
                   <button type="button" class="btn btn-outline-primary" id="btnMailAuthcode">인증요청</button>

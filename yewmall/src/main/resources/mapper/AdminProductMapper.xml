@@ -56,7 +56,7 @@
 	</sql>
 
 	<!-- 상품목록 -->
-	<select id="pro_list" resultType="ProductVo" parameterType="com.yewmall.basic.common.dto.Criteria">
+	<select id="pro_list" resultType="ProductVo" parameterType="Criteria">
 		SELECT
 		    pro_num,
 		    cate_code,

@@ -15,7 +15,7 @@
                 <div class="rs-select2--light rs-select2--md">
                   <form id="searchForm" th:action="@{/admin/product/pro_list}" method="get" style="display: flex; align-items: center;">
                     <select name="type" style="margin-right: 10px;">
-                      <option value="" th:selected="${pageMaker.cri.type == null}" class="au-btn-filter">필터선택</option>
+                      <option value="" th:selected="${pageMaker.cri.type == ''}" class="au-btn-filter">필터선택</option>
                       <option value="N" th:selected="${pageMaker.cri.type == 'N'}">상품명</option>
                       <option value="C" th:selected="${pageMaker.cri.type == 'C'}">상품코드</option>
                       <option value="P" th:selected="${pageMaker.cri.type == 'P'}">제조사</option>
