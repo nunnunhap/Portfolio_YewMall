@@ -13,10 +13,14 @@ public class QnaVo {
 	
 	private Long qno;
 	private String mbsp_id;
+	private String admin_id;
 	private int pro_num;
 	private String qcontent;
-    private Date qregdate;	
-	private String admin_id;
 	private String reply_content;
-	
+	private char anscheck;
+	private Date qregdate;
+	private Date answer_date;
+
+	public QnaVo(Long qno) {
+	}
 }

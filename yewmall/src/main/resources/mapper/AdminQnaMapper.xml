@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yewmall.basic.admin.qna.AdminQnaMapper">
+
+	<resultMap type="QnaVo" id="qnaMap">
+		<id property="qno" column="qna_idx" />
+		<result property="qcontent" column="question" />
+		<result property="reply_content" column="answer" />
+		<result property="qregdate" column="question_date" />
+	</resultMap>
+	
+	<!--  공통사항(검색어) : 1) 상품명 2) 작성자명 -->
+	<sql id="criteria">
+		<trim prefix="(" suffix=") AND" prefixOverrides="OR">
+			<foreach collection="typeArr" item="type">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'N'.toString()">
+							pro_name like '%' || #{cri.keyword} || '%'
+						</when>
+						<when test="type == 'A'.toString()">
+							admin_id like '%' || #{cri.keyword} || '%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+	
+	<!-- 상품문의(Q&A) 목록 hashmap-->
+	<select id="qna_list" resultType="hashmap" parameterType="Criteria">
+		SELECT
+		    qna_idx,
+		    mbsp_id,
+		    admin_id,
+		    question,
+		    answer,
+		    anscheck,
+		    question_date,
+		    answer_date,
+		    pro_name,
+		    pro_up_folder,
+		    pro_img
+		FROM(
+			SELECT /*+ INDEX_DESC(qnaboard_tbl pk_qna_idx) */
+				ROWNUM AS rn,
+			    q.qna_idx,
+			    q.mbsp_id,
+			    q.admin_id,
+			    q.question,
+			    q.answer,
+			    q.anscheck,
+			    q.question_date,
+			    q.answer_date,
+			    p.pro_name,
+			    p.pro_up_folder,
+			    p.pro_img
+			FROM
+			    qnaboard_tbl q
+			INNER JOIN
+			    product_tbl p
+			ON
+			    q.pro_num = p.pro_num
+		    WHERE
+		    	<include refid="criteria"></include>
+		    <![CDATA[
+		        ROWNUM <= (#{pageNum} * #{amount})
+		    ]]>
+		    )
+		    WHERE
+		        rn > (#{pageNum} - 1 ) * #{amount}
+	</select>
+
+	<!-- 전체 데이터 개수(페이징) -->
+	<select id="getTotalCount" resultType="int" parameterType="Criteria">
+		SELECT
+			COUNT(*)
+		FROM
+			qnaboard_tbl
+		WHERE
+			<include refid="criteria"></include>
+			qna_idx > 0
+	</select>
+	
+	<!-- Q&A 답변 저장 -->
+	<update id="answerInsert" parameterType="map">
+		UPDATE
+			qnaboard_tbl
+		SET
+			answer = #{answer},
+			anscheck = 'Y',
+			answer_date = SYSDATE
+		WHERE
+			qna_idx = #{qna_idx}
+	</update>
+	
+	<!-- Q&A 답변 수정 저장 -->
+	<update id="answerModify" parameterType="map">
+		UPDATE
+			qnaboard_tbl
+		SET
+			answer = #{answer}
+		WHERE
+			qna_idx = #{qna_idx}
+	</update>
+	
+	<!-- Q&A 개별 답변 삭제 -->
+	<update id="answerDelete" parameterType="long">
+		UPDATE
+			qnaboard_tbl
+		SET
+			answer = null,
+			answer_date = null,
+			anscheck = 'N'
+		WHERE
+			qna_idx = #{qna_idx}
+	</update>
+	
+	<!-- 일괄 상품 삭제 -->
+	<delete id="qna_delete_all">
+		<foreach collection="list" item="item" open="declare begin" separator=";" close="; end;">
+			DELETE FROM
+				qnaboard_tbl
+			WHERE
+				qna_idx = #{item}
+		</foreach>
+	</delete>
+	
+
+</mapper>

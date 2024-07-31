@@ -8,6 +8,11 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="서비스"/>
+			<item value=","/>
+			<item value="p."/>
+			<item value="q."/>
+			<item value="상품문의"/>
 			<item value="pageNum:"/>
 			<item value="상품후기데이터"/>
 			<item value="order_process"/>
@@ -18,11 +23,6 @@
 			<item value="주문자"/>
 			<item value="응답"/>
 			<item value="ready 주문자"/>
-			<item value="ready주문자"/>
-			<item value="pg_token`"/>
-			<item value="후기"/>
-			<item value="이것도"/>
-			<item value="스프링에"/>
 		</list>
 		<list key="replacehistory">
 			<item value=";"/>
@@ -30,7 +30,7 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="3"/>
+		<item key="DIALOG_X_ORIGIN" value="9"/>
 		<item key="DIALOG_Y_ORIGIN" value="176"/>
 		<item key="DIALOG_WIDTH" value="491"/>
 		<item key="DIALOG_HEIGHT" value="632"/>

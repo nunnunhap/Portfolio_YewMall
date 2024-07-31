@@ -105,7 +105,7 @@ public class AdminOrderController {
 		
 		entity = new ResponseEntity<String> ("success", HttpStatus.OK);
 		return entity;
-	} 
+	}
 	
 	// modal 내 정보 수정
 	@PostMapping("order_basic_modify")

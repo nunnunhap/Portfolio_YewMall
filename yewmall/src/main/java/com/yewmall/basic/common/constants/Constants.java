@@ -19,6 +19,8 @@ public final class Constants {
 	// 관리자 측 주문리스트 출력 갯수
 	public static final int ADMIN_ORDERLIST_AMOUNT = 2;
 
+	// 관리자 측 상품문의 리스트 출력 갯수
+	public static final int ADMIN_QNALIST_AMOUNT= 2;
 	
 	
 	

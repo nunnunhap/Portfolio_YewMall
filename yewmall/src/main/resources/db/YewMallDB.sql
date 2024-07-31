@@ -523,42 +523,42 @@ PRIMARY KEY (IDX);
 ALTER TABLE NOTICE ADD CONSTRAINT FK_NOTICE_WRITER
 FOREIGN KEY (MBSP_ID) REFERENCES ADMIN_TBL(ADMIN_ID);
 
--- 11. Q&A 테이블
-DROP TABLE QNA_TBL;
-CREATE TABLE QNA_TBL (
-    QNO         NUMBER,
-    MBSP_ID     VARCHAR2(15)    NOT NULL,
-    PRO_NUM     NUMBER          NOT NULL,
-    QCONTENT    VARCHAR2(1000),
-    QREGDATE     DATE            DEFAULT SYSDATE,
-    ADMIN_ID    VARCHAR2(15),
-    REPLY_CONTENT VARCHAR2(1000)
+-- 11. Q&A 테이블(resultmap 사용)
+DROP TABLE qna_tbl;
+DROP TABLE qnaboard_tbl;
+CREATE TABLE qnaboard_tbl(
+    qna_idx     NUMBER,
+    mbsp_id     VARCHAR2(15)    NOT NULL,
+    admin_id    VARCHAR2(15),
+    pro_num     NUMBER          NOT NULL,
+    question    VARCHAR2(1000)  NOT NULL,
+    answer      VARCHAR2(1000)  NULL,
+    anscheck    CHAR(1)         DEFAULT 'N',
+    question_date   DATE DEFAULT SYSDATE    NOT NULL,
+    answer_date DATE
 );
 
-INSERT INTO QNA_TBL
-    ( qno,
-    mbsp_id,
-    pro_num,
-    qcontent)
-VALUES
-    (3803, 'yyewko', 266, '이것은 내용입니다. 문의에요');
-COMMIT;
-CREATE SEQUENCE seq_qno;
+DROP SEQUENCE seq_qno;
+CREATE SEQUENCE seq_qna_idx;
 
-ALTER TABLE QNA_TBL
-ADD CONSTRAINTS pk_qna_qno
-PRIMARY KEY (QNO);
+ALTER TABLE qnaboard_tbl
+ADD CONSTRAINTS pk_qna_idx
+PRIMARY KEY (qna_idx);
+
+COMMIT;
 
 SELECT
-    qno,
+    qna_idx,
     mbsp_id,
-    pro_num,
-    qcontent,
-    qregdate,
     admin_id,
-    reply_content
+    pro_num,
+    question,
+    answer,
+    anscheck,
+    question_date,
+    answer_date
 FROM
-    qna_tbl;
+    qnaboard_tbl;
 
 
 ALTER TABLE QNA_TBL
@@ -607,6 +607,104 @@ SELECT
 FROM
     payinfo;
 
+
+
+
+SELECT
+    q.qna_idx,
+    q.mbsp_id,
+    q.admin_id,
+    q.question,
+    q.answer,
+    q.anscheck,
+    q.question_date,
+    q.answer_date,
+    p.pro_name,
+    p.pro_up_folder,
+    p.pro_img
+FROM
+    qnaboard_tbl q
+INNER JOIN
+    product_tbl p
+ON
+    q.pro_num = p.pro_num;
+
+
+
+
+SELECT
+    qna_idx,
+    mbsp_id,
+    admin_id,
+    question,
+    answer,
+    anscheck,
+    question_date,
+    answer_date,
+    pro_name,
+    pro_up_folder,
+    pro_img
+FROM(
+    SELECT /*+ INDEX_DESC(qnaboard_tbl pk_qna_idx) */
+        ROWNUM AS rn,
+        q.qna_idx,
+        q.mbsp_id,
+        q.admin_id,
+        q.question,
+        q.answer,
+        q.anscheck,
+        q.question_date,
+        q.answer_date,
+        P.pro_name,
+        P.pro_up_folder,
+        P.pro_img
+    FROM
+        qnaboard_tbl q
+    INNER JOIN
+        product_tbl p
+    ON
+        q.pro_num = p.pro_num
+    WHERE
+        ROWNUM <= (1 * 7)
+    );
+
+PRO_UP_FOLDER, PRO_IMG
+
+SELECT
+    qna_idx,
+    mbsp_id,
+    admin_id,
+    pro_num,
+    question,
+    answer,
+    anscheck,
+    question_date,
+    answer_date
+FROM
+    qnaboard_tbl;
+
+
+
+
+
+
+
+
+SELECT
+    pro_num,
+    cate_code,
+    pro_name,
+    pro_price,
+    pro_discount,
+    pro_publisher,
+    pro_content,
+    pro_up_folder,
+    pro_img,
+    pro_amount,
+    pro_buy,
+    pro_date,
+    pro_updatedate,
+    revcount
 
 
 COMMIT;

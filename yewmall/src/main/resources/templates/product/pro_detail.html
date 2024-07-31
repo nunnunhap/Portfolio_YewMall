@@ -83,7 +83,13 @@
           {{#each .}} 
             <tr>
               <th scope="row">{{qno}}</th>
-              <td>{{qcontent}}</td>
+              <td>
+                <span>
+                  {{qcontent}}
+                  <hr>
+                  {{ifAnswerExists reply_content}}
+                </span>
+              </td>
               <td>{{mbsp_id}}</td>
               <td>{{qnaConvertDate qregdate}}</td>
               <td>{{authQnaControlView mbsp_id qno}}</td>
@@ -166,7 +172,7 @@
       </div>
     </div>
 
-    <!-- 상품 구매 후기 등록 모달 -->
+    <!-- 상품 구매 후기 등록/수정 모달 -->
     <div class="modal fade" id="review_modal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -208,7 +214,7 @@
       </div>
     </div>
 
-        <!-- 상품 문의(Q&A) 등록 모달 -->
+        <!-- 상품 문의(Q&A) 등록/수정 모달 -->
         <div class="modal fade" id="qna_modal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -229,7 +235,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-                <button type="button" id="btn_qna_save" class="btn btn-primary" th:data-qno="${qno}">저장</button>
+                <button type="button" id="btn_qna_save" class="btn btn-primary" th:data-pro_num="${product.pro_num}">저장</button>
                 <button type="button" id="btn_qna_modify" class="btn btn-primary" th:data-qno="${qno}">수정</button>
               </div>
             </div>
@@ -652,6 +658,18 @@
           return `${year}/${month}/${date} ${hour} : ${minute}`;
         });
 
+        // 핸들바 함수 : 답변여부에 따라 관리자 답변 출력
+        Handlebars.registerHelper("ifAnswerExists", function(reply_content) {
+          let reply = "";
+          if(reply_content == null && reply_content != "") {
+            return reply;
+          }else {
+            reply += `<span class="badge badge-pill badge-info" style="font-size: 1em; padding: 0.3em 0.8em;">답변완료</span>${reply_content}`;
+          }
+
+          return new Handlebars.SafeString(reply);
+        });
+
         // 핸들바 함수 : 문의 작성자와 로그인된 사용자 일치 시 수정, 삭제 버튼 출력
         Handlebars.registerHelper("authQnaControlView", function(mbsp_id, qno) {
           // 로그인 하지 않은 상태로 직접 접근이 되지 않음.
@@ -665,7 +683,7 @@
           let str = "";
           if(loginVo != null && loginId == mbsp_id) {
             str += `<button type="button" name="btn_qna_edit" class="btn btn-link" data-qno="${qno}">수정</button>`;
-    				str += `<button type="button" name="btn_qna_delete" class="btn btn-link" data-qno="${qno}">삭제</button>`;
+            str += `<button type="button" name="btn_qna_delete" class="btn btn-link" data-qno="${qno}">삭제</button>`;
             
             return new Handlebars.SafeString(str); // .SafeString() : HTML을 적용해서 리턴하고 싶을 경우 사용
           }else {
@@ -687,6 +705,7 @@
           let pro_num = $(this).data("pro_num");
           let qcontent = $("#qcontent").val();
 
+          console.log("상품번호", pro_num);
           console.log("내용", qcontent);
 
           let qna_data = { // Javascript Object 문법
