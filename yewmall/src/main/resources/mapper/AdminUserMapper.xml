@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yewmall.basic.admin.user.AdminUserMapper">
+
+	<!-- 검색조건이 1) 목록 2) 총데이타 개수 공통사항 -->
+	<!-- 검색종류가 '아이디', '이름' -->
+	<sql id="criteria">
+		<trim prefix="(" suffix=") AND" prefixOverrides="OR">
+			<foreach collection="typeArr" item="type">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'I'.toString()">
+							mbsp_id like '%' || #{keyword} || '%'
+						</when>
+						<when test="type == 'N'.toString()">
+							mbsp_name like '%' || #{keyword} || '%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+	
+	<!-- 회원목록 -->
+	<select id="user_list" parameterType="Criteria" resultType="UserVo">
+		SELECT
+		    mbsp_id,
+			mbsp_name,
+			mbsp_email,
+			mbsp_zipcode,
+			mbsp_addr,
+			mbsp_deaddr,
+			mbsp_phone,
+			mbsp_nick,
+			mbsp_receive,
+			mbsp_point,
+			mbsp_lastlogin,
+			mbsp_createdate,
+			mbsp_updatedate,
+			sns_login_type
+		FROM (
+			SELECT /*+ INDEX_DESC(mbsp_tbl pk_mbsp_id)  */ 
+	        	ROWNUM AS RN,
+	        	mbsp_id,
+				mbsp_name,
+				mbsp_email,
+				mbsp_zipcode,
+				mbsp_addr,
+				mbsp_deaddr,
+				mbsp_phone,
+				mbsp_nick,
+				mbsp_receive,
+				mbsp_point,
+				mbsp_lastlogin,
+				mbsp_createdate,
+				mbsp_updatedate,
+				sns_login_type
+	    	FROM
+	        	mbsp_tbl
+	    	WHERE 
+			   <include refid="criteria"></include>
+			 <![CDATA[
+			   		ROWNUM <= (#{pageNum} * #{amount})   -- 페이지번호 * 페이지별 출력건수
+			 ]]>
+			)
+			WHERE
+				RN > (#{pageNum} - 1 ) * #{amount}
+	</select>
+	
+	<!-- 회원 목록 전체 데이터 개수(페이징) -->
+	<select id="getTotalCount" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			mbsp_tbl
+		WHERE
+			<include refid="criteria"></include>
+			mbsp_id IS NOT NULL
+	</select>
+	
+	<!-- 검색조건 : 제목/내용/한줄설명 중 해당 검색어 일치 여부 -->
+	<sql id="mailsearch">
+		<if test="keyword != null and keyword != ''">
+			AND
+				(m_title LIKE '%' || #{keyword} || '%'
+				OR m_explan LIKE '%' || #{keyword} || '%'
+				OR m_content LIKE '%' || #{keyword} || '%')
+		</if>
+	</sql>
+	
+	<!-- 메일발송 목록 -->
+	<select id="getMailInfoList" parameterType="Criteria" resultType="MailMngVo">
+		SELECT
+		    m_idx,
+		    m_title,
+		    m_explan,
+		    m_content,
+		    m_gubun,
+		    reg_date,
+		    admin_id,
+		    m_sendcount
+		FROM(
+			SELECT /*+ INDEX_DESC(mailmng_tbl pk_mailmng_idx) */
+				ROWNUM AS rn,
+				m_idx,
+			    m_title,
+			    m_explan,
+			    m_content,
+			    m_gubun,
+			    reg_date,
+			    admin_id,
+			    m_sendcount
+			FROM
+				mailmng_tbl
+			WHERE
+		<![CDATA[  		
+		   		ROWNUM <= (#{pageNum} * #{amount})
+		 ]]>
+		 		<include refid="mailsearch"></include>
+		)
+		WHERE 
+			rn > (#{pageNum} - 1 ) * #{amount}
+	</select>
+	
+	<!-- 메일발송 목록 전체 데이터 개수 -->
+	<select id="getMailListCount" parameterType="Criteria" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			mailmng_tbl
+		WHERE
+			1 = 1
+			<include refid="mailsearch"></include>
+	</select>
+	
+	<!-- 메일발송 폼 저장 -->
+	<insert id="mailingsave" parameterType="MailMngVo">
+		<selectKey keyProperty="m_idx" resultType="Integer" order="BEFORE">
+			SELECT
+				seq_mailmng_tbl.NEXTVAL
+			FROM
+				dual
+		</selectKey>
+		INSERT INTO
+			mailmng_tbl(
+				m_idx,
+				m_title,
+				m_explan,
+				m_content,
+				m_gubun,
+				admin_id
+			)
+		VALUES(
+			#{m_idx},
+			#{m_title},
+			#{m_explan},
+			#{m_content},
+			#{m_gubun},
+			#{admin_id}
+		)
+	</insert>
+	
+	<!-- 메일발송 폼 수정 저장-->
+	<update id="mailingmodify" parameterType="MailMngVo">
+		UPDATE
+			mailmng_tbl
+		SET
+			m_title = #{m_title},
+			m_explan = #{m_explan},
+			m_content = #{m_content},
+			m_gubun = #{m_gubun},
+			admin_id = #{admin_id}
+		WHERE
+			m_idx = #{m_idx}
+	</update>
+	
+	<!-- 저장된 메일발송 폼 불러오기 -->
+	<select id="mailingFormByIdx" parameterType="Integer" resultType="MailMngVo">
+		SELECT
+			m_idx,
+		    m_title,
+		    m_explan,
+		    m_content,
+		    m_gubun,
+		    reg_date,
+		    admin_id
+		FROM
+			mailmng_tbl
+		WHERE
+			m_idx = #{m_idx}
+	</select>
+	
+	<!-- 메일발송 폼 삭제 -->
+	<delete id="mailingdelete" parameterType="Integer">
+		DELETE FROM
+			mailmng_tbl
+		WHERE
+		    m_idx = #{m_idx}
+	</delete>
+
+	<!-- 메일 발송 대상 필터링 : SNS로그인 사용 여부 -->
+	<sql id="mailSendingUserFilteringSns">
+		<if test="sns_login_type != null">
+			<if test="sns_login_type == 'sns_login_yes'">
+				AND sns_login_type IS NOT NULL
+			</if>
+			<if test="sns_login_type == 'sns_login_no'">
+				AND sns_login_type IS NULL
+			</if>
+		</if>
+	</sql>
+
+	<!-- 메일 발송 대상 필터링 : 광고성 이메일 수신 동의 여부 -->
+	<sql id="mailSendingUserFilteringReceive">
+		<if test="mbsp_receive != null">
+			<if test="mbsp_receive == 'mbsp_receive_n'">
+				AND mbsp_receive = 'N'
+			</if>
+			<if test="mbsp_receive == 'mbsp_receive_y'">
+				AND mbsp_receive = 'Y'
+			</if>
+		</if>
+	</sql>
+
+	<!-- 필터링 적용된 메일발송대상 회원목록 -->
+	<select id="SendingMailUserList" parameterType="map" resultType="UserVo">
+		SELECT
+		    mbsp_id,
+			mbsp_name,
+			mbsp_email,
+			mbsp_phone,
+			mbsp_receive,
+			mbsp_lastlogin,
+			mbsp_createdate,
+			sns_login_type
+		FROM 
+        	mbsp_tbl
+    	WHERE
+    		1 = 1
+		   <include refid="mailSendingUserFilteringSns"></include>
+		   <include refid="mailSendingUserFilteringReceive"></include>
+	</select>
+
+	<!-- 발송횟수 업데이트 -->
+	<update id="mailSendCountUpdate" parameterType="int">
+		UPDATE
+			mailmng_tbl
+		SET
+			m_sendcount = m_sendcount + 1
+		WHERE
+			m_idx = #{m_idx}
+	</update>
+
+
+
+
+
+
+
+
+
+</mapper>

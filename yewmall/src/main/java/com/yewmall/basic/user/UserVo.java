@@ -25,5 +25,6 @@ public class UserVo {
 	private Date mbsp_lastlogin;
 	private Date mbsp_createdate;
 	private Date mbsp_updatedate;
+	private String sns_login_type;
 	
 }

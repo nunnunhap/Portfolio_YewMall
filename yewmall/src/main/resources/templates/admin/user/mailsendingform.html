@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+                xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+                layout:decorate="~{admin/layout/adminlayout}">
+
+  <th:block layout:fragment="content">
+    <script src="/vendor/ckeditor/ckeditor.js"></script>
+    <div class="section__content section__content--p30">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <strong>메일</strong> 미리보기
+              </div>
+              <div class="card-body card-block">
+                <form action="/admin/user/mailingsend" id="mailingform" method="post" enctype="multipart/form-data" class="form-horizontal">
+                  <div class="form-group row">
+                    <label for="m_title" class="col-md-2 form-control-label">제목</label>
+                    <div class="col-md-10">
+                      <p id="m_title" name="m_title" class="form-control" th:utext="${vo.m_title}"></p>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="m_content" class="col-md-2 form-control-label">내용</label>
+                    <div class="col-md-10">
+                      <p id="m_content" name="m_content" class="form-control" th:utext="${vo.m_content}"></p>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <div class="card-header">
+                <strong>메일</strong> 발송 고객 목록
+              </div>
+              <div class="card-body card-block">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="user-data m-b-30">
+                      <h3 class="title-3 m-b-30">
+                        <i class="zmdi zmdi-account-calendar"></i>회원 목록
+                      </h3>
+                      <div class="filters m-b-45">
+                        <form id="actionForm" action="/admin/user/mailsendingform" method="get">
+                          <div class="rs-select2--dark rs-select2--md m-r-10 rs-select2--border">
+                            <select class="js-select2 select2-hidden-accessible" name="sns_login_type" tabindex="-1" aria-hidden="true">
+                              <option value="" th:selected="${sns_login_type == null}">SNS 로그인 여부</option>
+                              <option value="sns_login_yes" th:selected="${sns_login_type == 'sns_login_yes'}">SNS사용</option>
+                              <option value="sns_login_no" th:selected="${sns_login_type == 'sns_login_no'}">SNS미사용</option>
+                            </select>
+                            <div class="dropDownSelect2"></div>
+                          </div>
+                          <div class="rs-select2--dark rs-select2--md m-r-10 rs-select2--border">
+                            <select class="js-select2 select2-hidden-accessible" name="mbsp_receive" tabindex="-1" aria-hidden="true">
+                              <option value="" th:selected="${mbsp_receive == null}">광고수신동의 여부</option>
+                              <option value="mbsp_receive_n" th:selected="${mbsp_receive == 'mbsp_receive_n'}">광고수신미동의</option>
+                              <option value="mbsp_receive_y" th:selected="${mbsp_receive == 'mbsp_receive_y'}">광고수신동의</option>
+                            </select>
+                            <div class="dropDownSelect2"></div>
+                          </div>
+                          <input type="hidden" th:value="${vo.m_idx}" name="m_idx">
+                          <button type="submit" id="filtering" class="btn btn-outline-primary">필터링</button>
+                        </form>
+                      </div>
+                      <div class="table-responsive table-data">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <td>
+                                <label class="au-checkbox">
+                                  <input type="checkbox" id="checkAll">
+                                  <span class="au-checkmark"></span>
+                                </label>
+                              </td>
+                              <td>이름 / 아이디</td>
+                              <td>이메일</td>
+                              <td>연락처</td>
+                              <td>광고수신동의</td>
+                              <td>최근 로그인</td>
+                              <td>가입일</td>
+                              <td>SNS로그인</td>
+                            </tr>
+                          </thead>
+                          <tbody th:each="user : ${user_list}" id="user_data">
+                            <tr>
+                              <td>
+                                <label class="au-checkbox">
+                                  <input type="checkbox" name="check" th:value="${user.mbsp_email}">
+                                  <span class="au-checkmark"></span>
+                                </label>
+                              </td>
+                              <td>[[${user.mbsp_name}]] / [[${user.mbsp_id}]]</td>
+                              <td>[[${user.mbsp_email}]]</td>
+                              <td>[[${user.mbsp_phone}]]</td>
+                              <td>[[${user.mbsp_receive}]]</td>
+                              <td th:text="${#dates.format(user.mbsp_lastlogin, 'yyyy-MM-dd')}"></td>
+                              <td th:text="${#dates.format(user.mbsp_createdate, 'yyyy-MM-dd')}"></td>
+                              <td th:text="${user.sns_login_type != null ? user.sns_login_type : 'X'}"></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <button type="button" id="btn_mail_list" class="btn btn-primary btn-sm"><a th:href="@{/admin/user/mailinglist}" style="color: inherit;">발송취소</a></button>
+                  <button type="button" id="btn_mail_send" class="btn btn-success btn-sm" th:data-idx="${vo.m_idx}">메일발송</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </th:block>
+  <th:block layout:fragment="script">
+    <script>
+      $(document).ready(function() {
+
+        // checkbox 선택하기
+        let isCheck = true;
+        $("#checkAll").on("click", function() {
+          $("input[name='check']").prop("checked", this.checked);
+          isCheck = this.checked;
+        });
+
+        // checkbox 상품목록에서 데이터행 선택하기
+        $("input[name='check']").on("click", function() {
+          $("#checkAll").prop("checked", this.checked);
+          $("input[name='check']").each(function() {
+            if(!$(this).is(":checked")) {
+              $("#checkAll").prop("checked", false);
+            }
+          });
+        });
+
+        // 메일 발송
+        $("#btn_mail_send").on("click", function() {
+          console.log("메일 발송 버튼 클릭");
+          if(!confirm("선택된 회원을 대상으로 이메일을 발송하시겠습니까?")) {
+            return;
+          }
+
+          let m_idx = $(this).data("idx"); // 발송할 메일 코드
+          let m_title = $("p[name='m_title']").html();
+          let m_content = $("p[name='m_content']").html();
+          let mbsp_email_arr = []; // 선택된 이메일이 저장될 배열
+
+          // 선택된 상태 접근
+          $("input[name='check']:checked").each(function() {
+            mbsp_email_arr.push($(this).val());
+          });
+          
+          console.log("m_idx", m_idx);
+          console.log("m_title", m_title);
+          console.log("m_content", m_content);
+          console.log("선택된 이메일", mbsp_email_arr);
+
+          $.ajax({
+            url : '/admin/user/mailingsend',
+            type : 'post',
+            data : {
+              m_idx : m_idx,
+              m_title : m_title,
+              m_content : m_content,
+              mbsp_email_arr : mbsp_email_arr
+            },
+            dataType : 'text',
+            success : function(result) {
+              if(result == 'success') {
+                alert("메일이 발송되었습니다.");
+                location.href="/admin/user/mailinglist";
+              }
+            }
+          });
+        });
+
+
+      }); // ready event end
+    </script>
+  </th:block>
+</html>

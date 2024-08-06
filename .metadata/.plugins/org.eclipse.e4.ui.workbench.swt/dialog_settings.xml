@@ -4,12 +4,12 @@
 		<item key="ShowViewDialog.STORE_SELECTED_VIEW_ID" value="org.eclipse.egit.ui.StagingView"/>
 		<item key="DIALOG_X_ORIGIN" value="424"/>
 		<item key="DIALOG_Y_ORIGIN" value="225"/>
-		<item key="DIALOG_WIDTH" value="400"/>
-		<item key="DIALOG_HEIGHT" value="479"/>
-		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+		<item key="DIALOG_WIDTH" value="320"/>
+		<item key="DIALOG_HEIGHT" value="437"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-24|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 		<list key="ShowViewDialog.STORE_EXPANDED_CATEGORIES_ID">
 			<item value="Git"/>
-			<item value="Java"/>
+			<item value="Version Control (Team)"/>
 		</list>
 	</section>
 </section>

@@ -90,9 +90,9 @@ public class AdminProductController {
 			String fileName = upload.getOriginalFilename(); // 업로드할 클라이언트 파일 이름
 			byte[] bytes = upload.getBytes(); // 업로드할 파일의 바이트 배열
 			
-			String ckUploadPath = uploadCKPath + fileName; // "C:\\Coding\\Study\\SpringStudy\\upload\\ckeditor\\" + "abc.jpg"
+			String ckUploadPath = uploadCKPath + fileName; // "C:\\Coding\\Portfolio\\upload\\ckeditor\\" + "abc.jpg"
 			
-			out = new FileOutputStream(ckUploadPath); // "C:\\Coding\\Study\\SpringStudy\\upload\\ckeditor\\abc.jpg" 파일생성 0byte
+			out = new FileOutputStream(ckUploadPath); // "C:\\Coding\\Portfolio\\upload\\ckeditor\\abc.jpg" 파일생성 0byte
 			
 			out.write(bytes); // 스트림 공간에 업로드할 파일의 바이트 배열을 채운 상태
 			out.flush(); // 스트림의 버퍼에 남아 있는 데이터를 실제 출력 대상으로 밀어내는(flush) 역할 -> 크기가 채워진 정상파일로 인식

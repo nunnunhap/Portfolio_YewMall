@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+                xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+                layout:decorate="~{admin/layout/adminlayout}">
+
+  <th:block layout:fragment="content">
+    <script src="/vendor/ckeditor/ckeditor.js"></script>
+    <div class="section__content section__content--p30">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <strong>메일발송</strong> Form
+              </div>
+              <div class="card-body card-block">
+                <form action="/admin/user/mailingsave" id="mailingform" method="post" enctype="multipart/form-data" class="form-horizontal">
+                  <div class="form-group row" th:if="${not #strings.isEmpty(vo.m_idx)}">
+                    <label for="m_idx" class="col-md-2 form-control-label">등록번호</label>
+                    <div class="col-md-4">
+                      <input type="text" id="m_idx" name="m_idx" class="form-control" th:value="${vo.m_idx}" readonly>
+                    </div>
+                    <label for="admin_id" class="col-md-2 form-control-label">작성자</label>
+                    <div class="col-md-4">
+                      <input type="text" id="admin_id" name="admin_id" class="form-control" th:value="${vo.admin_id}" readonly>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="m_gubun" class="col-md-2 form-control-label">구분</label>
+                    <div class="col-md-10">
+                      <input class="form-check-input" type="radio" name="m_gubun" id="gubun1" value="광고/이벤트" th:checked="${vo.m_gubun eq '광고/이벤트'}">
+                      <label for="m_gubun" class="col-md-2 form-control-label">광고/이벤트</label>
+                      <input class="form-check-input" type="radio" name="m_gubun" id="gubun2" value="일반" th:checked="${vo.m_gubun eq '일반'}">
+                      <label for="m_gubun" class="col-md-2 form-control-label">일반</label>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="m_title" class="col-md-2 form-control-label">메일링 제목</label>
+                    <div class="col-md-10">
+                      <input type="text" id="m_title" name="m_title" class="form-control" th:value="${vo.m_title}">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="m_explan" class="col-md-2 form-control-label">한줄설명</label>
+                    <div class="col-md-10">
+                      <input type="text" id="m_explan" name="m_explan" class="form-control" th:value="${vo.m_explan}">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="m_content" class="col-md-2 form-control-label">메일링 내용</label>
+                    <div class="col-md-10">
+                      <textarea id="m_content" name="m_content" rows="20" class="form-control" th:text="${vo.m_content}"></textarea>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <button type="button" id="btn_mail_list" class="btn btn-primary btn-sm">메일목록</button>
+                    <button th:if="${#strings.isEmpty(vo.m_idx)}" type="submit" id="btn_mail_save" class="btn btn-success btn-sm">메일저장</button>
+                    <button th:if="${not #strings.isEmpty(vo.m_idx)}" type="button" id="btn_mail_modify" class="btn btn-warning btn-sm">메일수정</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </th:block>
+          
+  <th:block layout:fragment="script">
+    <script th:inline="javascript">
+      let msg = [[${msg}]];
+      if(msg == 'save') {
+        alert("메일발송 폼이 저장되었습니다.");
+      } else if(msg == 'modify') {
+        alert("메일발송 폼이 수정되었습니다.");
+      }
+    </script>
+    <script>
+      $(document).ready(function() {
+        let mailingform = $("#mailingform");
+
+        // ckeditor 환경설정. 자바스크립트 Ojbect문법
+        var ckeditor_config = {
+          resize_enabled : true,
+          enterMode : CKEDITOR.ENTER_BR,
+          shiftEnterMode : CKEDITOR.ENTER_P,
+          toolbarCanCollapse : true,
+          removePlugins : "elementspath",
+          // 업로드 탭기능추가 속성. CKEditor에서 파일업로드해서 서버로 전송 시 해당 주소 동작
+          filebrowserUploadUrl: '/admin/user/imageupload' // 경로 주의할 것
+        }
+        CKEDITOR.replace("m_content", ckeditor_config);
+
+        // 메일목록 버튼
+        $("#btn_mail_list").on("click", function() {
+          location.href = "/admin/user/mailinglist";
+        });
+
+        // 메일 폼 수정
+        $("#btn_mail_modify").on("click", function() {
+          mailingform.attr("action", "/admin/user/mailingmodify");
+          mailingform.submit();
+        });
+
+      }); // ready event end
+    </script>
+  </th:block>
+</html>

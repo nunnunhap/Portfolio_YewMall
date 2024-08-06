@@ -22,30 +22,24 @@ CREATE TABLE MBSP_TBL(
         MBSP_POINT          NUMBER DEFAULT 2000    NOT NULL,
         MBSP_LASTLOGIN      DATE                   NULL,
         MBSP_CREATEDATE     DATE DEFAULT SYSDATE   NOT NULL,
-        MBSP_UPDATEDATE     DATE DEFAULT SYSDATE   NOT NULL
+        MBSP_UPDATEDATE     DATE DEFAULT SYSDATE   NOT NULL,
+        SNS_LOGIN_TYPE      VARCHAR2(10), -- SNS 로그인 타입
+        
+        CONSTRAINT PK_MBSP_ID PRIMARY KEY (MBSP_ID)
 );
-
-ALTER TABLE MBSP_TBL
-ADD CONSTRAINT PK_MBSP_ID PRIMARY KEY (MBSP_ID);
-
--- SNS 로그인 타입
-ALTER TABLE MBSP_TBL
-ADD SNS_LOGIN_TYPE VARCHAR2(10);
-
-
+mbsp_id, mbsp_name, mbsp_email, mbsp_password, mbsp_zipcode, mbsp_addr, mbsp_deaddr, mbsp_phone, mbsp_nick, mbsp_receive, mbsp_point, mbsp_lastlogin, mbsp_createdate, mbsp_updatedate, sns_login_type
+mbsp_tbl
+pk_mbsp_id
 -- 1.1. SNS테이블 추가
 DROP TABLE SNS_USER_TBL;
 CREATE TABLE SNS_USER_TBL (
     SNS_TYPE    VARCHAR2(10)    NOT NULL,
     ID          VARCHAR2(100),
     NAME        VARCHAR2(50)    NOT NULL,
-    EMAIL       VARCHAR2(100)   NOT NULL
+    EMAIL       VARCHAR2(100)   NOT NULL,
+    
+    CONSTRAINT PK_SNS_ID PRIMARY KEY (ID)
 );
-
-ALTER TABLE SNS_USER_TBL
-ADD CONSTRAINT PK_SNS_ID PRIMARY KEY (ID);
-
-COMMIT;
 
 
 --2.카테고리 테이블
@@ -53,11 +47,11 @@ DROP TABLE CATEGORY_TBL;
 CREATE TABLE CATEGORY_TBL(
         CATE_CODE            NUMBER,    -- 카테고리 코드
         CATE_PRECODE         NUMBER    NULL,           -- 상위카테고리 코드
-        CATE_NAME            VARCHAR2(50)    NOT NULL
+        CATE_NAME            VARCHAR2(50)    NOT NULL,
+        
+        CONSTRAINT PK_CATE_CODE PRIMARY KEY (CATE_CODE)
 );
 
-ALTER TABLE CATEGORY_TBL
-ADD CONSTRAINT PK_CATE_CODE PRIMARY KEY (CATE_CODE);
 
 ALTER TABLE CATEGORY_TBL
 ADD CONSTRAINTS FK_CATEGORY_PCODE
@@ -144,44 +138,21 @@ CREATE TABLE PRODUCT_TBL(
         PRO_AMOUNT          NUMBER                  NOT NULL,
         PRO_BUY             CHAR(1)                 NOT NULL, -- 'Y' or 'N'
         PRO_DATE            DATE DEFAULT SYSDATE    NOT NULL,
-        PRO_UPDATEDATE      DATE DEFAULT SYSDATE    NOT NULL
+        PRO_UPDATEDATE      DATE DEFAULT SYSDATE    NOT NULL,
+        revcount NUMBER DEFAULT 0,
+        
+        CONSTRAINTS PK_PRO_NUM PRIMARY KEY(PRO_NUM)
 );
 
-ALTER TABLE product_tbl
-ADD revcount NUMBER DEFAULT 0;
-
 ALTER TABLE product_tbl DROP COLUMN revcount;
+
+CREATE SEQUENCE SEQ_PRO_NUM;
 
 COMMIT;
 
 
-SELECT
-    pro_num,
-    cate_code,
-    pro_name,
-    pro_price,
-    pro_discount,
-    pro_publisher,
-    pro_content,
-    pro_up_folder,
-    pro_img,
-    pro_amount,
-    pro_buy,
-    pro_date,
-    pro_updatedate
-FROM
-    product_tbl;
-
-
 INSERT INTO PRODUCT_TBL (pro_num, CATE_CODE, PRO_NAME, PRO_PRICE, PRO_DISCOUNT, PRO_PUBLISHER, PRO_CONTENT, PRO_UP_FOLDER, PRO_IMG, PRO_AMOUNT, PRO_BUY)
 VALUES (seq_pro_num.nextval, 15, '미니언', 300, 30, '미니언기획', '<img alt="" src="/admin/product/display/minion.jpg" style="height:168px; width:300px" />', '2024\07\07', 'b56b1da8-4022-46bf-a60b-b972ed188cc5_minion.jpg', 1, 'N');
-commit;
-SELECT
-    cate_code,
-    cate_precode,
-    cate_name
-FROM
-    category_tbl;
     
 INSERT INTO PRODUCT_TBL(pro_num, CATE_CODE, PRO_NAME, PRO_PRICE, PRO_DISCOUNT, PRO_PUBLISHER, PRO_CONTENT, PRO_UP_FOLDER, PRO_IMG, PRO_AMOUNT, PRO_BUY)
 VALUES (seq_pro_num.nextval, 8, '원피스2', 35123, 38, '영쓰상상', '<img alt="" src="/admin/product/display/d751788979b54148834c3882ee0ee6d5_20230919153227.jpg" style="height:700px; width:700px" /><br /><br />
@@ -191,53 +162,8 @@ INSERT INTO PRODUCT_TBL(pro_num, CATE_CODE, PRO_NAME, PRO_PRICE, PRO_DISCOUNT, P
 VALUES (seq_pro_num.nextval, 8, '롱원피스1', 98765, 60, '영쓰상상', '<img alt="" src="/admin/product/display/d751788979b54148834c3882ee0ee6d5_20230919153227.jpg" style="height:700px; width:700px" /><br /><br />
 안녕? 이것은 원피스야~! 반가워!!!!', '2024\07\11', 'b56b1da8-4022-46bf-a60b-b972ed188cc5_minion.jpg', 50, 'Y');
 
-COMMIT;
-
-SELECT /*+ INDEX_DESC(product_tbl PK_PRO_NUM)  */ 
-    ROWNUM AS RN,
-    pro_num,
-    cate_code, 
-    pro_name, 
-    pro_price, 
-    pro_discount, 
-    pro_publisher, 
-    pro_content, 
-    pro_up_folder, 
-    pro_img, 
-    pro_amount, 
-    pro_buy
-FROM
-    product_tbl
-WHERE 
-    pro_buy = 'Y';
-
-
-    
-SELECT
-    pro_num,
-    cate_code,
-    pro_name,
-    pro_price,
-    pro_discount,
-    pro_publisher,
-    pro_content,
-    pro_up_folder,
-    pro_img,
-    pro_amount,
-    pro_buy,
-    pro_date,
-    pro_updatedate
-FROM
-    product_tbl;
-
-
-
 -- 상품마다 이미지가 여러개인 경우 이미지테이블 별도 생성
-CREATE SEQUENCE SEQ_PRO_NUM;
 
-ALTER TABLE PRODUCT_TBL
-ADD CONSTRAINTS PK_PRO_NUM
-PRIMARY KEY(PRO_NUM);
 
 ALTER TABLE PRODUCT_TBL
 ADD CONSTRAINTS FK_PRODUCT_PCODE
@@ -253,26 +179,13 @@ CREATE TABLE CART_TBL(
         PRO_NUM         NUMBER          NOT NULL,
         MBSP_ID         VARCHAR2(15)    NOT NULL,
         CART_AMOUNT     NUMBER          NOT NULL,
-        CART_DATE       DATE            DEFAULT SYSDATE
+        CART_DATE       DATE            DEFAULT SYSDATE,
+        
+        CONSTRAINTS PK_CART_CODE PRIMARY KEY(CART_CODE)
 );
 
 CREATE SEQUENCE SEQ_CART_CODE;
 
-ALTER TABLE CART_TBL
-ADD CONSTRAINTS PK_CART_CODE
-PRIMARY KEY(CART_CODE);
-pk_cart_code
-seq_cart_code
-
-SELECT
-    cart_code,
-    pro_num,
-    mbsp_id,
-    cart_amount,
-    cart_date
-FROM
-    cart_tbl;
-COMMIT;
 
 ALTER TABLE CART_TBL
 ADD CONSTRAINTS FK_CART_PRO_NUM
@@ -283,52 +196,6 @@ ALTER TABLE CART_TBL
 ADD CONSTRAINTS FK_CART_MBSP_ID
 FOREIGN KEY(MBSP_ID)
 REFERENCES MBSP_TBL(MBSP_ID);
-
-
-SELECT
-    cart_code,
-    pro_num,
-    mbsp_id,
-    cart_amount,
-    cart_date
-FROM
-    cart_tbl;
-
-SELECT
-    pro_num,
-    cate_code,
-    pro_name,
-    pro_price,
-    pro_discount,
-    pro_publisher,
-    pro_content,
-    pro_up_folder,
-    pro_img,
-    pro_amount,
-    pro_buy,
-    pro_date,
-    pro_updatedate
-FROM
-    product_tbl;
-    
-
-SELECT
-    c.cart_code,
-    c.pro_num,
-    c.mbsp_id,
-    c.cart_amount,
-    p.pro_up_folder,
-    p.pro_img,
-    p.pro_price,
-    p.pro_name
-FROM
-    cart_tbl c
-INNER JOIN
-    product_tbl p
-ON
-    c.pro_num = p.pro_num
-WHERE
-    c.mbsp_id = #{mbsp_id}
 
 
 
@@ -343,34 +210,17 @@ CREATE TABLE ORDER_TBL(
         ORD_TEL             VARCHAR2(20)            NOT NULL,
         ORD_PRICE           NUMBER                  NOT NULL, -- 총주문금액. 선택
         ORD_DESC            VARCHAR2(300)           NULL, -- 주문 시 요청사항
-        ORD_REGDATE         DATE DEFAULT SYSDATE    NOT NULL
+        ORD_REGDATE         DATE DEFAULT SYSDATE    NOT NULL,
+        ORD_ADMIN_MEMO VARCHAR2(100),
+        
+        CONSTRAINTS PK_ORD_CODE PRIMARY KEY(ORD_CODE)
 );
 
 CREATE SEQUENCE seq_ord_code;
 
-ALTER TABLE ORDER_TBL
-ADD CONSTRAINTS PK_ORD_CODE
-PRIMARY KEY(ORD_CODE);
--- 컬럼 추가
-ALTER TABLE ORDER_TBL
-ADD ORD_ADMIN_MEMO VARCHAR2(100);
 
 COMMIT;
 
-SELECT
-    ord_code,
-    mbsp_id,
-    ord_name,
-    ord_addr_zipcode,
-    ord_addr_basic,
-    ord_addr_detail,
-    ord_tel,
-    ord_price,
-    ord_desc,
-    ord_regdate,
-    ord_admin_memo
-FROM
-    order_tbl;
 
 
 ALTER TABLE ORDER_TBL
@@ -383,23 +233,10 @@ CREATE TABLE ORDETAIL_TBL(
         ORD_CODE        NUMBER      NOT NULL,
         PRO_NUM         NUMBER      NOT NULL,
         DT_AMOUNT       NUMBER      NOT NULL,
-        DT_PRICE        NUMBER      NOT NULL  -- 단위별 가격
+        DT_PRICE        NUMBER      NOT NULL,  -- 단위별 가격
+        CONSTRAINTS PK_ORDETAIL_CODE_NUM PRIMARY KEY(ORD_CODE ,PRO_NUM)
 );
 
-INSERT INTO ordetail_tbl (
-    ord_code,
-    pro_num,
-    dt_amount,
-    dt_price
-) VALUES (
-    :v0,
-    :v1,
-    :v2,
-    :v3
-);
-ALTER TABLE ORDETAIL_TBL
-ADD CONSTRAINTS PK_ORDETAIL_CODE_NUM
-PRIMARY KEY(ORD_CODE ,PRO_NUM);
 
 ALTER TABLE ORDETAIL_TBL
 ADD CONSTRAINTS FK_ORDETAIL_CODE
@@ -420,7 +257,9 @@ CREATE TABLE REVIEW_TBL(
         REV_TITLE       VARCHAR2(50)               NOT NULL,
         REV_CONTENT     VARCHAR2(200)              NOT NULL,
         REV_RATE        NUMBER                     NOT NULL,
-        REV_REGDATE     DATE DEFAULT SYSDATE
+        REV_REGDATE     DATE DEFAULT SYSDATE,
+        
+        CONSTRAINTS PK_REVIEW_CODE PRIMARY KEY(REV_CODE)
 );
 
 
@@ -428,9 +267,6 @@ CREATE TABLE REVIEW_TBL(
 DROP SEQUENCE seq_rev_code;
 CREATE SEQUENCE seq_rev_code;
 
-ALTER TABLE REVIEW_TBL
-ADD CONSTRAINTS PK_REVIEW_CODE
-PRIMARY KEY(REV_CODE);
 
 INSERT INTO review_tbl(
     rev_code,
@@ -451,18 +287,6 @@ VALUES(
 
 COMMIT;
 
-
-
-SELECT
-    rev_code,
-    mbsp_id,
-    pro_num,
-    rev_title,
-    rev_content,
-    rev_rate,
-    rev_regdate
-FROM
-    review_tbl;
 
 
 ALTER TABLE REVIEW_TBL
@@ -489,17 +313,16 @@ ADD CONSTRAINTS PK_BOARD_BRD_NUM
 PRIMARY KEY(BRD_NUM);
 
 COMMIT;
+
 --9.관리자(ADMIN)테이블
 DROP TABLE ADMIN_TBL;
 CREATE TABLE ADMIN_TBL (
     ADMIN_ID    VARCHAR2(15),
     ADMIN_PW    CHAR(60)        NOT NULL,
-    ADMIN_VISIT_DATE    DATE    DEFAULT SYSDATE NOT NULL
+    ADMIN_VISIT_DATE    DATE    DEFAULT SYSDATE NOT NULL,
+    
+    CONSTRAINTS PK_ADMIN_ID PRIMARY KEY(ADMIN_ID)
 );
-
-ALTER TABLE ADMIN_TBL
-ADD CONSTRAINTS PK_ADMIN_ID
-PRIMARY KEY(ADMIN_ID);
 
 INSERT INTO ADMIN_TBL
     (ADMIN_ID, ADMIN_PW)
@@ -535,30 +358,16 @@ CREATE TABLE qnaboard_tbl(
     answer      VARCHAR2(1000)  NULL,
     anscheck    CHAR(1)         DEFAULT 'N',
     question_date   DATE DEFAULT SYSDATE    NOT NULL,
-    answer_date DATE
+    answer_date DATE,
+    
+    CONSTRAINTS pk_qna_idx PRIMARY KEY (qna_idx)
 );
 
 DROP SEQUENCE seq_qno;
 CREATE SEQUENCE seq_qna_idx;
 
-ALTER TABLE qnaboard_tbl
-ADD CONSTRAINTS pk_qna_idx
-PRIMARY KEY (qna_idx);
-
 COMMIT;
 
-SELECT
-    qna_idx,
-    mbsp_id,
-    admin_id,
-    pro_num,
-    question,
-    answer,
-    anscheck,
-    question_date,
-    answer_date
-FROM
-    qnaboard_tbl;
 
 
 ALTER TABLE QNA_TBL
@@ -583,54 +392,58 @@ CREATE TABLE PAYINFO (
     PAYINFO     VARCHAR2(100)   NULL, -- 은행/ 계좌번호/ 예금주
     P_PRICE     NUMBER  NOT NULL,
     P_STATUS    VARCHAR2(10)    NOT NULL, -- 완납/미납
-    P_DATE      DATE    DEFAULT SYSDATE
+    P_DATE      DATE    DEFAULT SYSDATE,
+    
+    CONSTRAINTS PK_PAYINFO_IDX PRIMARY KEY (P_ID)
 );
-
-ALTER TABLE PAYINFO
-ADD CONSTRAINTS PK_PAYINFO_IDX
-PRIMARY KEY (P_ID);
 
 CREATE SEQUENCE seq_payinfo_id;
 
 ALTER TABLE PAYINFO ADD CONSTRAINT FK_PAYINFO_ORD_CODE
 FOREIGN KEY (ORD_CODE) REFERENCES ORDER_TBL(ORD_CODE);
 
+-- 13. 메일발송
+DROP TABLE mailmng_tbl;
+CREATE TABLE mailmng_tbl (
+    m_idx          NUMBER,
+    m_title         VARCHAR2(200)      NOT NULL,
+    m_explan     VARCHAR2(300),
+    m_content    VARCHAR2(4000)      NOT NULL,
+    m_gubun     VARCHAR2(30)      NOT NULL, -- 광고/이벤트 OR 일반
+    reg_date      DATE    DEFAULT SYSDATE,
+    admin_id      VARCHAR2(15) NOT NULL,
+    
+    m_sendcount NUMBER  DEFAULT 0,
+    
+    CONSTRAINTS pk_mailmng_idx PRIMARY KEY (m_idx)
+);
+
+CREATE SEQUENCE seq_mailmng_tbl;
+
 SELECT
-    p_id,
-    ord_code,
-    mbsp_id,
-    paymethod,
-    payinfo,
-    p_price,
-    p_status,
-    p_date
+    m_idx,
+    m_title,
+    m_explan,
+    m_content,
+    m_gubun,
+    reg_date,
+    admin_id,
+    m_sendcount
 FROM
-    payinfo;
+    mailmng_tbl;
+DELETE FROM mailmng_tbl
+WHERE
+    m_idx = :v0
+    AND m_title = :v1
+    AND m_explan = :v2
+    AND m_content = :v3
+    AND m_gubun = :v4
+    AND reg_date = :v5
+    AND admin_id = :v6
+    AND m_sendcount = :v7;
 
 
-
-
-SELECT
-    q.qna_idx,
-    q.mbsp_id,
-    q.admin_id,
-    q.question,
-    q.answer,
-    q.anscheck,
-    q.question_date,
-    q.answer_date,
-    p.pro_name,
-    p.pro_up_folder,
-    p.pro_img
-FROM
-    qnaboard_tbl q
-INNER JOIN
-    product_tbl p
-ON
-    q.pro_num = p.pro_num;
-
-
-
+m_idx, m_title, m_content, m_gubun, reg_date, admin_id,
 
 SELECT
     qna_idx,
@@ -706,5 +519,80 @@ SELECT
     pro_updatedate,
     revcount
 
+
+
+
+
+
+
+
+-- 인덱스 힌트 위치가 바뀌면 정렬기준이 바뀌는데, 이번 건은 테이블 기준으로 1: 다 관계라서 뒤바꿨을 때 작동하지 않음.
+-- 1) 이걸로 사용하자. 동작시켰을 때 이게 조금 더 시간 초가 짧다.
+SELECT /*+ USE_NL(q,p) INDEX_DESC(q pk_qna_idx) INDEX_DESC(p pk_pro_num) */
+    ROWNUM AS rn,
+    q.qna_idx,
+    q.mbsp_id,
+    q.admin_id,
+    q.question,
+    q.answer,
+    q.anscheck,
+    q.question_date,
+    q.answer_date,
+    p.pro_name,
+    p.pro_up_folder,
+    p.pro_img
+FROM
+    qnaboard_tbl q
+INNER JOIN
+    product_tbl p
+ON
+    q.pro_num = p.pro_num;
+
+-- 2)
+-- 총 주문금액 같은거 join 쓰지 말고 아래 사용
+SELECT /*+ INDEX_DESC(q pk_qna_idx) */
+    ROWNUM AS rn,
+    q.qna_idx,
+    q.mbsp_id,
+    q.admin_id,
+    q.question,
+    q.answer,
+    q.anscheck,
+    q.question_date,
+    q.answer_date,
+    (
+        SELECT
+            p.pro_img
+        FROM
+            product_tbl p
+        WHERE
+            q.pro_num = p.pro_num
+    ),
+        (
+        SELECT
+            p.pro_name
+        FROM
+            product_tbl p
+        WHERE
+            q.pro_num = p.pro_num
+    ),
+        (
+        SELECT
+            p.pro_up_folder
+        FROM
+            product_tbl p
+        WHERE
+            q.pro_num = p.pro_num
+    )
+    
+FROM
+    qnaboard_tbl q;
+    
+    
+    
+    
+    
+    
+    
 
 COMMIT;
