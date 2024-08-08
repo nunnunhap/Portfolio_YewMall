@@ -50,14 +50,6 @@ public class AdminQnaService {
 	
 	// Q&A 일괄 삭제
 	void qna_delete_all(List<Long> qna_idx_arr) {
-		List<QnaVo> qna_delete_list = new ArrayList<>();
-		
-		for(int i = 0; i < qna_idx_arr.size(); i++) {
-			QnaVo qnaVo = new QnaVo(qna_idx_arr.get(i));
-			qna_delete_list.add(qnaVo);
-		}
-		log.info("서비스일괄삭제리스트 : " + qna_delete_list);
-		
 		adminQnaMapper.qna_delete_all(qna_idx_arr);
 	}
 	

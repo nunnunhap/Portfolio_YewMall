@@ -483,44 +483,51 @@ FROM(
 
 PRO_UP_FOLDER, PRO_IMG
 
+
+
+
 SELECT
-    qna_idx,
+    rev_code,
     mbsp_id,
-    admin_id,
     pro_num,
-    question,
-    answer,
-    anscheck,
-    question_date,
-    answer_date
+    rev_title,
+    rev_content,
+    rev_rate,
+    rev_regdate
 FROM
-    qnaboard_tbl;
+    review_tbl;
 
+SELECT /*+ USE_NL(r,p) INDEX_DESC(r pk_review_code) INDEX_DESC(p pk_pro_num) */
+    ROWNUM AS rn,
+    r.rev_code,
+    r.mbsp_id,
+    r.pro_num,
+    r.rev_title,
+    r.rev_content,
+    r.rev_rate,
+    r.rev_regdate,
+    p.pro_name,
+    p.pro_up_folder,
+    p.pro_img
+FROM
+    review_tbl r
+INNER JOIN
+    product_tbl p
+ON
+    r.pro_num = p.pro_num
+WHERE
+    mbsp_id = 'user01';
 
-
-
-
-
-
-
-SELECT
-    pro_num,
-    cate_code,
-    pro_name,
-    pro_price,
-    pro_discount,
-    pro_publisher,
-    pro_content,
-    pro_up_folder,
-    pro_img,
-    pro_amount,
-    pro_buy,
-    pro_date,
-    pro_updatedate,
-    revcount
-
-
-
+r.REV_CODE,
+r.MBSP_ID,
+r.PRO_NUM,
+r.REV_TITLE,
+r.REV_CONTENT,
+r.REV_RATE,
+r.REV_REGDATE,
+p.PRO_NAME,
+p.PRO_UP_FOLDER,
+p.PRO_IMG
 
 
 

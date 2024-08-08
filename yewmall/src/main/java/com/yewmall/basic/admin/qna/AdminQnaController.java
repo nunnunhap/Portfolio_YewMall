@@ -43,6 +43,7 @@ public class AdminQnaController {
 		cri.setAmount(Constants.ADMIN_QNALIST_AMOUNT);
 		
 		List<Map<String, Object>> qna_list = adminQnaService.qna_list(cri);
+		log.info("리스트 : " + qna_list);
 		int totalCount = adminQnaService.getTotalCount(cri);
 		
 		qna_list.forEach(vo -> {
@@ -103,7 +104,7 @@ public class AdminQnaController {
 		return entity;
 	}
 	
-	// qna 삭제하기
+	// qna 일괄 삭제하기
 	@PostMapping("qna_delete_all")
 	public ResponseEntity<String> qna_delete_all(
 			@RequestParam("qna_idx_arr") List<Long> qna_idx_arr) throws Exception {

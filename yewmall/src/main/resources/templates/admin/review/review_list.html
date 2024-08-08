@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+                xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+                layout:decorate="~{admin/layout/adminlayout}">
+
+  <th:block layout:fragment="content">
+  <style>
+      /* 별 평점 클릭 시 스타일 */
+			td[name='star_rev_rate'] a.rev_rate_modify.on {
+				color: red;
+			}
+  </style>
+
+    <div class="section__content section__content--p30">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="title-5 m-b-35">상품구매후기 리스트</h3>
+            
+            <div class="table-data__tool">
+              <div class="table-data__tool-left">
+                <div class="rs-select2--light rs-select2--md">
+                  <form id="searchForm" th:action="@{/admin/review/review_list}" method="get" style="display: flex; align-items: center;">
+                    <select name="type" style="margin-right: 10px;">
+                      <option value="" th:selected="${pageMaker.cri.type == ''}" class="au-btn-filter">필터선택</option>
+                      <option value="I" th:selected="${pageMaker.cri.type == 'I'}">작성자명</option>
+                      <option value="T" th:selected="${pageMaker.cri.type == 'T'}">후기제목</option>
+                      <option value="C" th:selected="${pageMaker.cri.type == 'C'}">후기내용</option>
+                      <option value="TC" th:selected="${pageMaker.cri.type == 'TC'}">후기제목 및 내용</option>
+                    </select>
+
+                    <input type="text" name="keyword" th:value="${pageMaker.cri.keyword}" style="margin-right: 10px;">
+                    <input type="hidden" name="pageNum" th:value="1">
+                    <input type="hidden" name="amount" th:value="${pageMaker.cri.amount}">
+
+                    <select name="rev_rate" style="margin-right: 10px;">
+                      <option value="" th:selected="${rev_rate == ''}" class="au-btn-filter">별점선택</option>
+                      <option value="1" th:selected="${rev_rate == 1}" class="au-btn-filter">★☆☆☆☆</option>
+                      <option value="2" th:selected="${rev_rate == 2}" class="au-btn-filter">★★☆☆☆</option>
+                      <option value="3" th:selected="${rev_rate == 3}" class="au-btn-filter">★★★☆☆</option>
+                      <option value="4" th:selected="${rev_rate == 4}" class="au-btn-filter">★★★★☆</option>
+                      <option value="5" th:selected="${rev_rate == 5}" class="au-btn-filter">★★★★★</option>
+                    </select>
+
+                    <button type="submit" id="search" class="btn btn-primary">검색</button>
+                  </form>
+                </div>
+              </div>
+              <div class="table-data__tool-right">
+                <button class="au-btn au-btn-icon btn btn-danger au-btn--small" name="btn_rev_delete">
+                  <i class="fa fa-minus"></i>일괄삭제
+                </button>
+              </div>
+            </div>
+            <div class="table-data__tool">
+              <div class="table-responsive table-responsive-data2">
+                <table class="table table-data2">
+                  <thead>
+                    <tr>
+                      <th th:style="${'width: 2%'}">
+                        <label class="au-checkbox">
+                          <input type="checkbox" id="checkAll">
+                          <span class="au-checkmark"></span>
+                        </label>
+                      </th>
+                      <th th:style="${'width: 5%'}">No</th>
+                      <th th:style="${'width: 5%'}">작성자</th>
+                      <th th:style="${'width: 15%'}">상품정보</th>
+                      <th th:style="${'width: 15%'}">제목</th>
+                      <th th:style="${'width: 23%'}">내용</th>
+                      <th th:style="${'width: 5%'}">별점</th>
+                      <th th:style="${'width: 10%'}">작성일</th>
+                      <th th:style="${'width: 10%'}">관리</th>
+                    </tr>
+                  </thead>
+                  <tbody th:each="review : ${rev_list}">
+                    <tr class="spacer">
+                      <td colspan="9"></td>
+                    </tr>
+                    <tr class="tr-shadow">
+                      <td>
+                        <label class="au-checkbox">
+                          <input type="checkbox" name="check" th:value="${review['REV_CODE']}">
+                          <span class="au-checkmark"></span>
+                        </label>
+                      </td>
+                      <td th:text="${review['REV_CODE']}"></td>
+                      <td th:text="${review['MBSP_ID']}"></td>
+                      <td>
+                          <img th:src="${'/admin/review/image_display?dateFolderName=' + review['PRO_UP_FOLDER'] + '&fileName=s_' + review['PRO_IMG']}">
+                          <br>
+                          <span th:text="${review['PRO_NAME']}"></span>
+                      </td>
+                      <td>
+                        <input th:value="${review['REV_TITLE']}" readonly class="review_edit">
+                      </td>
+                      <td>
+                        <textarea th:text="${review['REV_CONTENT']}" readonly class="review_edit"></textarea>
+                      </td>
+                      <td name="star_rev_rate">
+                        <a class="rev_rate" th:if="${review['REV_RATE'] == 1}" th:data-rev_rate="1">★☆☆☆☆</a>
+                        <a class="rev_rate" th:if="${review['REV_RATE'] == 2}" th:data-rev_rate="2">★★☆☆☆</a>
+                        <a class="rev_rate" th:if="${review['REV_RATE'] == 3}" th:data-rev_rate="3">★★★☆☆</a>
+                        <a class="rev_rate" th:if="${review['REV_RATE'] == 4}" th:data-rev_rate="4">★★★★☆</a>
+                        <a class="rev_rate" th:if="${review['REV_RATE'] == 5}" th:data-rev_rate="5">★★★★★</a>
+                      </td>
+                      <td th:text="${#dates.format(review['REV_REGDATE'], 'yyyy-MM-dd')}"></td>
+                      <td>
+                        <button type="button" class="btn btn-warning" name="btn_rev_modify" th:data-rev_code="${review['REV_CODE']}">수정</button>
+                        <button type="button" class="btn btn-danger" name="btn_rev_delete" th:data-rev_code="${review['REV_CODE']}">삭제</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="table-data__tool justify-content-center">
+              <div class="box-footer clearfix">
+                <div class="row">
+                  <div class="col-md-4">
+                    <form id="actionForm" action="" method="get">
+                      <input type="hidden" name="pageNum" id="pageNum" th:value="${pageMaker.cri.pageNum}">
+                      <input type="hidden" name="amount"  id="amount" th:value="${pageMaker.cri.amount}">
+                      <input type="hidden" name="type" id="type" th:value="${pageMaker.cri.type}">
+                      <input type="hidden" name="keyword" id="keyword" th:value="${pageMaker.cri.keyword}">
+                      <input type="hidden" name="rev_rate" id="rev_rate" th:value="${rev_rate}">
+                    </form>
+                  </div>
+                  <div class="col-md-6 text-center">
+                    <nav aria-label="...">
+                      <ul class="pagination">
+                        <!-- 이전 표시여부 -->
+                        <th:block th:if="${pageMaker.prev}">
+                          <li class="page-item">
+                            <a th:href="${pageMaker.startPage - 1}" class="page-link movepage">이전</a>
+                          </li>
+                        </th:block>
+                        <!-- 페이지 번호 -->
+                        <th:block th:with="pageMaker = ${pageMaker}">
+                          <th:block th:each="num : *{#numbers.sequence(pageMaker.startPage, pageMaker.endPage)}">
+                            <li class='page-item' th:classappend="${pageMaker.cri.pageNum ==  num ? 'active': '' }" aria-current="page">
+                              <a class="page-link movepage" th:href="${num}" th:text="${num}"></a>
+                            </li>
+                          </th:block>
+                        </th:block>
+                        <!--  다음 표시여부 -->
+                        <th:block th:if="${pageMaker.next}">
+                          <li class="page-item">
+                            <a th:href="${pageMaker.endPage + 1}" class="page-link movepage">다음</a>
+                          </li>
+                        </th:block>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </th:block>
+  <th:block layout:fragment="script">
+    <script>
+      $(document).ready(function() {
+        let actionForm = $("#actionForm");
+
+        // 페이지 번호 클릭 시
+        $(".movepage").on("click", function(e) {
+          e.preventDefault(); // <a> 링크 기능 무력화
+          actionForm.attr("action", "/admin/review/review_list");
+          // 클릭한 페이지 번호 작업
+          actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+          actionForm.submit();
+        });
+
+        // checkbox 선택하기
+        let isCheck = true;
+        $("#checkAll").on("click", function() {
+          $("input[name='check']").prop("checked", this.checked);
+          isCheck = this.checked;
+        });
+
+        // checkbox 상품목록에서 데이터행 선택하기
+        $("input[name='check']").on("click", function() {
+          $("#checkAll").prop("checked", this.checked);
+          $("input[name='check']").each(function() {
+            if(!$(this).is(":checked")) {
+              $("#checkAll").prop("checked", false);
+            }
+          });
+        });
+
+        // 수정 버튼 클릭 시
+        $("button[name='btn_rev_modify']").on("click", function() {
+          let rev_code = $(this).data("rev_code");
+          let review_modify_button = `<button class="btn btn-success mt-2" name="review_modify_save" data-rev_code="${rev_code}">저장</button>`;
+          let set_star = $(this).parents("tr.tr-shadow").find("td[name='star_rev_rate']");
+
+          $(this).parents("tr.tr-shadow").find(".review_edit").removeAttr("readonly").addClass("p-4 mb-3 bg-light rounded");
+          set_star.addClass("p-4 mb-3 bg-light rounded");
+          // $(this).parents("tr.tr-shadow").find("td[name='star_rev_rate']").append(rev_rate_star).addClass("p-4 mb-3 bg-light rounded");
+
+          set_star.children().remove();
+          set_star.append(`
+            <a class="rev_rate_modify">☆</a>
+            <a class="rev_rate_modify">☆</a>
+            <a class="rev_rate_modify">☆</a>
+            <a class="rev_rate_modify">☆</a>
+            <a class="rev_rate_modify">☆</a>
+          `);
+          
+          $(this).after(review_modify_button);
+          $(this).remove();
+        });
+
+        // 별 평점 클릭
+        $("td[name='star_rev_rate']").on("click", "a.rev_rate_modify", function(e) {
+          console.log("별 클릭");
+          e.preventDefault();
+
+          $(this).parent().children().removeClass("on"); // on선택자 제거
+          $(this).addClass("on").prevAll("a").addClass("on"); // 현재선택한 별과 이전별까지 on 선택자 추가
+        });
+
+        // 수정사항 저장
+        $("tr.tr-shadow").on("click", "button[name='review_modify_save']", function() {
+          let rev_code = $(this).data("rev_code");
+          let rev_title = $(this).parents("tr.tr-shadow").find("input.review_edit").val();
+          let rev_content = $(this).parents("tr.tr-shadow").find("textarea.review_edit").val();
+          let rev_rate = 0;
+
+          $(this).parents("tr.tr-shadow").find("td[name='star_rev_rate']").children().each(function() {
+            if($(this).attr("class") == "rev_rate_modify on") {
+              rev_rate += 1;
+            }
+          });
+
+          // console.log("rev_code", rev_code);
+          // console.log("rev_title", rev_title);
+          // console.log("rev_content", rev_content);
+          // console.log("rev_rate", rev_rate);
+
+          if(rev_title == "") {
+            alert("제목을 입력하세요.");
+            return;
+          }
+
+          if(rev_content == "") {
+            alert("내용을 입력하세요.");
+            return;
+          }
+
+          $.ajax({
+            url : '/admin/review/rev_modify',
+            type : 'post',
+            data : {
+              rev_code : rev_code,
+              rev_title : rev_title,
+              rev_content : rev_content,
+              rev_rate : rev_rate
+            },
+            dataType : 'text',
+            success : function(result) {
+              if(result == 'success') {
+                alert("상품후기가 수정되었습니다.");
+                location.reload();
+              }
+            }
+          });
+        });
+
+        // 삭제 + 일괄삭제 버튼 클릭 시
+        $("button[name='btn_rev_delete']").on("click", function() {
+          if(!confirm("선택된 후기를 삭제하시겠습니까?")) {
+            return;
+          }
+
+          let rev_code = $(this).data("rev_code");
+          let rev_code_arr = [];
+
+          // console.log("rev_code", rev_code);
+
+          // 선택된 상태 접근
+          $("input[name='check']:checked").each(function() {
+            rev_code_arr.push($(this).val());
+          });
+
+          // 개별삭제 리뷰 코드 값 입력
+          if(rev_code != null) {
+            rev_code_arr.push(rev_code);
+          }
+
+          console.log("review 코드", rev_code_arr);
+          // return;
+          
+          $.ajax({
+            url : '/admin/review/rev_delete',
+            type : 'post',
+            data : {rev_code_arr : rev_code_arr},
+            dataType : 'text',
+            success : function(result) {
+              if(result == 'success') {
+                alert("선택된 후기가 삭제되었습니다.");
+                location.reload();
+              }
+            }
+          });
+        });
+
+      }); // ready end
+    </script>
+  </th:block>
+
+</html>
