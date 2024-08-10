@@ -42,7 +42,7 @@
 		    pro_up_folder,
 		    pro_img
 		FROM(
-			SELECT /*+ INDEX_DESC(qnaboard_tbl pk_qna_idx) */
+			SELECT /*+ USE_NL(q,p) INDEX_DESC(q pk_qna_idx) INDEX_DESC(p pk_pro_num) */
 				ROWNUM AS rn,
 			    q.qna_idx,
 			    q.mbsp_id,

@@ -41,7 +41,9 @@
   <div id="category_menu">
     <nav class="nav d-flex justify-content-between" style="padding: 15px;">
       <div><strong><a class="p-2 text-muted" th:text="Best"></a></strong></div>
-      <div><a class="p-2 text-muted">전체상품</a></div>
+      <div>
+        <a class="p-2 text-muted" th:href="@{/product/pro_list}">전체상품</a>
+      </div>
       <div class="dropdown" th:each="category : ${user_cate_list}">
         <a class="dropdown p-2 text-muted first_category" data-toggle="dropdown" th:data-cate_code="${category.cate_code}" th:text="${category.cate_name}" aria-expanded="false"></a>
       </div>

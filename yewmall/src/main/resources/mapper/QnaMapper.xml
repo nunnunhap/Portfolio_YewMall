@@ -102,6 +102,56 @@
 	</update>
 
 
+	<!-- 상품문의(Q&A) 목록 hashmap-->
+	<select id="qna_list_user" resultType="hashmap" parameterType="map">
+		SELECT
+		    qna_idx,
+		    question,
+		    answer,
+		    anscheck,
+		    question_date,
+		    pro_name,
+		    pro_up_folder,
+		    pro_img
+		FROM(
+			SELECT /*+ USE_NL(q,p) INDEX_DESC(q pk_qna_idx) INDEX_DESC(p pk_pro_num) */
+				ROWNUM AS rn,
+			    q.qna_idx,
+			    q.question,
+			    q.answer,
+			    q.anscheck,
+			    q.question_date,
+			    p.pro_name,
+			    p.pro_up_folder,
+			    p.pro_img
+			FROM
+			    qnaboard_tbl q
+			INNER JOIN
+			    product_tbl p
+			ON
+			    q.pro_num = p.pro_num
+			WHERE
+				mbsp_id = #{mbsp_id}
+			<![CDATA[
+		        AND ROWNUM <= (#{cri.pageNum} * #{cri.amount})
+		    ]]>
+		)
+		WHERE
+		        rn > (#{cri.pageNum} - 1 ) * #{cri.amount}
+	</select>
+
+	<!-- 전체 데이터 개수(페이징) -->
+	<select id="getQnaTotalCount" resultType="int" parameterType="String">
+		SELECT
+			COUNT(*)
+		FROM
+			qnaboard_tbl
+		WHERE
+			mbsp_id = #{mbsp_id}
+	</select>
+
+
+
 
 
 </mapper>

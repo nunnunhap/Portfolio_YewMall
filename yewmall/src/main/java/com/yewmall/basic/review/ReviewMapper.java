@@ -1,10 +1,10 @@
 package com.yewmall.basic.review;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.yewmall.basic.admin.product.ProductVo;
 import com.yewmall.basic.common.dto.Criteria;
 
 public interface ReviewMapper {
@@ -32,5 +32,14 @@ public interface ReviewMapper {
 	
 	// 리뷰 삭제 시 리뷰갯수 감소
 	void minus_revcount(Long rev_code);
+	
+	
+	// 마이페이지 내 상품구매후기(리뷰) 목록
+	List<Map<String, Object>> rev_list_user(@Param("mbsp_id") String mbsp_id, @Param("cri") Criteria cri);
+	
+	// 마이페이지 내 전체 데이터 개수
+	int getRevTotalCount(String mbsp_id);
+	
+	
 	
 }

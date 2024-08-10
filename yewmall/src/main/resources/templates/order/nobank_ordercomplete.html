@@ -16,6 +16,13 @@
 </div>
 </th:block>
 <th:block layout:fragment = "script">
+	<script>
+		$(document).ready(function() {
+			$("button").on("click", function() {
+				location.href="/order/order_list_mypage"
+			});
+		})
+	</script>
 </th:block>
     
 </body>

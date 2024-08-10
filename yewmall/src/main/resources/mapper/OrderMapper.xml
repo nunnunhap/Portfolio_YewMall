@@ -53,5 +53,89 @@
 		WHERE
 			mbsp_id = #{mbsp_id}
 	</insert>
+	
+	
+	<!-- 마이페이지 내 주문목록 -->
+	<select id="order_list" resultType="OrderVo" parameterType="map">
+		SELECT
+			ord_code,
+			mbsp_id,
+			ord_name,
+			ord_addr_zipcode,
+			ord_addr_basic,
+			ord_addr_detail,
+			ord_tel,
+			ord_price,
+			ord_desc,
+			ord_regdate
+		FROM (
+	    	SELECT /*+ INDEX_DESC(order_tbl pk_ord_code) */
+	        	ROWNUM AS RN,
+	        	ord_code,
+	        	mbsp_id,
+	        	ord_name,
+	        	ord_addr_zipcode,
+	        	ord_addr_basic,
+	        	ord_addr_detail,
+	        	ord_tel,
+	        	ord_price,
+	        	ord_desc,
+	        	ord_regdate
+	    	FROM
+	        	order_tbl
+	    	WHERE
+				mbsp_id = #{mbsp_id}
+			AND
+		 <![CDATA[
+		   		ROWNUM <= (#{cri.pageNum} * #{cri.amount})
+		 ]]>  		
+		)
+		WHERE 
+			RN > (#{cri.pageNum} - 1 ) * #{cri.amount}
+	</select>
+	
+	<!-- 마이페이지 내 전체 데이터 개수(페이징) -->
+	<select id="getTotalCount" resultType="int" parameterType="String">
+		SELECT
+			COUNT(*)
+		FROM
+			order_tbl
+		WHERE
+			mbsp_id = #{mbsp_id}
+	</select>
+	
+	<!-- modal : 주문자(수령인) 정보 -->
+	<select id="order_info" parameterType="Long" resultType="OrderVo">
+		SELECT
+			ord_code,
+		    mbsp_id,
+		    ord_name,
+		    ord_addr_zipcode,
+		    ord_addr_basic,
+		    ord_addr_detail,
+		    ord_tel,
+		    ord_price,
+		    ord_desc,
+		    ord_regdate
+		FROM
+			order_tbl
+		WHERE
+			ord_code = #{ord_code}
+	</select>
+
+	<!-- modal : 주문상품정보 -->
+	<select id="order_detail_info" parameterType="Long" resultType="OrderDetailInfoVo">
+		SELECT 
+			ot.ord_code, ot.pro_num, ot.dt_amount, ot.dt_price, p.pro_name, p.pro_up_folder, p.pro_img
+		FROM 
+			ordetail_tbl ot 
+		INNER JOIN 
+			product_tbl p
+		ON 
+			ot.pro_num = p.pro_num
+		WHERE 
+			ot.ord_code = #{ord_code}
+	</select>
+	
 
 </mapper>

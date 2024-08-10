@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+				xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+				layout:decorate="~{layout/baselayout}">
+
+<body>
+
+<th:block layout:fragment = "content">
+  <main role="main" class="flex-shrink-0">
+    <div class="container">
+      <div class="row">
+        <div class="col-2">
+          <section th:replace="~{user/comm/mypage_menu}"></section>
+        </div>
+        
+        <div class="col-10">
+          <div class="card-header">
+            <h3 class="card-title">나의 위시리스트</h3>
+          </div>
+          <form class="form-horizontal" id="joinForm" action="/user/mypage" method="post">
+            <div class="card-body">
+              <div class="form-group row">
+                <label for="mbsp_id" class="col-sm-2 col-form-label">ID</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="mbsp_id" name="mbsp_id" value="">
+                </div>
+                <label for="mbsp_id" class="col-sm-2 col-form-label">가입일</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="mbsp_id" name="mbsp_id" placeholder="아이디를 입력하세요.">
+                </div>
+              </div>
+          </form>
+
+
+        </div>
+      </div>
+    </div>
+  </main>
+</th:block>
+
+</body>
+</html>

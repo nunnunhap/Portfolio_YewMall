@@ -12,6 +12,11 @@ public class PayInfoService {
 	private final PayInfoMapper payInfoMapper;
 	
 	
+	// 주문 삭제
+	public void ord_pay_delete(Long ord_code) {
+		payInfoMapper.ord_pay_delete(ord_code);
+	}
+	
 	// modal : 결제정보
 	public PayInfoVo ord_pay_info(Long ord_code) {
 		return payInfoMapper.ord_pay_info(ord_code);

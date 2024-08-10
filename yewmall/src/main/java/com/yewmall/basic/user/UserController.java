@@ -1,5 +1,9 @@
 package com.yewmall.basic.user;
 
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -8,11 +12,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.yewmall.basic.common.constants.Constants;
+import com.yewmall.basic.common.dto.Criteria;
+import com.yewmall.basic.common.dto.PageDTO;
+import com.yewmall.basic.common.util.FileManagerUtils;
 import com.yewmall.basic.kakaologin.KakaoUserInfo;
 import com.yewmall.basic.mail.EmailDTO;
 import com.yewmall.basic.mail.EmailService;
+import com.yewmall.basic.review.ReviewVo;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +38,10 @@ public class UserController {
 	private final UserService userService;
 	private final PasswordEncoder passwordEncoder;
 	private final EmailService emailService;
+	
+	
+	// 전역변수
+	String mbsp_id;
 	
 	
 	// 회원가입폼
@@ -203,7 +217,7 @@ public class UserController {
 	public void mypage(HttpSession session, RedirectAttributes rttr, Model model) throws Exception {
 		
 		if(session.getAttribute("login_status") != null) {
-			String mbsp_id = ((UserVo) session.getAttribute("login_status")).getMbsp_id();
+			mbsp_id = ((UserVo) session.getAttribute("login_status")).getMbsp_id();
 			UserVo vo = userService.login(mbsp_id);
 			log.info("수정할 아이디 정보 : " + vo);
 			
@@ -225,7 +239,7 @@ public class UserController {
 	// 회원정보 변경
 	@GetMapping("modify")
 	public void modifyForm(HttpSession session, Model model) throws Exception {
-		String mbsp_id = ((UserVo) session.getAttribute("login_status")).getMbsp_id();
+		// String mbsp_id = ((UserVo) session.getAttribute("login_status")).getMbsp_id();
 		UserVo vo = userService.login(mbsp_id);
 		
 		model.addAttribute("user", vo);
@@ -241,7 +255,7 @@ public class UserController {
 			return "redirect:/user/login";
 		}
 		
-		String mbsp_id = ((UserVo) session.getAttribute("login_status")).getMbsp_id();
+		// String mbsp_id = ((UserVo) session.getAttribute("login_status")).getMbsp_id();
 		vo.setMbsp_id(mbsp_id);
 		
 		userService.modify(vo);
@@ -260,7 +274,7 @@ public class UserController {
 	// 비밀번호 변경 버튼 클릭
 	@PostMapping("changepw")
 	public String changepwOk(String cur_mbsp_password, String new_mbsp_password, HttpSession session, RedirectAttributes rttr) throws Exception {
-		String mbsp_id = ((UserVo) session.getAttribute("login_status")).getMbsp_id();
+		// String mbsp_id = ((UserVo) session.getAttribute("login_status")).getMbsp_id();
 		UserVo vo = userService.login(mbsp_id);
 		String msg = "";
 		
@@ -291,7 +305,7 @@ public class UserController {
 	@PostMapping("delete")
 	public String deleteOk(String mbsp_password, HttpSession session, RedirectAttributes rttr) throws Exception {
 		
-		String mbsp_id = ((UserVo) session.getAttribute("login_status")).getMbsp_id();
+		// String mbsp_id = ((UserVo) session.getAttribute("login_status")).getMbsp_id();
 		
 		// 비밀번호 컬럼 한 개만 필요하나 로그인 정보를 사용해도 기능 상 무리 없어 재사용.
 		UserVo vo = userService.login(mbsp_id);
@@ -318,6 +332,7 @@ public class UserController {
 		
 		return "redirect:" + url;
 	}
+	
 	
 	
 }

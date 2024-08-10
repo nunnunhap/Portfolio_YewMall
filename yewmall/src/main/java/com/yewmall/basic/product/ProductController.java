@@ -3,13 +3,13 @@ package com.yewmall.basic.product;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.yewmall.basic.admin.product.ProductVo;
 import com.yewmall.basic.common.constants.Constants;
@@ -40,9 +40,9 @@ public class ProductController {
 	private String upladCKPath;
 	
 	
-	// 상품목록
-	@GetMapping("pro_list")
-	public void pro_list(@ModelAttribute("cate_code")int cate_code, @ModelAttribute("cate_name") String cate_name, Model model, Criteria cri) throws Exception {
+	// 상품목록 : 1) 전체상품 2) 카테고리별 상품목록
+	@GetMapping("pro_list") // @ModelAttribute : 파라미터값이 필수가 아님. @RequestParam은 기본설정이 필수로, 원치 않을 시 (required = false) 코드 추가
+	public void pro_list(@RequestParam(required = false) Integer cate_code, @RequestParam(required = false) String cate_name, Model model, Criteria cri) throws Exception {
 		log.info("2차 카테고리 코드 : " + cate_code);
 		log.info("2차 카테고리 이름 : " + cate_name);
 		
@@ -59,6 +59,8 @@ public class ProductController {
 		
 		model.addAttribute("pro_list", pro_list);
 		model.addAttribute("pageMaker", new PageDTO(cri, totalCount));
+		model.addAttribute("cate_code", cate_code);
+		model.addAttribute("cate_name", cate_name);
 
 	}
 	
@@ -97,9 +99,6 @@ public class ProductController {
 		model.addAttribute("revcount", revcount);
 		
 	}
-	
-	
-	
 	
 	
 	

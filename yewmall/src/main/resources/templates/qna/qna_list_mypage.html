@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+				xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+				layout:decorate="~{layout/baselayout}">
+
+<body>
+
+<th:block layout:fragment = "content">
+  <main role="main" class="flex-shrink-0">
+    <div class="container">
+      <div class="row">
+        <div class="col-2">
+          <section th:replace="~{user/comm/mypage_menu}"></section>
+        </div>
+        
+        <div class="col-10">
+          <div class="card-header">
+            <h3 class="card-title">나의 상품 Q&A</h3>
+          </div>
+          <div class="table-responsive m-b-40">
+            <table class="table table-borderless table-data3">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>답변여부</th>
+                  <th>상품정보</th>
+                  <th>내용</th>
+                  <th>작성일</th>
+                  <th>관리</th>
+                </tr>
+              </thead>
+              <tbody th:each="qna : ${qna_list}">
+                <tr class="tr-shadow">
+                  <td th:text="${qna['QNA_IDX']}"></td>
+                  <td>
+                    <span th:if="${qna['ANSCHECK'] == 'Y'}">
+                      <span class="badge badge-pill badge-info">답변완료</span>
+                    </span>
+                    <span th:if="${qna['ANSCHECK'] == 'N'}">
+                      <span class="badge badge-pill badge-danger">답변대기</span>
+                    </span>
+                  </td>
+                  <td>
+                      <img th:src="${'/qna/image_display?dateFolderName=' + qna['PRO_UP_FOLDER'] + '&fileName=s_' + qna['PRO_IMG']}" style="width: 70px; height: 70px;">
+                      <br>
+                      <span th:text="${qna['PRO_NAME']}"></span>
+                  </td>
+                  <td>
+                    <input class="question" th:value="${qna['QUESTION']}" readonly>
+                    <div class="answer-box">
+                      <span th:if="${qna['ANSWER'] != null}">
+                        <hr>
+                        <textarea rows="3" style="border-style: solid; border-color: gray; width: 100%;" readonly>[[${qna['ANSWER']}]]</textarea>
+                      </span>
+                    </div>
+                  </td>
+                  <td th:text="${#dates.format(qna['QUESTION_DATE'], 'yyyy-MM-dd')}"></td>
+                  <td>
+                    <button type="button" class="btn btn-warning" name="btn_qna_edit" th:data-qno="${qna['QNA_IDX']}">수정</button>
+                    <button type="button" class="btn btn-danger" name="btn_qna_del" th:data-qno="${qna['QNA_IDX']}">삭제</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="table-data__tool justify-content-center">
+            <div class="box-footer clearfix">
+              <div class="row">
+                <div class="col-md-4">
+                  <form id="actionForm" action="" method="get">
+                    <input type="hidden" name="pageNum" id="pageNum" th:value="${pageMaker.cri.pageNum}">
+                    <input type="hidden" name="amount"  id="amount" th:value="${pageMaker.cri.amount}">
+                  </form>
+                </div>
+                <div class="col-md-6 text-center">
+                  <nav aria-label="...">
+                    <ul class="pagination">
+                      <!-- 이전 표시여부 -->
+                      <th:block th:if="${pageMaker.prev}">
+                        <li class="page-item">
+                          <a th:href="${pageMaker.startPage - 1}" class="page-link movepage">이전</a>
+                        </li>
+                      </th:block>
+                      <!-- 페이지 번호 -->
+                      <th:block th:with="pageMaker = ${pageMaker}">
+                        <th:block th:each="num : *{#numbers.sequence(pageMaker.startPage, pageMaker.endPage)}">
+                          <li class='page-item' th:classappend="${pageMaker.cri.pageNum ==  num ? 'active': '' }" aria-current="page">
+                            <a class="page-link movepage" th:href="${num}" th:text="${num}"></a>
+                          </li>
+                        </th:block>
+                      </th:block>
+                      <!--  다음 표시여부 -->
+                      <th:block th:if="${pageMaker.next}">
+                        <li class="page-item">
+                          <a th:href="${pageMaker.endPage + 1}" class="page-link movepage">다음</a>
+                        </li>
+                      </th:block>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+</th:block>
+<th:block layout:fragment = "script">
+  <script>
+    $(document).ready(function() {
+      let actionForm = $("#actionForm");
+
+      // 페이지 번호 클릭 시
+      $(".movepage").on("click", function(e) {
+        e.preventDefault(); // <a> 링크 기능 무력화
+        actionForm.attr("action", "/qna/qna_list_mypage");
+        // 클릭한 페이지 번호 작업
+        actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+        actionForm.submit();
+      });
+
+      // Q&A 질문 수정 버튼 클릭 시
+      $("button[name='btn_qna_edit']").on("click", function() {
+        let answerExists = $(this).parents("tr.tr-shadow").find("div.answer-box").children().html();
+        console.log("answerExists", answerExists);
+        // return;
+        if(answerExists != null) {
+          alert("답변이 달린 Q&A는 삭제할 수 없습니다. 관리자에게 문의바랍니다.");
+          return;
+        }
+
+        $(this).parents("tr.tr-shadow").find("input.question").removeAttr("readonly");
+
+        let qno = $(this).data("qno");
+        let question_button = `<button class="btn btn-success mt-2 btn-modify-question" data-qno="${qno}">질문수정</button>`;
+        let modify_area = $(this).parents("tr.tr-shadow").find("input.question");
+        
+        modify_area.next().remove(); // next() : 다음 요소 '선택'
+        modify_area.after(question_button); // after() : 다음 요소 '삽입'
+      });
+
+      // Q&A 질문 수정 저장
+      $("tr.tr-shadow").on("click", ".btn-modify-question", function() {
+        // console.log("질문 수정 저장 클릭");
+        let qno = $(this).data("qno");
+        let qcontent = $(this).siblings(".question").val();
+
+        // console.log("qna_idx", qno);
+        // console.log("qcontent", qcontent);
+
+        let qna_data = {
+          qno : qno,
+          qcontent : qcontent
+        };
+
+        $.ajax({
+          url : '/qna/qna_modify',
+          headers: {
+            "Content-Type" : "application/json", "X-HTTP-Method-Override" : "PUT"
+          },
+          type: 'put',
+          data : JSON.stringify(qna_data),
+          dataType : 'text',
+          success : function(result) {
+            if(result == 'success') {
+              alert("질문이 수정되었습니다.");
+              location.reload();
+            }
+          }
+        });
+      });
+
+      // Q&A 수정 삭제
+      $("button[name='btn_qna_del']").on("click", function() {
+        // console.log("삭제 클릭");
+
+        if(!confirm("삭제하시겠습니까?")) {
+          return;
+        }
+
+        let qno = $(this).data("qno");
+        console.log("qno", qno);
+
+        $.ajax({
+          url : '/qna/qna_delete/' + qno,
+          headers: { // POST 요청을 보내면서 PUT, DELETE 등의 다른 메서드로 처리되도록 하려면 "X-HTTP-Method-Override" 헤더를 사용
+					    "Content-Type" : "application/json", "X-HTTP-Method-Override" : "DELETE"
+          },
+          type: 'delete',
+          dataType : 'text',
+          success : function(result) {
+            if(result == 'success') {
+              alert("질문이 삭제되었습니다.");
+              location.reload();
+            }
+          }
+        });
+      });
+
+    }); // ready event end
+  </script>
+</th:block>
+</body>
+</html>

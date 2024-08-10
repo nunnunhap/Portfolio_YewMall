@@ -40,4 +40,6 @@ public interface UserMapper {
 	// SNS USER 정보 등록
 	void sns_user_insert(SNSUserDto dto);
 	
+	
+	
 }

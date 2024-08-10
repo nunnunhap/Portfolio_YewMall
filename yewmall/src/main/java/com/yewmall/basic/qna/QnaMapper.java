@@ -1,6 +1,7 @@
 package com.yewmall.basic.qna;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -26,5 +27,11 @@ public interface QnaMapper {
 	// Q&A 수정 저장
 	void qna_update(QnaVo vo);
 	
+	
+	// 상품문의(Q&A) 목록
+	List<Map<String, Object>> qna_list_user(@Param("mbsp_id") String mbsp_id, @Param("cri") Criteria cri);
+	
+	// 전체 데이터 개수(페이징)
+	int getQnaTotalCount(String mbsp_id);	
 	
 }

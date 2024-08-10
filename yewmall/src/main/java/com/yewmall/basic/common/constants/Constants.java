@@ -15,6 +15,15 @@ public final class Constants {
 	// 사용자 측 주문리스트 출력 갯수
 	public static final int CUSTOMER_ORDERLIST_AMOUNT = 2;
 	
+	// 사용자 측 상품구매후기(리뷰) 리스트 출력 갯수
+	public static final int CUSTOMER_REVIEWLIST_AMOUNT = 2;
+	
+	// 사용자 측 상품문의(Q&A) 리스트 출력 갯수
+	public static final int CUSTOMER_QNALIST_AMOUNT= 2;
+	
+	// 사용자 측 위시리스트 출력 갯수
+	public static final int CUSTOMER_WISHLIST_AMOUNT= 2;
+	
 	
 	// 관리자 측 상품리스트 출력 갯수
 	public static final int ADMIN_PROLIST_AMOUNT = 2;
@@ -25,7 +34,7 @@ public final class Constants {
 	// 관리자 측 상품구매후기(리뷰) 리스트 출력 갯수
 	public static final int ADMIN_REVIEWLIST_AMOUNT= 2;
 
-	// 관리자 측 상품문의 리스트 출력 갯수
+	// 관리자 측 상품문의(Q&A) 리스트 출력 갯수
 	public static final int ADMIN_QNALIST_AMOUNT= 2;
 	
 	// 관리자 측 회원리스트 출력 갯수

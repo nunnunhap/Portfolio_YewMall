@@ -96,8 +96,7 @@
 		SET
 		    rev_title = #{rev_title},
 		    rev_content = #{rev_content},
-		    rev_rate = #{rev_rate},
-		    rev_regdate = SYSDATE
+		    rev_rate = #{rev_rate}
 		WHERE
 			rev_code = #{rev_code}
 	</update>
@@ -130,6 +129,57 @@
 	</update>
 	
 	
+	<!-- 마이페이지 내 상품구매후기(리뷰) 목록 -->
+	<select id="rev_list_user" parameterType="map" resultType="hashmap">
+		SELECT
+			rev_code,
+		    mbsp_id,
+		    pro_num,
+		    rev_title,
+		    rev_content,
+		    rev_rate,
+		    rev_regdate,
+		    pro_name,
+		    pro_up_folder,
+		    pro_img
+		FROM(
+			SELECT /*+ USE_NL(r,p) INDEX_DESC(r pk_review_code) INDEX_DESC(p pk_pro_num) */
+			    ROWNUM AS rn,
+			    r.rev_code,
+			    r.mbsp_id,
+			    r.pro_num,
+			    r.rev_title,
+			    r.rev_content,
+			    r.rev_rate,
+			    r.rev_regdate,
+			    p.pro_name,
+			    p.pro_up_folder,
+			    p.pro_img
+			FROM
+			    review_tbl r
+			INNER JOIN
+			    product_tbl p
+			ON
+			    r.pro_num = p.pro_num
+			WHERE
+				mbsp_id = #{mbsp_id}
+			<![CDATA[
+		        AND ROWNUM <= (#{cri.pageNum} * #{cri.amount})
+		    ]]>
+		)
+		WHERE
+		        rn > (#{cri.pageNum} - 1 ) * #{cri.amount}
+	</select>
+	
+	<!-- 마이페이지 내 전체 데이터 개수 -->
+	<select id="getRevTotalCount" resultType="int" parameterType="String">
+		SELECT
+			COUNT(*)
+		FROM
+			review_tbl
+		WHERE
+			mbsp_id = #{mbsp_id}
+	</select>
 	
 	
 

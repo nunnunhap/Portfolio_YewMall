@@ -8,8 +8,11 @@
 <th:block layout:fragment = "content">
 <div class="container">
   <div class="row" style="padding-top: 50px;">
-    <div class="col-md-12 text-center">
+    <div class="col-md-12 text-center" th:if="${cate_name != null}">
       <h3 class="pb-4 mb-4" th:utext="${cate_name}"></h3>
+    </div>
+    <div class="col-md-12 text-center" th:if="${cate_name == null}">
+      <h3 class="pb-4 mb-4" th:utext="전체상품"></h3>
     </div>
     <div class="col-md-4" th:each="product : ${pro_list}">
       <div class="card mb-4 shadow-sm">

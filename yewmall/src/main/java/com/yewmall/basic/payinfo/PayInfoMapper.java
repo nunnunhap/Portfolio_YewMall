@@ -5,6 +5,9 @@ public interface PayInfoMapper {
 	// 결제정보 저장
 	void payInfo_insert(PayInfoVo vo);
 	
+	// 주문삭제
+	void ord_pay_delete(Long ord_code);
+	
 	// modal : 결제정보
 	PayInfoVo ord_pay_info(Long ord_code);
 	

@@ -88,11 +88,17 @@
                       </td>
                       <td th:text="${product.pro_price}"></td>
                       <td th:text="${#dates.format(product.pro_date, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                      <!--
                       <td>
                         <select id="pro_buy" name="pro_buy">
                           <option value="Y" th:selected="${product.pro_buy == 'Y'}">판매가능</option>
                           <option value="N" th:selected="${product.pro_buy == 'N'}">판매불가능</option>
                         </select>
+                      </td>
+                      -->
+                      <td>
+                        <span th:if="${product.pro_buy == 'Y'}">판매가능</span>
+                        <span th:if="${product.pro_buy == 'N'}">판매불가능</span>
                       </td>
                       <td>
                         <button type="button" class="btn btn-warning" name="btn_pro_edit" th:data-pro_num="${product.pro_num}">수정</button>

@@ -161,7 +161,7 @@
 						 email)
 		VALUES
 		    (#{sns_type}, #{id}, #{name}, #{email})
-	</insert>
+	</insert>	
 
 
 </mapper>

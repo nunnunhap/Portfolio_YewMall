@@ -222,6 +222,18 @@ CREATE SEQUENCE seq_ord_code;
 COMMIT;
 
 
+SELECT 
+			ot.ord_code, ot.pro_num, ot.dt_amount, ot.dt_price, p.pro_name, p.pro_up_folder, p.pro_img
+		FROM 
+			ordetail_tbl ot 
+		INNER JOIN 
+			product_tbl p
+		ON 
+			ot.pro_num = p.pro_num
+		WHERE 
+			ot.ord_code = 22;
+
+
 
 ALTER TABLE ORDER_TBL
 ADD CONSTRAINTS FK_ORDER_MBSP_ID
@@ -236,6 +248,9 @@ CREATE TABLE ORDETAIL_TBL(
         DT_PRICE        NUMBER      NOT NULL,  -- 단위별 가격
         CONSTRAINTS PK_ORDETAIL_CODE_NUM PRIMARY KEY(ORD_CODE ,PRO_NUM)
 );
+
+DELETE FROM ordetail_tbl
+
 
 
 ALTER TABLE ORDETAIL_TBL
@@ -267,6 +282,7 @@ CREATE TABLE REVIEW_TBL(
 DROP SEQUENCE seq_rev_code;
 CREATE SEQUENCE seq_rev_code;
 
+rev_code, mbsp_id, pro_num, rev_title, rev_content, rev_rate, rev_regdate
 
 INSERT INTO review_tbl(
     rev_code,
@@ -329,14 +345,17 @@ INSERT INTO ADMIN_TBL
 VALUES
     ('admin', '$2a$10$zdD7K/srVWKaMkmTda/Bv.1nhkacaU05oNdyU3zO8ocvFtQiKS0fq');
 
--- 10. 공지사항 테이블
-CREATE TABLE NOTICE(
-    IDX         NUMBER,
-    TITLE       VARCHAR2(50)    NOT NULL,
-    CONTENT     VARCHAR2(1000)  NOT NULL,
-    WRITER      VARCHAR2(15)    NOT NULL,
-    READCOUNT   NUMBER  DEFAULT 0 NOT NULL,
-    REGDATE     DATE    DEFAULT SYSDATE
+-- 10. 고객센터 공지사항 테이블
+CREATE TABLE servicecenter_tbl(
+    service_Idx         NUMBER,
+    mbsp_id     VARCHAR2(15)    NOT NULL,
+    admin_id    VARCHAR2(15),
+    title       VARCHAR2(50)    NOT NULL,
+    question    VARCHAR2(1000)  NOT NULL,
+    answer      VARCHAR2(1000)  NULL,
+    anscheck    CHAR(1)         DEFAULT 'N',
+    question_date   DATE DEFAULT SYSDATE    NOT NULL,
+    answer_date DATE,
 );
 
 ALTER TABLE NOTICE
@@ -401,6 +420,17 @@ CREATE SEQUENCE seq_payinfo_id;
 
 ALTER TABLE PAYINFO ADD CONSTRAINT FK_PAYINFO_ORD_CODE
 FOREIGN KEY (ORD_CODE) REFERENCES ORDER_TBL(ORD_CODE);
+
+DELETE FROM payinfo
+WHERE
+    p_id = :v0
+    AND ord_code = :v1
+    AND mbsp_id = :v2
+    AND paymethod = :v3
+    AND payinfo = :v4
+    AND p_price = :v5
+    AND p_status = :v6
+    AND p_date = :v7;
 
 -- 13. 메일발송
 DROP TABLE mailmng_tbl;
@@ -518,6 +548,9 @@ ON
 WHERE
     mbsp_id = 'user01';
 
+rev_code, mbsp_id, pro_num, rev_title, rev_content, rev_rate, rev_regdate
+
+
 r.REV_CODE,
 r.MBSP_ID,
 r.PRO_NUM,
@@ -596,9 +629,34 @@ FROM
     qnaboard_tbl q;
     
     
+-- 14. 위시리스트
+DROP TABLE wishlist_tbl;
+CREATE TABLE wishlist_tbl (
+    wish_idx          NUMBER,
+    pro_num         NUMBER      NOT NULL,
+    mbsp_id             VARCHAR2(15),
+    wish_regdate    DATE DEFAULT SYSDATE,
     
+    CONSTRAINTS pk_wish_idx PRIMARY KEY (wish_idx)
+);
+
+CREATE SEQUENCE seq_wish_idx;
+
+
+
+
+
+-- 15. 캐러셀(구현예정)
+CREATE TABLE carousel_tbl (
+    carousel_idx          NUMBER,
+    PRO_UP_FOLDER       VARCHAR(50)             NOT NULL, -- 날짜폴더경로 예>2024\06\11
+    PRO_IMG             VARCHAR(100)             NOT NULL,  -- 파일이름
+    carousel_regdate    DATE DEFAULT SYSDATE,
     
-    
+    CONSTRAINTS pk_carousel_idx PRIMARY KEY (carousel_idx)
+);
+
+CREATE SEQUENCE seq_carousel_idx;
     
     
 

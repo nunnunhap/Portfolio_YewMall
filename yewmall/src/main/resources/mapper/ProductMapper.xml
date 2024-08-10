@@ -2,52 +2,58 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yewmall.basic.product.ProductMapper">
 
-		<!-- 상품 리스트 -->
-		<!-- 각 상품별 리뷰 갯수 출력을 위하여 스칼라 서브쿼리를 사용하였으나 성능이 떨어져, revcount 필드를 ProductVo에 추가하여
-			리뷰 작성이 될 시마다 +1을 부여하여 부하를 최소화함. -->
-		<select id="pro_list" resultType="ProductVo" parameterType="map">
-			SELECT
-			    pro_num,
-			    cate_code,
-			    pro_name,
-			    pro_price,
-			    pro_discount,
-			    pro_publisher,
-			    pro_content,
-			    pro_up_folder,
-			    pro_img,
-			    pro_amount,
-			    pro_buy,
-			    revcount
-			FROM (
-				SELECT /*+ INDEX_DESC(product_tbl PK_PRO_NUM)  */ 
-		        	ROWNUM AS RN,
-		        	pro_num,
-		        	cate_code, 
-		        	pro_name, 
-		        	pro_price, 
-		        	pro_discount, 
-		        	pro_publisher, 
-		        	pro_content, 
-		        	pro_up_folder, 
-		        	pro_img, 
-		        	pro_amount, 
-		        	pro_buy,
-		        	revcount
-		    	FROM
-		        	product_tbl
-		    	WHERE 
-				 <![CDATA[  		
-				   	ROWNUM <= (#{cri.pageNum} * #{cri.amount})   -- 페이지번호 * 페이지별 출력건수
-				 ]]>
-				AND
-					pro_buy = 'Y'
-				AND
-					cate_code = #{cate_code}
-				)
-			WHERE
-				RN > (#{cri.pageNum} - 1 ) * #{cri.amount}
-		</select>
+	<sql id="category">
+		<if test="cate_code != null and !cate_code.equals('')">
+			AND
+				cate_code = #{cate_code}
+		</if>
+	</sql>
+
+	<!-- 상품 리스트 -->
+	<!-- 각 상품별 리뷰 갯수 출력을 위하여 스칼라 서브쿼리를 사용하였으나 성능이 떨어져, revcount 필드를 ProductVo에 추가하여
+		리뷰 작성이 될 시마다 +1을 부여하여 부하를 최소화함. -->
+	<select id="pro_list" resultType="ProductVo" parameterType="map">
+		SELECT
+		    pro_num,
+		    cate_code,
+		    pro_name,
+		    pro_price,
+		    pro_discount,
+		    pro_publisher,
+		    pro_content,
+		    pro_up_folder,
+		    pro_img,
+		    pro_amount,
+		    pro_buy,
+		    revcount
+		FROM (
+			SELECT /*+ INDEX_DESC(product_tbl PK_PRO_NUM)  */ 
+	        	ROWNUM AS RN,
+	        	pro_num,
+	        	cate_code, 
+	        	pro_name, 
+	        	pro_price, 
+	        	pro_discount, 
+	        	pro_publisher, 
+	        	pro_content, 
+	        	pro_up_folder, 
+	        	pro_img, 
+	        	pro_amount, 
+	        	pro_buy,
+	        	revcount
+	    	FROM
+	        	product_tbl
+	    	WHERE 
+			 <![CDATA[  		
+			   	ROWNUM <= (#{cri.pageNum} * #{cri.amount})   -- 페이지번호 * 페이지별 출력건수
+			 ]]>
+			AND
+				pro_buy = 'Y'
+			<include refid="category"></include>
+			)
+		WHERE
+			RN > (#{cri.pageNum} - 1 ) * #{cri.amount}
+	</select>
 
 	<!-- 총 데이터 갯수(페이징) -->
 	<select id="getCountProductByCategory" resultType="int">
@@ -56,9 +62,8 @@
 		FROM
 			product_tbl
 		WHERE
-			cate_code = #{cate_code}
-		AND
 			pro_buy = 'Y'
+		<include refid="category"></include>
 	</select>
 	
 	<!-- 상품 팝업 및 상세설명 (모달상자) -->

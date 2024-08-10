@@ -64,20 +64,6 @@
                   </form>
                 </div>
               </div>
-              <div class="table-data__tool-right">
-                <a class="au-btn au-btn-icon au-btn--green au-btn--small">
-                  <i class="zmdi zmdi-plus"></i>상품등록
-                </a>
-                <a class="au-btn au-btn-icon btn btn-danger au-btn--small">
-                  <i class="fa fa-minus"></i>일괄삭제
-                </a>
-                <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
-                  <select class="js-select2 select2-hidden-accessible" name="type" tabindex="-1" aria-hidden="true">
-                    <option selected="selected">Export</option>
-                    <option value="">Option 1</option>
-                  </select>
-                </div>
-              </div>
             </div>
             <div class="table-data__tool">
               <div class="table-responsive table-responsive-data2">
@@ -276,6 +262,25 @@
           actionForm.submit();
         });
 
+        // checkbox 선택하기
+        let isCheck = true;
+        $("#checkAll").on("click", function() {
+          $("input[name='check']").prop("checked", this.checked);
+          isCheck = this.checked;
+        });
+
+        // checkbox 상품목록에서 데이터행 선택하기
+        $("input[name='check']").on("click", function() {
+          $("#checkAll").prop("checked", this.checked);
+          $("input[name='check']").each(function() {
+            if(!$(this).is(":checked")) {
+              $("#checkAll").prop("checked", false);
+            }
+          });
+        });
+
+
+
         // 주문 삭제
         $("button[name='btn_ord_del']").on("click", function() {
           if(!confirm("주문을 삭제하시겠습니까?")) return;
@@ -354,14 +359,6 @@
             }
           });
         });
-
-
-
-
-
-
-
-
 
 
         // Handlebars 작업 함수

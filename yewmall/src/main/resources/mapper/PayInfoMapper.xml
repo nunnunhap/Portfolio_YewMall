@@ -10,6 +10,15 @@
 			(seq_payinfo_id.NEXTVAL, #{ord_code}, #{mbsp_id}, #{paymethod}, #{payinfo}, #{p_price}, #{p_status})
 	</insert>
 	
+	<!-- 주문삭제 -->
+	<delete id="ord_pay_delete" parameterType="Long">
+		DELETE FROM
+			payinfo
+		WHERE
+			ord_code = #{ord_code}
+	</delete>
+	
+	
 	<!-- modal : 결제정보 -->
 	<select id="ord_pay_info" parameterType="Long" resultType="PayInfoVo">
 		SELECT

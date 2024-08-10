@@ -1,7 +1,9 @@
 package com.yewmall.basic.qna;
 
 import java.util.List;
+import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import com.yewmall.basic.common.dto.Criteria;
@@ -44,6 +46,17 @@ public class QnaService {
 	// Q&A 수정 저장
 	void qna_update(QnaVo vo) {
 		qnaMapper.qna_update(vo);
+	}
+	
+	
+	// 상품문의(Q&A) 목록
+	List<Map<String, Object>> qna_list_user(String mbsp_id, Criteria cri) {
+		return qnaMapper.qna_list_user(mbsp_id, cri);
+	}
+	
+	// 전체 데이터 개수(페이징)
+	int getQnaTotalCount(String mbsp_id) {
+		return qnaMapper.getQnaTotalCount(mbsp_id);
 	}
 	
 }

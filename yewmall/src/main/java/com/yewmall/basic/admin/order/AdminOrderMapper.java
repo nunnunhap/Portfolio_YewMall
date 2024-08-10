@@ -17,6 +17,7 @@ public interface AdminOrderMapper {
 	
 	// 주문 삭제
 	void ord_delete(Long ord_code);
+	void ordetail_delete(Long ord_code);
 	
 	// modal : 주문자(수령인) 정보
 	OrderVo order_info(Long ord_code);

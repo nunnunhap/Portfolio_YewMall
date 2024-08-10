@@ -31,8 +31,11 @@ public class AdminOrderService {
 	}
 	
 	// 주문 삭제
+	@Transactional
 	void ord_delete(Long ord_code) {
 		adminOrderMapper.ord_delete(ord_code);
+		adminOrderMapper.ordetail_delete(ord_code);
+		payInfoService.ord_pay_delete(ord_code);
 	}
 	
 	// modal : 주문자(수령인) 정보
