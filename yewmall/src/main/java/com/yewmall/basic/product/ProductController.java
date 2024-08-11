@@ -3,11 +3,13 @@ package com.yewmall.basic.product;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -16,8 +18,12 @@ import com.yewmall.basic.common.constants.Constants;
 import com.yewmall.basic.common.dto.Criteria;
 import com.yewmall.basic.common.dto.PageDTO;
 import com.yewmall.basic.common.util.FileManagerUtils;
+import com.yewmall.basic.order.OrderVo;
 import com.yewmall.basic.review.ReviewService;
+import com.yewmall.basic.user.UserVo;
+import com.yewmall.basic.wishlist.WishListService;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,6 +36,7 @@ public class ProductController {
 	// DI
 	private final ProductService productService;
 	private final ReviewService reviewService;
+	private final WishListService wishListService;
 	
 	
 	// 경로
@@ -84,9 +91,9 @@ public class ProductController {
 	
 	// 상품 상세설명
 	@GetMapping("pro_detail")
-	public void pro_detail(int pro_num, @ModelAttribute("cate_name") String cate_name, Model model) throws Exception {
-		log.info("상품코드 : " + pro_num);
-		log.info("카테고리 번호 : " + cate_name);
+	public void pro_detail(int pro_num, @ModelAttribute("cate_name") String cate_name, HttpSession session, Model model) throws Exception {
+		// log.info("상품코드 : " + pro_num);
+		// log.info("카테고리 번호 : " + cate_name);
 		
 		// DB연동
 		ProductVo vo = productService.pro_info(pro_num);
@@ -98,8 +105,15 @@ public class ProductController {
 		model.addAttribute("product", vo);
 		model.addAttribute("revcount", revcount);
 		
+		// log.info("세션 정보 : " + session.getAttribute("login_status"));
+		
+		// 위시리스트 정보 가져오기
+		if(session.getAttribute("login_status") != null) {
+			String mbsp_id = ((UserVo) session.getAttribute("login_status")).getMbsp_id();
+			Long wish_idx = wishListService.getWish(mbsp_id, pro_num);
+			model.addAttribute("wish_idx", wish_idx);
+		}
 	}
-	
 	
 	
 }

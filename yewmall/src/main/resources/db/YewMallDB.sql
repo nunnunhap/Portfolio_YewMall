@@ -642,7 +642,18 @@ CREATE TABLE wishlist_tbl (
 
 CREATE SEQUENCE seq_wish_idx;
 
+WISH_IDX,
+PRO_NUM,
+MBSP_ID,
+WISH_REGDATE,
+PRO_NAME,
+PRO_UP_FOLDER,
+PRO_IMG
 
+    
+    
+    
+    
 
 
 
@@ -657,7 +668,15 @@ CREATE TABLE carousel_tbl (
 );
 
 CREATE SEQUENCE seq_carousel_idx;
-    
+
+
+
+
+
+
+
+
+
     
 
 COMMIT;

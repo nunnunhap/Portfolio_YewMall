@@ -1,9 +1,5 @@
 package com.yewmall.basic.user;
 
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -12,17 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.yewmall.basic.common.constants.Constants;
-import com.yewmall.basic.common.dto.Criteria;
-import com.yewmall.basic.common.dto.PageDTO;
-import com.yewmall.basic.common.util.FileManagerUtils;
 import com.yewmall.basic.kakaologin.KakaoUserInfo;
 import com.yewmall.basic.mail.EmailDTO;
 import com.yewmall.basic.mail.EmailService;
-import com.yewmall.basic.review.ReviewVo;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;

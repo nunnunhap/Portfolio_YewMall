@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yewmall.basic.admin.wishlist.AdminWishListMapper">
+
+	<!-- 위시리스트 목록 -->
+	<select id="wish_list" parameterType="Criteria" resultType="hashmap">
+		SELECT
+			wish_idx,
+            pro_num,
+            mbsp_id,
+            wish_regdate,
+		    pro_name,
+		    pro_up_folder,
+		    pro_img
+		FROM(
+			SELECT /*+ USE_NL(w,p) INDEX_DESC(w pk_wish_idx) INDEX_DESC(p pk_pro_num) */
+			    ROWNUM AS rn,
+			    w.wish_idx,
+                w.pro_num,
+                w.mbsp_id,
+                w.wish_regdate,
+			    p.pro_name,
+			    p.pro_up_folder,
+			    p.pro_img
+			FROM
+			    wishlist_tbl w
+			INNER JOIN
+			    product_tbl p
+			ON
+			    w.pro_num = p.pro_num
+			WHERE
+			<![CDATA[
+		        ROWNUM <= (#{pageNum} * #{amount})
+		    ]]>
+		)
+		WHERE
+			rn > (#{pageNum} - 1 ) * #{amount}
+	</select>
+	
+	<!-- 전체 데이터 개수 -->
+	<select id="getTotalCount" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			wishlist_tbl
+	</select>
+	
+	<!-- 위시리스트 삭제 -->
+	<delete id="deleteWish" parameterType="Long">
+		DELETE FROM
+	    	wishlist_tbl
+		WHERE
+		    wish_idx = #{wish_idx}
+	</delete>
+
+
+</mapper>

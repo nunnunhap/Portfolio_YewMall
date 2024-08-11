@@ -46,5 +46,8 @@ public final class Constants {
 	// 관리자 측 메일발송 대상 회원리스트 출력 갯수
 	public static final int ADMIN_MAILSENDINGUSERLIST_AMOUNT= 2;
 	
+	// 관리자 측 위시리스트 출력 갯수
+	public static final int ADMIN_WISHLIST_AMOUNT= 2;
+	
 	
 }

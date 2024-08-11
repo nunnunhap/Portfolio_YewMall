@@ -2,6 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org"
 				xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 				layout:decorate="~{layout/baselayout}">
+
   <th:block layout:fragment="css">
     <style>
       /* a태그 스타일 제거 */
@@ -33,6 +34,15 @@
 				color: red;
 			}
 
+      /* 위시리스트 빈 하트 */
+      .fa-heart-o {
+        color: red;
+      }
+
+      /* 위시리스트 채워진 하트 */
+      .fa.fa-heart {
+        color: red;
+      }
       
     </style>
 
@@ -98,6 +108,7 @@
         </tbody>
       </table>
     </script>
+
   </th:block>
 
 <body>
@@ -110,7 +121,7 @@
         <div class="col-6">
           <form>
             <div class="form-group">
-              <span id="info_pro_name" th:text="${product.pro_name}">이름</span>
+              <span id="info_pro_name" th:text="${product.pro_name}">이름 </span>
               <small class="text-muted">(review : [[${revcount}]]) </small>
             </div>
             <div class="form-group">
@@ -119,12 +130,24 @@
               <input type="hidden" id="pro_price" th:value="${product.pro_price}">
             </div>
             <div class="form-group">
-              <label for="">수량</label>
-              <input type="number" class="form-control" value="1" id="btn_cart_amount">
+              <label for="">수 량 </label>
+              <input type="number" value="1" id="btn_cart_amount">
+            </div>
+            <div class="form-group">
+              <div th:if="${wish_idx == null}" class="fa-hover">
+                <a href="#" th:data-wish_idx="${wish_idx}" th:data-pro_num="${product.pro_num}" name="heart_wish">
+                  <i class="fa fa-heart-o"></i> 위시리스트 추가
+                </a>
+              </div>
+              <div th:if="${wish_idx != null}" class="fa-hover">
+                <a href="#" th:data-wish_idx="${wish_idx}" th:data-pro_num="${product.pro_num}" name="heart_wish">
+                  <i class="fa fa-heart"></i> 위시리스트 삭제
+                </a>
+              </div>
             </div>
             <div class="form-group">
               <button type="button" class="btn btn-secondary" style="width: 100%;" th:data-pro_num="${product.pro_num}" id="btn_direct_order" th:data-pro_up_folder="${product.pro_up_folder}" th:data-pro_img="${product.pro_img}">즉시구매</button>
-					    <button type="button" class="btn btn-light" style="width: 100%;" th:data-pro_num="${product.pro_num}" id="btn_cart_add">장바구니 추가</button>
+		          <button type="button" class="btn btn-light" style="width: 100%;" th:data-pro_num="${product.pro_num}" id="btn_cart_add">장바구니 추가</button>
             </div>
           </form>
         </div>
@@ -256,6 +279,41 @@
 
           // 해당 섹션으로 부드럽게 스크롤 이동W
           $("html, body").animate({scrollTop: $(targetId).offset().top}, 500); // 500ms 동안 애니메이션
+        });
+
+
+        // 위시리스트 추가/삭제
+        $("a[name='heart_wish']").on("click", function(e) {
+          e.preventDefault();
+
+          let wish_idx = $(this).data("wish_idx");
+          let pro_num = $(this).data("pro_num");
+
+          // console.log("wish_idx", wish_idx);
+          // console.log("pro_num", pro_num);
+          // return;
+        
+          $.ajax({
+            url : '/wish/togglewish',
+            type : 'post',
+            data : {
+              wish_idx : wish_idx,
+              pro_num : pro_num,
+            },
+            dataType : 'text',
+            success : function(result) {
+              if(result == 'login_required') {
+                alert("로그인이 필요합니다.");
+                location.href="/user/login";
+              } else if(result == 'insert') {
+                alert("위시리스트에 추가되었습니다.");
+                location.reload();
+              } else if(result == 'delete') {
+                alert("위시리스트에서 삭제되었습니다.");
+                location.reload();
+              }
+            }
+          });
         });
 
 
