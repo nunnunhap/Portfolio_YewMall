@@ -24,6 +24,9 @@ public final class Constants {
 	// 사용자 측 위시리스트 출력 갯수
 	public static final int CUSTOMER_WISHLIST_AMOUNT= 2;
 	
+	// 사용자 측 메인화면 상품 출력 갯수
+	public static final int CUSTOMER_MAINPAGE_AMOUNT= 9;
+	
 	
 	// 관리자 측 상품리스트 출력 갯수
 	public static final int ADMIN_PROLIST_AMOUNT = 2;

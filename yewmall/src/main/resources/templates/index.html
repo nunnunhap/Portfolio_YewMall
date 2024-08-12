@@ -6,85 +6,204 @@
 <body>
 
 <th:block layout:fragment = "content">
-<div class="container">
-
- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="/img/Pochapeng (1).jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="/img/Pochapeng (2).jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="/img/Pochapeng (3).jpg" class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </button>
-</div>
-
-
-  <div class="row mb-2">
-    <div class="col-md-6">
-      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">World</strong>
-          <h3 class="mb-0">Featured post</h3>
-          <div class="mb-1 text-muted">Nov 12</div>
-          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="stretched-link">Continue reading</a>
+  <div class="container">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="/img/Pochapeng (1).jpg" class="d-block w-100" alt="...">
         </div>
-        <div class="col-auto d-none d-lg-block">
-          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+        <div class="carousel-item">
+          <img src="/img/Pochapeng (2).jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="/img/Pochapeng (3).jpg" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </button>
+    </div>
 
+    <!-- 신상품(최신 등록 상품) -->
+    <div class="row" style="padding-top: 50px;">
+      <div class="col-md-12 text-center" style="padding-top: 50px;">
+        <h3 class="pb-4 mb-4">최신 등록 상품</h3>
+      </div>
+      <div class="col-md-4" th:each="product : ${latest_pro_list}">
+        <div class="card mb-4 shadow-sm">
+          <a class="move" th:href="@{/product/pro_detail(pro_num = ${product.pro_num})}">
+            <img th:src="${'/product/image_display?dateFolderName=' + product.pro_up_folder + '&fileName=s_' + product.pro_img}" style="width: 100%;height: 255px;">
+          </a>
+          <div class="card-body">
+            <p class="card-text">
+              <a th:href="@{/product/pro_detail(pro_num = ${product.pro_num})}"><span th:text="${product.pro_name}"></span></a><br>
+              <span th:text="${#numbers.formatInteger(product.pro_price, 3, 'COMMA') + '원'}"></span>
+            </p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary" name="btn_direct_order" th:data-pro_num="${product.pro_num}">즉시구매</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" name="btn_cart_add" th:data-pro_num="${product.pro_num}">장바구니</button>
+              </div>
+              <small class="text-muted">(review : [[${product.revcount}]]) </small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="col-md-12 text-center" style="padding-top: 50px;">
+        <h3 class="pb-4 mb-4">리뷰 많은 상품</h3>
+      </div>
+      <div class="col-md-4" th:each="product : ${review_pro_list}">
+        <div class="card mb-4 shadow-sm">
+          <a class="move" th:href="@{/product/pro_detail(pro_num = ${product.pro_num})}">
+            <img th:src="${'/product/image_display?dateFolderName=' + product.pro_up_folder + '&fileName=s_' + product.pro_img}" style="width: 100%;height: 255px;">
+          </a>
+          <div class="card-body">
+            <p class="card-text">
+              <a th:href="@{/product/pro_detail(pro_num = ${product.pro_num})}"><span th:text="${product.pro_name}"></span></a><br>
+              <span th:text="${#numbers.formatInteger(product.pro_price, 3, 'COMMA') + '원'}"></span>
+            </p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary" name="btn_direct_order" th:data-pro_num="${product.pro_num}">즉시구매</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" name="btn_cart_add" th:data-pro_num="${product.pro_num}">장바구니</button>
+              </div>
+              <small class="text-muted">(review : [[${product.revcount}]]) </small>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-success">Design</strong>
-          <h3 class="mb-0">Post title</h3>
-          <div class="mb-1 text-muted">Nov 11</div>
-          <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="stretched-link">Continue reading</a>
-        </div>
-        <div class="col-auto d-none d-lg-block">
-          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+  </div>
 
+  <!-- 모달상자 -->
+  <div class="modal fade" id="order_process_popup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">상품상세</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- load()메서드를 이용하여, pro_info.html파일이 실행된 내용이 삽입된다. -->
+        <div class="modal-body" id="popup_info">
+          
         </div>
       </div>
     </div>
   </div>
-</div>
-
-<main role="main" class="container">
-  <div class="row">
-    <div class="col-md-8 blog-main">
-      <h3 class="pb-4 mb-4 font-italic border-bottom">
-        From the Firehose
-      </h3>
-
-    </div><!-- /.blog-main -->
-
-
-  </div><!-- /.row -->
-
-</main><!-- /.container -->
-
 </th:block>
-    
+
+<th:block layout:fragment = "script">
+  <script>
+    $(document).ready(function() {
+
+    // 장바구니 모달
+    $("button[name='btn_cart_add']").on("click", function() {
+
+    let pro_num = $(this).data("pro_num");
+    console.log("상품코드", pro_num);
+
+    $("#popup_info").load("/product/pro_info?pro_num=" + pro_num, function() {
+      $("#btn_cart_add").show();
+      $("#btn_direct_order").hide();
+    });
+
+
+    $("#order_process_popup").modal('show'); // bootstrap 명령어
+
+    });
+
+    // 모달 내 장바구니 추가버튼 클릭
+    $("#order_process_popup").on("click", "button#btn_cart_add", function() {
+    console.log("장바구니 추가");
+
+    let pro_num = $(this).data("pro_num");
+    let cart_amount = $("#btn_cart_amount").val();
+
+    if(cart_amount == 0) {
+          alert("최소주문수량은 1개입니다.");
+
+          return;
+      }
+
+    $.ajax({
+      url : '/cart/cart_add',
+      type: 'get',
+      data: {pro_num : pro_num, cart_amount : cart_amount},
+      dataType : "text",
+      success : function(result) {
+        if(result == 'success') {
+          alert("상품이 장바구니에 담겼습니다.");
+          if(confirm("장바구니로 이동하시겠습니까?")) {
+            location.href = "/cart/cart_list";
+          }
+          $("#order_process_popup").modal('hide');
+        }
+      }
+    });
+    });
+
+    // 즉시구매 모달
+    $("button[name='btn_direct_order']").on("click", function() {
+    $("#order_process_popup").modal('show'); // bootstrap 명령어
+
+    let pro_num = $(this).data("pro_num");
+    // console.log("상품코드", pro_num);
+
+    $("#popup_info").load("/product/pro_info?pro_num=" + pro_num, function() {
+      $("#btn_cart_add").hide();
+      $("#btn_direct_order").show();
+    });
+
+    });
+
+    // 모달 내 즉시구매 버튼 클릭
+    $("#order_process_popup").on("click", "button#btn_direct_order", function() {
+    console.log("모달 내 즉시구매 버튼 클릭");
+
+    let pro_num = $(this).data("pro_num");
+    let cart_amount = $("#btn_cart_amount").val();
+    let pro_name = $("#info_pro_name").html();
+    let pro_up_folder = $(this).data("pro_up_folder");
+    let pro_img = $(this).data("pro_img");
+    // let pro_price = $(this).data("pro_price"); data- 는 기본적으로 String으로 처리됨. typemismatch 에러 발생
+    let pro_price = $("#pro_price").val();
+
+    if(cart_amount == 0) {
+          alert("최소주문수량은 1개입니다.");
+
+          return;
+      }
+
+    let queryParams = $.param({ // $.param : 자바스크립트 객체나 배열을 URL 쿼리 문자열로 직렬화하는 데 사용
+      pro_num : pro_num,
+      cart_amount : cart_amount,
+      pro_name : pro_name,
+      pro_up_folder : pro_up_folder,
+      pro_img : pro_img,
+      pro_price : pro_price
+    });
+    // console.log("즉시구매버튼", queryParams);
+    // return;
+
+    location.href = "/order/orderinfo?" + queryParams;
+    });
+
+
+    }); // ready event end
+  </script>
+</th:block>
 </body>
 </html>

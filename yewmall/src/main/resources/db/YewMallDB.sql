@@ -137,7 +137,7 @@ CREATE TABLE PRODUCT_TBL(
         PRO_IMG             VARCHAR(100)             NOT NULL,  -- 파일이름
         PRO_AMOUNT          NUMBER                  NOT NULL,
         PRO_BUY             CHAR(1)                 NOT NULL, -- 'Y' or 'N'
-        PRO_DATE            DATE DEFAULT SYSDATE    NOT NULL,
+        pro_date            DATE DEFAULT SYSDATE    NOT NULL,
         PRO_UPDATEDATE      DATE DEFAULT SYSDATE    NOT NULL,
         revcount NUMBER DEFAULT 0,
         
@@ -668,6 +668,48 @@ CREATE TABLE carousel_tbl (
 );
 
 CREATE SEQUENCE seq_carousel_idx;
+
+
+SELECT
+		    pro_num,
+		    cate_code,
+		    pro_name,
+		    pro_price,
+		    pro_discount,
+		    pro_publisher,
+		    pro_content,
+		    pro_up_folder,
+		    pro_img,
+		    pro_amount,
+		    pro_date,
+		    revcount
+		FROM (
+			SELECT
+	        	pro_num,
+	        	cate_code,
+	        	pro_name,
+	        	pro_price,
+	        	pro_discount,
+	        	pro_publisher,
+	        	pro_content,
+	        	pro_up_folder,
+	        	pro_img,
+	        	pro_amount,
+	        	pro_date,
+	        	revcount
+	    	FROM
+	        	product_tbl
+	    	WHERE
+		    	pro_buy = 'Y'
+            ORDER BY
+				revcount DESC
+			)
+        WHERE
+			   	ROWNUM <= 9
+            ;
+
+
+
 
 
 

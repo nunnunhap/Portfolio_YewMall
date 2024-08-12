@@ -18,5 +18,14 @@ public interface ProductMapper {
 	// 상품 팝업 및 상세설명 (모달상자)
 	ProductVo pro_info(int pro_num);
 	
+	// 인메 페이지 : 최신 상품 순서
+	List<ProductVo> main_latestproduct(int amount);
+	
+	// 메인 페이지 : 리뷰 많은 순서
+	List<ProductVo> main_reviewproduct(int amount);
+	
+	
+	
+	
 	
 }

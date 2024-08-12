@@ -47,6 +47,7 @@ public class OrderService {
 				.p_status(p_status)
 				.build();
 		
+		log.info("결제테이블 : " + p_vo);
 		payInfoMapper.payInfo_insert(p_vo);
 		
 		// 4) 장바구니 테이블 삭제(DELETE)

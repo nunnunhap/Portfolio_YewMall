@@ -31,6 +31,16 @@ public class ProductService {
 	ProductVo pro_info(int pro_num) {
 		return productMapper.pro_info(pro_num);
 	}
+	
+	// 메인 페이지 : 최신 상품 순서
+	public List<ProductVo> main_latestproduct(int amount) {
+		return productMapper.main_latestproduct(amount);
+	}
+	
+	// 메인 페이지 : 리뷰 많은 순서
+	public List<ProductVo> main_reviewproduct(int amount) {
+		return productMapper.main_reviewproduct(amount);
+	}
 
 	
 	
