@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yewmall.basic.payinfo.PayInfoMapper">
+
+	<!-- 결제정보 저장 -->
+	<insert id="payInfo_insert" parameterType="PayInfoVo">
+		INSERT INTO
+			payinfo(p_id, ord_code, mbsp_id, paymethod, payinfo,  p_price, p_status)
+		VALUES
+			(seq_payinfo_id.NEXTVAL, #{ord_code}, #{mbsp_id}, #{paymethod}, #{payinfo}, #{p_price}, #{p_status})
+	</insert>
+	
+	<!-- 주문삭제 -->
+	<delete id="ord_pay_delete" parameterType="Long">
+		DELETE FROM
+			payinfo
+		WHERE
+			ord_code = #{ord_code}
+	</delete>
+	
+	
+	<!-- modal : 결제정보 -->
+	<select id="ord_pay_info" parameterType="Long" resultType="PayInfoVo">
+		SELECT
+			p_id, ord_code, mbsp_id, paymethod, payinfo, p_price, p_status, p_date
+		FROM
+			payinfo
+		WHERE
+			ord_code = #{ord_code}
+	</select>
+	
+	<!-- 결제테이블 주문금액 변경 -->
+	<update id="pay_tot_price_change" parameterType="Long">
+		UPDATE
+			payinfo
+		SET
+			p_price = (
+				SELECT
+					SUM(dt_amount * dt_price)
+				FROM
+					ordetail_tbl
+				WHERE
+					ord_code = #{ord_code}
+			)
+		WHERE
+			ord_code = #{ord_code}
+	</update>
+
+</mapper>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yewmall.basic.admin.order.AdminOrderMapper">
+
+	<!-- 공통사항(검색어) : 1) 주문자 2) 주문번호 3) 아이디 -->
+	<sql id="criteria">
+		<trim prefix="(" suffix=") AND" prefixOverrides="OR">
+			<foreach collection="cri.typeArr" item="type">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'N'.toString()">
+							ord_name like '%' || #{cri.keyword} || '%'
+						</when>
+						<when test="type == 'C'.toString()">
+							ord_code like '%' || #{cri.keyword} || '%'
+						</when>
+						<when test="type == 'I'.toString()">
+							mbsp_id like '%' || #{cri.keyword} || '%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+	
+	<!-- 공통사항(날짜) -->
+	<!-- error : Encountered " <IDENT> "AND "" at line 1, column 20.	조건부 SQL(if) 중 AND -> and로 수정 -->
+	<sql id="period">
+		<if test="start_date != null and !start_date.equals('') and end_date != null and !end_date.equals('')">
+			<![CDATA[
+				ord_regdate >= TO_DATE(#{start_date}) AND ord_regdate < TO_DATE(#{end_date}) + 1 AND
+			]]>
+		</if>
+	</sql>
+	
+	
+	<!-- 주문목록 -->
+	<select id="order_list" resultType="OrderVo" parameterType="Criteria">
+		SELECT
+			ord_code,
+			mbsp_id,
+			ord_name,
+			ord_addr_zipcode,
+			ord_addr_basic,
+			ord_addr_detail,
+			ord_tel,
+			ord_price,
+			ord_desc,
+			ord_regdate
+		FROM (
+	    	SELECT /*+ INDEX_DESC(order_tbl pk_ord_code) */
+	        	ROWNUM AS RN,
+	        	ord_code,
+	        	mbsp_id,
+	        	ord_name,
+	        	ord_addr_zipcode,
+	        	ord_addr_basic,
+	        	ord_addr_detail,
+	        	ord_tel,
+	        	ord_price,
+	        	ord_desc,
+	        	ord_regdate
+	    	FROM
+	        	order_tbl
+	    	WHERE 
+			   <include refid="criteria"></include>
+			   <include refid="period"></include>
+		 <![CDATA[  		
+		   		ROWNUM <= (#{cri.pageNum} * #{cri.amount})
+		 ]]>  		
+		)
+		WHERE 
+			RN > (#{cri.pageNum} - 1 ) * #{cri.amount}
+	</select>
+	
+	<!-- 전체 데이터 개수(페이징) -->
+	<select id="getTotalCount" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			order_tbl
+		WHERE
+			<include refid="criteria"></include>
+			<include refid="period"></include>
+			ord_code > 0
+	</select>
+
+	<!-- 주문 삭제 : 주문테이블 -->
+	<delete id="ord_delete" parameterType="Long">
+		DELETE FROM
+			order_tbl
+		WHERE
+			ord_code = #{ord_code}
+	</delete>
+	
+	<!-- 주문 삭제 : 주문상세테이블 -->
+	<delete id="ordetail_delete" parameterType="Long">
+		DELETE FROM
+			ordetail_tbl
+		WHERE
+			ord_code = #{ord_code}
+	</delete>
+
+	<!-- modal : 주문자(수령인) 정보 -->
+	<select id="order_info" parameterType="Long" resultType="OrderVo">
+		SELECT
+			ord_code,
+		    mbsp_id,
+		    ord_name,
+		    ord_addr_zipcode,
+		    ord_addr_basic,
+		    ord_addr_detail,
+		    ord_tel,
+		    ord_price,
+		    ord_desc,
+		    ord_regdate
+		FROM
+			order_tbl
+		WHERE
+			ord_code = #{ord_code}
+	</select>
+
+	<!-- modal : 주문상품정보 -->
+	<select id="order_detail_info" parameterType="Long" resultType="OrderDetailInfoVo">
+		SELECT 
+			ot.ord_code, ot.pro_num, ot.dt_amount, ot.dt_price, p.pro_name, p.pro_up_folder, p.pro_img
+		FROM 
+			ordetail_tbl ot 
+		INNER JOIN 
+			product_tbl p
+		ON 
+			ot.pro_num = p.pro_num
+		WHERE 
+			ot.ord_code = #{ord_code}
+	</select>
+
+	<!-- modal : 주문상품 개별삭제 -->
+	<delete id="order_product_delete" parameterType="map">
+		DELETE FROM
+			ordetail_tbl
+		WHERE
+			ord_code = #{ord_code}
+		AND
+			pro_num = #{pro_num}
+	</delete>
+
+	<!-- modal : 주문 기본정보 수정 -->
+	<update id="order_basic_modify" parameterType="OrderVo">
+		UPDATE
+			order_tbl
+		SET
+		    ord_name = #{ord_name},
+		    ord_addr_zipcode = #{ord_addr_zipcode},
+		    ord_addr_basic = #{ord_addr_basic},
+		    ord_addr_detail = #{ord_addr_detail},
+		    ord_tel = #{ord_tel},
+		    ord_desc = #{ord_desc},
+		    ord_admin_memo = #{ord_admin_memo}
+		WHERE
+			ord_code = #{ord_code}
+	</update>
+
+	<!-- 주문 테이블의총 금액 변경 -->
+	<update id="order_tot_price_change" parameterType="Long">
+		UPDATE
+			order_tbl
+		SET
+			ord_price = (
+				SELECT
+					SUM(dt_price * dt_amount)
+				FROM
+					ordetail_tbl
+				WHERE
+					ord_code = #{ord_code}
+			)
+		WHERE
+			ord_code = #{ord_code}
+	</update>
+
+</mapper>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+                xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+                layout:decorate="~{admin/layout/adminlayout}">
+
+  <th:block layout:fragment="content">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"></script>
+    <div class="section__content section__content--p30">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="title-5 m-b-35">1차 카테고리 별 매출현황</h3>
+            <div>
+							<form action="" method="get" >
+									<select name="year" id="year">
+										<option th:each="i : ${#numbers.sequence(2023, #dates.year(#dates.createNow()))}" th:value="${i}" th:text="${i}"
+										th:selected="${i} == ${year}"></option>
+									</select>
+									년
+									<select name="month" id="month">
+										<th:block th:each="i : ${#numbers.sequence(1, 12)}">
+											<option th:value="${i}" th:text="${i}" th:selected="${i} == ${month}"></option>
+										</th:block>
+									</select>
+									월
+									<button type="button" class="btn btn-primary" id="selectSearch">검색</button>
+							</form>
+						</div>
+            <div class ="chartjs">
+              <canvas id="salesChart" width="300" height="100"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </th:block>
+  <th:block layout:fragment="script">
+    <script>
+      let myChart = null;  // 전역변수 (중요).페이지에서 하나의 차트기능구현을 검색을 통한 작업시, 반드시 이 객체를 전역변수로 선언
+      
+      $(document).ready(function() {
+        chartData();
+        
+        // 통계 및 차트 구현 함수
+        function chartData() {
+          $.ajax({
+            url: '/admin/staticanalysis/monthlySalesStatusByTopCategory',
+            type: 'get',
+            data: {year : $("#year").val(), month: $("#month").val()},
+            dataType: 'json',
+            success: function(result) {
+              console.log(result);
+              
+              // 자바스크립트 배열
+              let labelNames = [];
+              let salesPriceData = [];
+      
+              $.each(result, function() {
+                labelNames.push(this['PRIMARY_CD']);
+                salesPriceData.push(this['SALES_P']);
+              });
+              
+              console.log("x축: ", labelNames);
+              console.log("y축: ", salesPriceData);
+              
+              let	myCt = document.getElementById('salesChart');
+              
+              myChart = new Chart(myCt, {
+                type: 'bar',
+                data: {
+                  labels: labelNames,
+                  datasets: [
+                    {
+                      label: 'YewMall',
+                      data: salesPriceData,
+                      backgroundColor: '#ffedef',
+                    },
+                    {
+                      label: '경쟁사',
+                      data: [100000, 60000, 105000, 105000, 700600], 
+                    }
+                  ]
+                },
+              });
+            }
+          });
+        };
+        
+        // 날짜 검색 id="selectSearch"
+        $("#selectSearch").on("click", function() {
+          console.log("날짜검색");
+          if (myChart !== undefined) myChart.destroy();
+          chartData();
+        });
+
+    }); // ready event end
+    </script>
+  </th:block>
+</html>

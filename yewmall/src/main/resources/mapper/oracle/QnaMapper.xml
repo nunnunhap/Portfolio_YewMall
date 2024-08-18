@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yewmall.basic.qna.QnaMapper">
+
+	<resultMap type="QnaVo" id="qnaMap">
+		<id property="qno" column="qna_idx" />
+		<result property="qcontent" column="question" />
+		<result property="reply_content" column="answer" />
+		<result property="qregdate" column="question_date" />
+	</resultMap>
+
+	<!-- Q&A(상품문의) 목록 -->
+	<select id="qna_list" resultMap="qnaMap" parameterType="map">
+		SELECT
+		    qna_idx,
+		    mbsp_id,
+		    admin_id,
+		    pro_num,
+		    question,
+		    answer,
+		    anscheck,
+		    question_date,
+		    answer_date
+		FROM(
+			SELECT/*+ INDEX_DESC(qnaboard_tbl pk_qna_idx) */
+				ROWNUM AS rn,
+			    qna_idx,
+			    mbsp_id,
+			    admin_id,
+			    pro_num,
+			    question,
+			    answer,
+			    anscheck,
+			    question_date,
+			    answer_date
+			FROM
+			    qnaboard_tbl
+			WHERE
+		        pro_num = #{pro_num}
+		    AND
+		    <![CDATA[
+		        ROWNUM <= (#{cri.pageNum} * #{cri.amount})
+		    )
+		    ]]>
+		    WHERE
+		        rn > (#{cri.pageNum} - 1 ) * #{cri.amount}
+	</select>
+	
+	<!-- 총 데이터 갯수(페이징) -->
+	<select id="getCountQnaByPro_num" resultType="int" parameterType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			qnaboard_tbl
+	</select>
+
+	<!-- Q&A 작성 후 저장 -->
+	<insert id="qna_save" parameterType="QnaVo">
+		INSERT INTO qnaboard_tbl(
+			qna_idx,
+		    mbsp_id,
+		    pro_num,
+		    question
+		    )
+		VALUES(
+			seq_qna_idx.NEXTVAL,
+			#{mbsp_id},
+			#{pro_num},
+			#{qcontent}
+			)
+	</insert>
+	
+	<!-- Q&A 삭제 -->
+	<delete id="qna_delete" parameterType="Long">
+		DELETE FROM
+			qnaboard_tbl
+		WHERE
+			qna_idx = #{qno}
+	</delete>
+	
+	<!-- Q&A 수정 폼 -->
+	<select id="qna_modify" parameterType="Long" resultMap="qnaMap">
+		SELECT
+		    qna_idx,
+		    pro_num,
+		    question
+		FROM
+		    qnaboard_tbl
+		WHERE
+			qna_idx = #{qno}
+	</select>
+	
+	<!-- Q&A 수정 저장 -->
+	<update id="qna_update" parameterType="QnaVo">
+		UPDATE
+			qnaboard_tbl
+		SET
+		    question = #{qcontent},
+		    question_date = SYSDATE
+		WHERE
+			qna_idx = #{qno}
+	</update>
+
+
+	<!-- 상품문의(Q&A) 목록 hashmap-->
+	<select id="qna_list_user" resultType="hashmap" parameterType="map">
+		SELECT
+		    qna_idx,
+		    question,
+		    answer,
+		    anscheck,
+		    question_date,
+		    pro_name,
+		    pro_up_folder,
+		    pro_img
+		FROM(
+			SELECT /*+ USE_NL(q,p) INDEX_DESC(q pk_qna_idx) INDEX_DESC(p pk_pro_num) */
+				ROWNUM AS rn,
+			    q.qna_idx,
+			    q.question,
+			    q.answer,
+			    q.anscheck,
+			    q.question_date,
+			    p.pro_name,
+			    p.pro_up_folder,
+			    p.pro_img
+			FROM
+			    qnaboard_tbl q
+			INNER JOIN
+			    product_tbl p
+			ON
+			    q.pro_num = p.pro_num
+			WHERE
+				mbsp_id = #{mbsp_id}
+			<![CDATA[
+		        AND ROWNUM <= (#{cri.pageNum} * #{cri.amount})
+		    ]]>
+		)
+		WHERE
+		        rn > (#{cri.pageNum} - 1 ) * #{cri.amount}
+	</select>
+
+	<!-- 전체 데이터 개수(페이징) -->
+	<select id="getQnaTotalCount" resultType="int" parameterType="String">
+		SELECT
+			COUNT(*)
+		FROM
+			qnaboard_tbl
+		WHERE
+			mbsp_id = #{mbsp_id}
+	</select>
+
+
+
+
+
+</mapper>

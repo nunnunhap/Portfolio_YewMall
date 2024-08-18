@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yewmall.basic.review.ReviewMapper">
+
+	<!-- 리뷰(상품구매후기) 목록 -->
+	<select id="rev_list" resultType="ReviewVo" parameterType="map">
+		SELECT
+		    rev_code,
+		    mbsp_id,
+		    pro_num,
+		    rev_title,
+		    rev_content,
+		    rev_rate,
+		    rev_regdate
+		FROM (
+		    SELECT/*+ INDEX_DESC(review_tbl pk_review_code) */
+		        ROWNUM AS rn,
+		        rev_code,
+		        mbsp_id,
+		        pro_num,
+		        rev_title,
+		        rev_content,
+		        rev_rate,
+		        rev_regdate
+		    FROM
+		        review_tbl
+		    WHERE
+		        pro_num = #{pro_num}
+		    AND
+		    <![CDATA[
+		        ROWNUM <= (#{cri.pageNum} * #{cri.amount})
+		    )
+		    ]]>
+		    WHERE
+		        rn > (#{cri.pageNum} - 1 ) * #{cri.amount}
+	</select>
+	
+	<!-- 총 리뷰 갯수 -->
+	<select id="getCountReviewByPro_num" resultType="int" parameterType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			review_tbl
+		WHERE
+			pro_num = #{pro_num}
+	</select>
+	
+	<!-- 리뷰 저장 -->
+	<insert id="review_save" parameterType="ReviewVo">
+		INSERT INTO review_tbl(
+			rev_code,
+		    mbsp_id,
+		    pro_num,
+		    rev_title,
+		    rev_content,
+		    rev_rate
+		)
+		VALUES(
+			seq_rev_code.NEXTVAL,
+			#{mbsp_id},
+			#{pro_num},
+			#{rev_title},
+			#{rev_content},
+			#{rev_rate}
+			)
+	</insert>
+	
+	<!-- 리뷰 삭제 -->
+	<delete id="review_delete" parameterType="Long">
+		DELETE FROM
+			review_tbl
+		WHERE
+			rev_code = #{rev_code}
+	</delete>
+	
+	<!-- 리뷰 수정 폼 -->
+	<select id="review_modify" parameterType="Long" resultType="ReviewVo">
+		SELECT
+		    rev_code,
+		    mbsp_id,
+		    pro_num,
+		    rev_title,
+		    rev_content,
+		    rev_rate,
+		    rev_regdate
+		FROM
+		    review_tbl
+		WHERE
+			rev_code = #{rev_code}
+	</select>
+	
+	<!-- 리뷰 수정 저장 -->
+	<update id="review_update" parameterType="ReviewVo">
+		UPDATE
+			review_tbl
+		SET
+		    rev_title = #{rev_title},
+		    rev_content = #{rev_content},
+		    rev_rate = #{rev_rate}
+		WHERE
+			rev_code = #{rev_code}
+	</update>
+	
+	<!-- 리뷰 저장 시 리뷰갯수 증가 -->
+	<update id="plus_revcount" parameterType="Integer">
+		UPDATE
+			product_tbl
+		SET
+			revcount = revcount + 1
+		WHERE
+			pro_num = #{pro_num}
+	</update>
+	
+	<!-- 리뷰 삭제 시 리뷰갯수 감소 -->
+	<update id="minus_revcount" parameterType="Long">
+		UPDATE
+			product_tbl
+		SET
+			revcount = revcount - 1
+		WHERE
+			pro_num = (
+				SELECT
+					pro_num
+				FROM
+					review_tbl
+				WHERE
+					rev_code = #{rev_code}
+			)
+	</update>
+	
+	
+	<!-- 마이페이지 내 상품구매후기(리뷰) 목록 -->
+	<select id="rev_list_user" parameterType="map" resultType="hashmap">
+		SELECT
+			rev_code,
+		    mbsp_id,
+		    pro_num,
+		    rev_title,
+		    rev_content,
+		    rev_rate,
+		    rev_regdate,
+		    pro_name,
+		    pro_up_folder,
+		    pro_img
+		FROM(
+			SELECT /*+ USE_NL(r,p) INDEX_DESC(r pk_review_code) INDEX_DESC(p pk_pro_num) */
+			    ROWNUM AS rn,
+			    r.rev_code,
+			    r.mbsp_id,
+			    r.pro_num,
+			    r.rev_title,
+			    r.rev_content,
+			    r.rev_rate,
+			    r.rev_regdate,
+			    p.pro_name,
+			    p.pro_up_folder,
+			    p.pro_img
+			FROM
+			    review_tbl r
+			INNER JOIN
+			    product_tbl p
+			ON
+			    r.pro_num = p.pro_num
+			WHERE
+				mbsp_id = #{mbsp_id}
+			<![CDATA[
+		        AND ROWNUM <= (#{cri.pageNum} * #{cri.amount})
+		    ]]>
+		)
+		WHERE
+		        rn > (#{cri.pageNum} - 1 ) * #{cri.amount}
+	</select>
+	
+	<!-- 마이페이지 내 전체 데이터 개수 -->
+	<select id="getRevTotalCount" resultType="int" parameterType="String">
+		SELECT
+			COUNT(*)
+		FROM
+			review_tbl
+		WHERE
+			mbsp_id = #{mbsp_id}
+	</select>
+	
+	
+
+</mapper>

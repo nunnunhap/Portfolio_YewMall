@@ -650,14 +650,51 @@ PRO_NAME,
 PRO_UP_FOLDER,
 PRO_IMG
 
-    
-    
+
+-- 통계관리 : 캘린더
+CREATE TABLE Calendar(
+    calendar_date   DATE PRIMARY KEY
+);
+
+
+COMMIT;
+
+
+
+
+SELECT
+    c.cate_name primary_cd, SUM(d.dt_amount * d.dt_price) sales_p
+FROM
+    product_tbl p INNER JOIN ordetail_tbl d
+ON
+    p.pro_num=d.pro_num
+INNER JOIN
+    (SELECT
+        c2.cate_name, c1.cate_code
+    FROM
+        category_tbl c1, category_tbl c2
+    WHERE
+        c1.cate_precode = c2.cate_code ) c
+ON
+    p.cate_code = c.cate_code
+INNER JOIN
+    order_tbl o
+ON
+    o.ord_code=d.ord_code
+AND
+    TO_CHAR(o.ord_regdate, 'YYYY/MM') = '2024/08'
+GROUP BY
+    c.cate_name, TO_CHAR(o.ord_regdate, 'YYYY/MM')
+ORDER BY
+    c.cate_name
+
+
     
     
 
 
 
--- 15. 캐러셀(구현예정)
+-- 캐러셀
 CREATE TABLE carousel_tbl (
     carousel_idx          NUMBER,
     PRO_UP_FOLDER       VARCHAR(50)             NOT NULL, -- 날짜폴더경로 예>2024\06\11

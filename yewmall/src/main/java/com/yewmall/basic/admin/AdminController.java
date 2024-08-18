@@ -50,8 +50,8 @@ public class AdminController {
 	
 	// 메인 페이지
 	@GetMapping("admin_menu")
-	public void admin_menu() {
-		
+	public String admin_menu() {
+		return "redirect:/admin/product/pro_list";
 	}
 	
 	// 로그아웃
